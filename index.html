@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cursorセットアップ完了！</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #0f3460 100%);
+      font-family: 'Hiragino Sans', 'Yu Gothic', sans-serif;
+      overflow: hidden;
+    }
+
+    .stars {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .star {
+      position: absolute;
+      border-radius: 50%;
+      background: white;
+      animation: twinkle var(--duration) ease-in-out infinite alternate;
+    }
+
+    @keyframes twinkle {
+      from { opacity: 0.1; transform: scale(0.8); }
+      to   { opacity: 0.9; transform: scale(1.2); }
+    }
+
+    .container {
+      text-align: center;
+      padding: 3rem 4rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .emoji-row {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      gap: 1.2rem;
+      justify-content: center;
+    }
+
+    .emoji-row span {
+      display: inline-block;
+      animation: bounce var(--delay) ease-in-out infinite alternate;
+    }
+
+    @keyframes bounce {
+      from { transform: translateY(0); }
+      to   { transform: translateY(-14px); }
+    }
+
+    .title {
+      font-size: clamp(2.6rem, 6vw, 4.5rem);
+      font-weight: 900;
+      background: linear-gradient(90deg, #ff6fd8, #ff9a3c, #ffe066, #4fffb0, #56cffc, #a78bfa);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 3s linear infinite;
+      line-height: 1.2;
+      letter-spacing: 0.04em;
+    }
+
+    @keyframes shimmer {
+      to { background-position: 200% center; }
+    }
+
+    .divider {
+      width: 120px;
+      height: 4px;
+      margin: 1.6rem auto;
+      border-radius: 9999px;
+      background: linear-gradient(90deg, #ff6fd8, #56cffc, #4fffb0);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scaleX(1); }
+      50%       { opacity: 0.6; transform: scaleX(0.85); }
+    }
+
+    .subtitle {
+      font-size: clamp(1.1rem, 2.5vw, 1.55rem);
+      color: #c7d2fe;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      line-height: 1.7;
+    }
+
+    .badge {
+      display: inline-block;
+      margin-top: 2.5rem;
+      padding: 0.55rem 1.6rem;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #a5f3fc;
+      font-size: 0.95rem;
+      letter-spacing: 0.06em;
+      backdrop-filter: blur(6px);
+    }
+
+    /* floating blobs */
+    .blob {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.25;
+      animation: drift var(--t) ease-in-out infinite alternate;
+      pointer-events: none;
+    }
+
+    @keyframes drift {
+      from { transform: translate(0, 0) scale(1); }
+      to   { transform: translate(var(--tx), var(--ty)) scale(1.15); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Blobs -->
+  <div class="blob" style="width:420px;height:420px;background:#a855f7;top:-100px;left:-100px;--t:8s;--tx:40px;--ty:30px;"></div>
+  <div class="blob" style="width:360px;height:360px;background:#06b6d4;bottom:-80px;right:-80px;--t:10s;--tx:-30px;--ty:-40px;"></div>
+  <div class="blob" style="width:280px;height:280px;background:#f43f5e;top:40%;left:60%;--t:12s;--tx:20px;--ty:-20px;"></div>
+
+  <!-- Stars -->
+  <div class="stars" id="stars"></div>
+
+  <div class="container">
+    <div class="emoji-row">
+      <span style="--delay:0.9s">🎉</span>
+      <span style="--delay:1.3s">✨</span>
+      <span style="--delay:0.7s">🚀</span>
+      <span style="--delay:1.1s">✨</span>
+      <span style="--delay:0.8s">🎊</span>
+    </div>
+
+    <h1 class="title">Cursorセットアップ完了！</h1>
+
+    <div class="divider"></div>
+
+    <p class="subtitle">AIと一緒にものづくりを始める準備ができました</p>
+
+    <div class="badge">✦ Let's build something amazing ✦</div>
+  </div>
+
+  <script>
+    const starsEl = document.getElementById('stars');
+    for (let i = 0; i < 120; i++) {
+      const s = document.createElement('div');
+      s.className = 'star';
+      const size = Math.random() * 2.5 + 0.5;
+      s.style.cssText = `
+        width: ${size}px; height: ${size}px;
+        top: ${Math.random() * 100}%;
+        left: ${Math.random() * 100}%;
+        --duration: ${Math.random() * 3 + 2}s;
+        animation-delay: ${Math.random() * 3}s;
+      `;
+      starsEl.appendChild(s);
+    }
+  </script>
+</body>
+</html>
