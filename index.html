@@ -1,0 +1,2518 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#fbf6e9">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="七曜マントラ">
+<meta name="mobile-web-app-capable" content="yes">
+<title>七曜マントラ</title>
+
+<!-- Inline PWA manifest -->
+<link rel="manifest" href='data:application/manifest+json;charset=utf-8,{"name":"七曜マントラ","short_name":"七曜マントラ","start_url":".","display":"standalone","background_color":"%23fbf6e9","theme_color":"%23fbf6e9","orientation":"portrait","icons":[{"src":"data:image/svg%2Bxml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 192 192%22><defs><linearGradient id=%22g%22 x1=%220%22 y1=%220%22 x2=%220%22 y2=%221%22><stop offset=%220%22 stop-color=%22%23fdf6e2%22/><stop offset=%221%22 stop-color=%22%23f1e3b8%22/></linearGradient></defs><rect width=%22192%22 height=%22192%22 fill=%22url(%23g)%22 rx=%2240%22/><circle cx=%2270%22 cy=%2278%22 r=%2228%22 fill=%22%23d8842c%22/><g fill=%22none%22 stroke=%22%23d8842c%22 stroke-width=%223%22 stroke-linecap=%22round%22><line x1=%2270%22 y1=%2236%22 x2=%2270%22 y2=%2244%22/><line x1=%2270%22 y1=%22112%22 x2=%2270%22 y2=%22120%22/><line x1=%2228%22 y1=%2278%22 x2=%2236%22 y2=%2278%22/><line x1=%22104%22 y1=%2278%22 x2=%22112%22 y2=%2278%22/><line x1=%2240%22 y1=%2248%22 x2=%2246%22 y2=%2254%22/><line x1=%2294%22 y1=%22102%22 x2=%22100%22 y2=%22108%22/><line x1=%2240%22 y1=%22108%22 x2=%2246%22 y2=%22102%22/><line x1=%2294%22 y1=%2254%22 x2=%22100%22 y2=%2248%22/></g><path d=%22M132 60a38 38 0 1 0 24 66 30 30 0 1 1-24-66%22 fill=%22%23a87633%22/></svg>","sizes":"192x192","type":"image/svg+xml"},{"src":"data:image/svg%2Bxml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 512 512%22><defs><linearGradient id=%22g2%22 x1=%220%22 y1=%220%22 x2=%220%22 y2=%221%22><stop offset=%220%22 stop-color=%22%23fdf6e2%22/><stop offset=%221%22 stop-color=%22%23f1e3b8%22/></linearGradient></defs><rect width=%22512%22 height=%22512%22 fill=%22url(%23g2)%22 rx=%22100%22/><circle cx=%22186%22 cy=%22210%22 r=%2274%22 fill=%22%23d8842c%22/><g fill=%22none%22 stroke=%22%23d8842c%22 stroke-width=%228%22 stroke-linecap=%22round%22><line x1=%22186%22 y1=%2298%22 x2=%22186%22 y2=%22120%22/><line x1=%22186%22 y1=%22300%22 x2=%22186%22 y2=%22322%22/><line x1=%2272%22 y1=%22210%22 x2=%2294%22 y2=%22210%22/><line x1=%22278%22 y1=%22210%22 x2=%22300%22 y2=%22210%22/></g><path d=%22M352 160a100 100 0 1 0 64 174 80 80 0 1 1-64-174%22 fill=%22%23a87633%22/></svg>","sizes":"512x512","type":"image/svg+xml"}]}'>
+
+<link rel="apple-touch-icon" href='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="%23fdf6e2"/><stop offset="1" stop-color="%23f1e3b8"/></linearGradient></defs><rect width="192" height="192" fill="url(%23g)" rx="40"/><circle cx="70" cy="78" r="28" fill="%23d8842c"/><g fill="none" stroke="%23d8842c" stroke-width="3" stroke-linecap="round"><line x1="70" y1="36" x2="70" y2="44"/><line x1="70" y1="112" x2="70" y2="120"/><line x1="28" y1="78" x2="36" y2="78"/><line x1="104" y1="78" x2="112" y2="78"/><line x1="40" y1="48" x2="46" y2="54"/><line x1="94" y1="102" x2="100" y2="108"/><line x1="40" y1="108" x2="46" y2="102"/><line x1="94" y1="54" x2="100" y2="48"/></g><path d="M132 60a38 38 0 1 0 24 66 30 30 0 1 1-24-66" fill="%23a87633"/></svg>'>
+
+<link rel="icon" href='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><circle cx="12" cy="14" r="6" fill="%23d8842c"/><path d="M22 9a7 7 0 1 0 4 12 6 6 0 1 1-4-12" fill="%23a87633"/></svg>'>
+
+<style>
+  :root {
+    /* Parchment / light theme */
+    --bg: #fbf6e9;
+    --bg-card: #ffffff;
+    --bg-card-hover: #fcf9f0;
+    --bg-elevated: #f5efe0;
+    --bg-soft: #f9f4e4;
+    --border: #e2d8be;
+    --border-soft: #ece3ce;
+    --border-strong: #c8b890;
+    --gold: #a87633;
+    --gold-dim: #7c5722;
+    --gold-soft: #c69f5e;
+    --gold-pale: #efe2c0;
+    --text: #2a2238;
+    --text-strong: #14102a;
+    --text-dim: #6b5d4a;
+    --text-faint: #a39481;
+    --mantra: #281a3a;
+    --accent: #a87633;
+    --shadow: rgba(85, 55, 20, 0.08);
+
+    --sun: #d77a1f;
+    --moon: #5d6d8f;
+    --mars: #b03a2b;
+    --mercury: #4a8758;
+    --jupiter: #b07d28;
+    --venus: #b16a8c;
+    --saturn: #3d4d70;
+    --rahu: #6e4faa;
+    --ketu: #b85d35;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    background: var(--bg);
+    background-image:
+      radial-gradient(ellipse 80% 50% at 50% 0%, #fdf9ec 0%, transparent 60%),
+      radial-gradient(ellipse 60% 40% at 100% 100%, #f3ead3 0%, transparent 60%),
+      radial-gradient(ellipse 60% 40% at 0% 100%, #f7eee0 0%, transparent 60%);
+    background-attachment: fixed;
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic UI", "Meiryo", "Noto Sans JP", sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding: max(env(safe-area-inset-top), 16px) 16px max(env(safe-area-inset-bottom), 32px);
+    max-width: 520px;
+    margin: 0 auto;
+    overflow-x: hidden;
+  }
+
+  /* Subtle warm sparkles in background */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1.5px 1.5px at 18% 28%, rgba(168, 118, 51, 0.28), transparent),
+      radial-gradient(1px 1px at 72% 22%, rgba(168, 118, 51, 0.22), transparent),
+      radial-gradient(1.5px 1.5px at 42% 62%, rgba(168, 118, 51, 0.22), transparent),
+      radial-gradient(1px 1px at 82% 72%, rgba(168, 118, 51, 0.26), transparent),
+      radial-gradient(1px 1px at 14% 84%, rgba(168, 118, 51, 0.18), transparent),
+      radial-gradient(1.5px 1.5px at 90% 44%, rgba(168, 118, 51, 0.22), transparent),
+      radial-gradient(1px 1px at 52% 12%, rgba(168, 118, 51, 0.18), transparent),
+      radial-gradient(1.5px 1.5px at 32% 78%, rgba(168, 118, 51, 0.22), transparent);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Header */
+  .header {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 20px 0 28px;
+  }
+  .header .ornament {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 6px;
+    color: var(--gold);
+  }
+  .header .ornament span {
+    flex: 0 0 auto;
+    font-size: 18px;
+    opacity: 0.7;
+  }
+  .header .ornament .line {
+    flex: 1 1 auto;
+    max-width: 60px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold-dim), transparent);
+  }
+  .header h1 {
+    font-family: "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+    font-size: 26px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+  .header .date {
+    font-size: 13px;
+    color: var(--text-dim);
+    letter-spacing: 0.06em;
+  }
+  .header .clock {
+    font-size: 12px;
+    color: var(--text-faint);
+    margin-top: 4px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Cards */
+  .card {
+    position: relative;
+    z-index: 1;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 16px;
+    box-shadow: 0 4px 24px var(--shadow);
+  }
+
+  /* Current/Now card */
+  .now-card {
+    padding: 24px 20px 22px;
+    overflow: hidden;
+  }
+  .now-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at top, rgba(244,208,63,0.06), transparent 70%);
+    pointer-events: none;
+  }
+  .now-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    position: relative;
+  }
+  .now-status .dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--gold);
+    box-shadow: 0 0 8px var(--gold);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  .now-status.idle .dot {
+    background: var(--text-faint);
+    box-shadow: none;
+    animation: none;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  .now-title {
+    font-family: "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+    font-size: 28px;
+    margin-bottom: 4px;
+    color: var(--text);
+    position: relative;
+  }
+  .now-title .planet-icon {
+    font-size: 24px;
+    margin-right: 8px;
+    vertical-align: -2px;
+  }
+  .now-subtitle {
+    font-size: 13px;
+    color: var(--text-dim);
+    margin-bottom: 16px;
+    letter-spacing: 0.04em;
+    position: relative;
+  }
+
+  .mantra-text {
+    font-family: "Cormorant Garamond", "Hiragino Mincho ProN", "Yu Mincho", serif;
+    font-style: italic;
+    font-size: 23px;
+    font-weight: 500;
+    line-height: 1.5;
+    color: var(--mantra);
+    margin: 16px 0 12px;
+    letter-spacing: 0.005em;
+    position: relative;
+  }
+  .mantra-reading {
+    font-size: 15.5px;
+    color: var(--text-dim);
+    line-height: 1.75;
+    letter-spacing: 0.03em;
+    position: relative;
+  }
+  .mantra-divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--border), transparent);
+    margin: 16px 0;
+    position: relative;
+  }
+
+  .now-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-top: 14px;
+    flex-wrap: wrap;
+    position: relative;
+  }
+  .meta-item {
+    font-size: 12px;
+    color: var(--text-dim);
+  }
+  .meta-item .label {
+    color: var(--text-faint);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-size: 10px;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .meta-item .value {
+    font-variant-numeric: tabular-nums;
+    color: var(--text);
+    font-size: 15px;
+    font-weight: 500;
+  }
+
+  .progress {
+    height: 3px;
+    background: var(--border-soft);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-top: 14px;
+    position: relative;
+  }
+  .progress-bar {
+    height: 100%;
+    background: linear-gradient(to right, var(--gold-dim), var(--gold));
+    border-radius: 2px;
+    transition: width 1s linear;
+  }
+
+  /* Section heading */
+  .section-heading {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 8px 4px 12px;
+    color: var(--gold-dim);
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .section-heading .line {
+    flex: 1 1 auto;
+    height: 1px;
+    background: linear-gradient(to right, var(--border), transparent);
+  }
+
+  /* Timeline */
+  .timeline {
+    padding: 4px 0;
+  }
+  .slot {
+    display: flex;
+    align-items: stretch;
+    gap: 14px;
+    padding: 14px 4px;
+    position: relative;
+    border-radius: 10px;
+    transition: background 0.2s;
+    cursor: pointer;
+  }
+  .slot:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    left: 32px;
+    top: calc(14px + 38px);
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--border) 50%, transparent);
+  }
+  .slot-marker {
+    flex: 0 0 38px;
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: var(--text-dim);
+    position: relative;
+    z-index: 1;
+  }
+  .slot.active .slot-marker {
+    border-color: var(--gold);
+    background: rgba(244,208,63,0.1);
+    color: var(--gold);
+    box-shadow: 0 0 16px rgba(244,208,63,0.3);
+  }
+  .slot.past .slot-marker {
+    opacity: 0.4;
+  }
+  .slot.past .slot-content {
+    opacity: 0.5;
+  }
+  .slot-content {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+  .slot-time {
+    font-size: 13px;
+    color: var(--text-dim);
+    font-variant-numeric: tabular-nums;
+    margin-bottom: 2px;
+    letter-spacing: 0.02em;
+  }
+  .slot.active .slot-time {
+    color: var(--gold);
+    font-weight: 500;
+  }
+  .slot-mantra {
+    font-family: "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+    font-size: 17px;
+    color: var(--text);
+    margin-bottom: 2px;
+  }
+  .slot-note {
+    font-size: 12px;
+    color: var(--text-faint);
+  }
+  .slot-badge {
+    display: inline-block;
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    background: var(--bg-elevated);
+    color: var(--text-dim);
+    border: 1px solid var(--border);
+    margin-left: 6px;
+    vertical-align: 1px;
+    letter-spacing: 0.06em;
+  }
+  .slot.active .slot-badge {
+    background: var(--gold);
+    color: var(--bg);
+    border-color: var(--gold);
+    font-weight: 600;
+  }
+
+  .sunset-info {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px dashed var(--border);
+    font-size: 12px;
+    color: var(--text-faint);
+    display: flex;
+    justify-content: space-between;
+    letter-spacing: 0.04em;
+  }
+  .sunset-info .value {
+    color: var(--text-dim);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* All mantras reference */
+  details.reference {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 0;
+    overflow: hidden;
+  }
+  details.reference > summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 13px;
+    color: var(--gold-dim);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    user-select: none;
+  }
+  details.reference > summary::-webkit-details-marker { display: none; }
+  details.reference > summary::after {
+    content: "▾";
+    font-size: 14px;
+    transition: transform 0.2s;
+    color: var(--text-dim);
+  }
+  details.reference[open] > summary::after {
+    transform: rotate(180deg);
+  }
+  details.reference[open] > summary {
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .reference-list {
+    padding: 8px 0 12px;
+  }
+  .ref-item {
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .ref-item:last-child { border-bottom: none; }
+  .ref-item.special {
+    background: linear-gradient(to right, rgba(155,126,212,0.04), rgba(214,138,106,0.04));
+  }
+  .ref-header {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 6px;
+    flex-wrap: wrap;
+  }
+  .ref-day {
+    font-size: 11px;
+    color: var(--text-faint);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .ref-planet {
+    font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+    font-size: 16px;
+    color: var(--text);
+  }
+  .ref-sanskrit {
+    font-size: 12px;
+    color: var(--text-dim);
+    font-style: italic;
+  }
+  .ref-mantra {
+    font-family: "Cormorant Garamond", "Hiragino Mincho ProN", serif;
+    font-style: italic;
+    color: var(--gold-dim);
+    font-size: 14px;
+    margin-bottom: 2px;
+    line-height: 1.4;
+  }
+  .ref-reading {
+    font-size: 12px;
+    color: var(--text-faint);
+    line-height: 1.5;
+  }
+  .ref-time {
+    display: inline-block;
+    font-size: 10px;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    padding: 2px 8px;
+    border-radius: 10px;
+    color: var(--text-dim);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.04em;
+  }
+
+  /* Footer */
+  .footer {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    color: var(--text-faint);
+    font-size: 11px;
+    margin-top: 24px;
+    padding: 16px 8px;
+    line-height: 1.7;
+    letter-spacing: 0.04em;
+  }
+  .footer .small {
+    opacity: 0.7;
+  }
+
+  /* Note banner for Kaalam overlap */
+  .note {
+    background: rgba(244,208,63,0.06);
+    border: 1px solid rgba(244,208,63,0.2);
+    border-radius: 10px;
+    padding: 10px 12px;
+    font-size: 12px;
+    color: var(--gold-dim);
+    margin-top: 12px;
+    line-height: 1.5;
+  }
+
+  /* Counter */
+  .counter-card {
+    position: relative;
+    z-index: 1;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 18px 20px 18px;
+    margin-bottom: 16px;
+    box-shadow: 0 4px 24px var(--shadow);
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  .counter-card.glow {
+    border-color: var(--gold-dim);
+    box-shadow: 0 4px 24px var(--shadow), 0 0 20px rgba(244,208,63,0.1);
+  }
+  .counter-reset {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-faint);
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    font-size: 14px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.15s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    line-height: 1;
+  }
+  .counter-reset:hover, .counter-reset:active {
+    color: var(--gold);
+    border-color: var(--gold-dim);
+  }
+  .counter-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding-right: 38px;
+  }
+  .counter-label {
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .counter-target {
+    font-size: 12px;
+    color: var(--text-dim);
+    font-variant-numeric: tabular-nums;
+  }
+  .counter-progress {
+    height: 3px;
+    background: var(--border-soft);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 14px;
+  }
+  .counter-progress-bar {
+    height: 100%;
+    background: linear-gradient(to right, var(--gold-dim), var(--gold));
+    border-radius: 2px;
+    transition: width 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .counter-tap-area {
+    width: 100%;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 26px 16px 20px;
+    cursor: pointer;
+    color: var(--text);
+    font-family: inherit;
+    transition: background 0.1s, transform 0.08s, border-color 0.2s;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+  .counter-tap-area:active {
+    background: rgba(244,208,63,0.06);
+    transform: scale(0.985);
+    border-color: var(--gold-dim);
+  }
+  .counter-display {
+    font-family: "Cormorant Garamond", "Hiragino Mincho ProN", "Yu Mincho", serif;
+    font-size: 64px;
+    font-weight: 400;
+    line-height: 1;
+    color: var(--gold);
+    font-variant-numeric: tabular-nums;
+    transition: transform 0.18s;
+  }
+  .counter-tap-area:active .counter-display {
+    transform: scale(1.06);
+  }
+  .counter-display.celebrate {
+    animation: celebrate 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  @keyframes celebrate {
+    0%   { transform: scale(1); text-shadow: 0 0 0 rgba(244,208,63,0); }
+    40%  { transform: scale(1.25); text-shadow: 0 0 20px rgba(244,208,63,0.6); }
+    100% { transform: scale(1); text-shadow: 0 0 0 rgba(244,208,63,0); }
+  }
+  .counter-hint {
+    font-size: 10px;
+    color: var(--text-faint);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+  .counter-milestones {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    margin-top: 14px;
+  }
+  .milestone {
+    flex: 1 1 0;
+    font-size: 12px;
+    font-variant-numeric: tabular-nums;
+    padding: 5px 0;
+    border-radius: 10px;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    color: var(--text-faint);
+    letter-spacing: 0.04em;
+    transition: all 0.25s;
+    text-align: center;
+  }
+  .milestone.reached {
+    background: rgba(244,208,63,0.10);
+    border-color: var(--gold-dim);
+    color: var(--gold);
+  }
+  .milestone.current {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--bg);
+    font-weight: 600;
+    box-shadow: 0 0 12px rgba(244,208,63,0.25);
+  }
+
+  /* ========== Counter Mode Tabs ========== */
+  .counter-modes {
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px dashed var(--border);
+  }
+  .mode-tabs {
+    display: flex;
+    gap: 6px;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 4px;
+    margin-bottom: 12px;
+  }
+  .mode-tab {
+    flex: 1 1 0;
+    background: transparent;
+    border: none;
+    color: var(--text-faint);
+    font-family: inherit;
+    font-size: 12px;
+    padding: 8px 6px;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: all 0.18s;
+    letter-spacing: 0.02em;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .mode-tab.active {
+    background: var(--gold);
+    color: var(--bg);
+    font-weight: 600;
+  }
+  .mode-pane {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin-bottom: 10px;
+  }
+  .mode-pane[hidden] { display: none; }
+  .mode-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+  .mode-row:last-child { margin-bottom: 0; }
+  .mode-row-label {
+    font-size: 12px;
+    color: var(--text-faint);
+    flex-shrink: 0;
+    min-width: 56px;
+  }
+  .mode-slider {
+    flex: 1 1 0;
+    -webkit-appearance: none;
+    height: 4px;
+    background: var(--border);
+    border-radius: 2px;
+    outline: none;
+  }
+  .mode-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 18px; height: 18px;
+    background: var(--gold);
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  .mode-row-control {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1 1 0;
+    justify-content: flex-end;
+  }
+  .step-btn {
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    color: var(--gold);
+    font-size: 16px;
+    cursor: pointer;
+    font-family: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .step-value {
+    font-variant-numeric: tabular-nums;
+    color: var(--text);
+    font-size: 14px;
+    min-width: 40px;
+    text-align: center;
+  }
+  .vu-meter {
+    flex: 1 1 0;
+    height: 8px;
+    background: var(--bg-card);
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid var(--border);
+  }
+  .vu-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #5fa37b, var(--gold) 70%, #e6843a 100%);
+    transition: width 0.08s;
+  }
+  .vu-threshold {
+    position: absolute;
+    top: -2px; bottom: -2px;
+    width: 2px;
+    background: var(--gold);
+    box-shadow: 0 0 4px var(--gold);
+    pointer-events: none;
+  }
+  .mode-hint {
+    font-size: 11px;
+    color: var(--text-faint);
+    margin-top: 6px;
+    letter-spacing: 0.02em;
+  }
+  .mode-controls {
+    display: flex;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .mode-controls[hidden] { display: none; }
+  .mode-action-btn {
+    flex: 1 1 0;
+    background: var(--gold);
+    color: var(--bg);
+    border: none;
+    border-radius: 10px;
+    padding: 12px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    letter-spacing: 0.04em;
+    transition: all 0.15s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .mode-action-btn.stop {
+    background: var(--bg-elevated);
+    color: var(--gold);
+    border: 1px solid var(--gold-dim);
+  }
+  .mode-action-btn:active {
+    transform: scale(0.97);
+  }
+  .mode-action-btn.running {
+    background: var(--bg-elevated);
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    box-shadow: 0 0 12px rgba(244,208,63,0.25);
+  }
+  .auto-pulse {
+    animation: autoPulse 0.4s ease-out;
+  }
+  @keyframes autoPulse {
+    0%   { transform: scale(1); }
+    40%  { transform: scale(1.18); text-shadow: 0 0 16px rgba(244,208,63,0.5); }
+    100% { transform: scale(1); }
+  }
+
+  /* ========== Slot Start Alert Overlay ========== */
+  .slot-alert-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(20, 16, 8, 0.78);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    animation: alertFadeIn 0.35s ease-out;
+  }
+  .slot-alert-overlay[hidden] { display: none; }
+  @keyframes alertFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  .slot-alert-card {
+    background: var(--bg-card);
+    border: 1px solid var(--gold);
+    box-shadow: 0 8px 60px rgba(244,208,63,0.25), 0 0 80px rgba(244,208,63,0.12);
+    border-radius: 20px;
+    padding: 30px 26px 22px;
+    max-width: 360px;
+    width: 100%;
+    text-align: center;
+    animation: alertPopIn 0.45s cubic-bezier(0.2, 0.9, 0.3, 1.1);
+  }
+  @keyframes alertPopIn {
+    0%   { transform: scale(0.7); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  .slot-alert-icon {
+    font-size: 48px;
+    margin-bottom: 12px;
+    animation: bellRing 1.2s ease-in-out infinite;
+  }
+  @keyframes bellRing {
+    0%, 100% { transform: rotate(0deg); }
+    15% { transform: rotate(-14deg); }
+    30% { transform: rotate(12deg); }
+    45% { transform: rotate(-8deg); }
+    60% { transform: rotate(6deg); }
+    75% { transform: rotate(-3deg); }
+  }
+  .slot-alert-title {
+    font-family: "Cormorant Garamond", "Hiragino Mincho ProN", "Yu Mincho", serif;
+    font-size: 24px;
+    color: var(--gold);
+    margin-bottom: 4px;
+    letter-spacing: 0.04em;
+  }
+  .slot-alert-time {
+    font-size: 13px;
+    color: var(--text-faint);
+    letter-spacing: 0.1em;
+    margin-bottom: 16px;
+  }
+  .slot-alert-mantra {
+    font-family: "Cormorant Garamond", "Hiragino Mincho ProN", "Yu Mincho", serif;
+    font-size: 15px;
+    color: var(--text);
+    line-height: 1.6;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-bottom: 18px;
+  }
+  .slot-alert-close {
+    background: var(--gold);
+    color: var(--bg);
+    border: none;
+    border-radius: 10px;
+    padding: 11px 28px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .slot-alert-close:active { transform: scale(0.97); }
+
+  .milestone .check {
+    margin-right: 4px;
+    opacity: 0.8;
+  }
+
+  /* Alert settings */
+  .settings-card {
+    padding: 4px 0;
+  }
+  .settings-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 20px;
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .settings-row:last-child { border-bottom: none; }
+  .settings-icon {
+    flex: 0 0 36px;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    color: var(--gold-dim);
+  }
+  .settings-main {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+  .settings-title {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 2px;
+  }
+  .settings-sub {
+    font-size: 11px;
+    color: var(--text-faint);
+    line-height: 1.4;
+  }
+  .settings-action {
+    flex: 0 0 auto;
+  }
+  /* Toggle switch */
+  .toggle {
+    position: relative;
+    width: 46px;
+    height: 26px;
+    flex: 0 0 46px;
+  }
+  .toggle input {
+    opacity: 0;
+    width: 0; height: 0;
+    position: absolute;
+  }
+  .toggle .slider {
+    position: absolute;
+    inset: 0;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .toggle .slider::before {
+    content: "";
+    position: absolute;
+    width: 18px; height: 18px;
+    left: 3px; top: 3px;
+    background: var(--text-dim);
+    border-radius: 50%;
+    transition: transform 0.2s, background 0.2s;
+  }
+  .toggle input:checked + .slider {
+    background: rgba(244,208,63,0.18);
+    border-color: var(--gold-dim);
+  }
+  .toggle input:checked + .slider::before {
+    transform: translateX(20px);
+    background: var(--gold);
+  }
+  .test-btn {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    color: var(--gold-dim);
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-size: 12px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.15s, color 0.15s;
+  }
+  .test-btn:hover, .test-btn:active {
+    background: rgba(244,208,63,0.1);
+    color: var(--gold);
+  }
+  .volume-row {
+    padding: 4px 20px 12px;
+    display: none;
+  }
+  .volume-row.show { display: flex; align-items: center; gap: 10px; }
+  .volume-row label {
+    font-size: 11px;
+    color: var(--text-faint);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    flex: 0 0 auto;
+  }
+  .volume-row input[type="range"] {
+    flex: 1 1 auto;
+    accent-color: var(--gold);
+    height: 4px;
+  }
+  .perm-status {
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    background: var(--bg-elevated);
+    color: var(--text-dim);
+    border: 1px solid var(--border);
+    letter-spacing: 0.04em;
+  }
+  .perm-status.granted { color: var(--gold); border-color: var(--gold-dim); }
+  .perm-status.denied { color: var(--mars); border-color: rgba(214,90,76,0.5); }
+
+  /* iOS install hint */
+  .install-hint {
+    background: var(--bg-card);
+    border: 1px dashed var(--border);
+    border-radius: 12px;
+    padding: 14px 16px;
+    font-size: 12px;
+    color: var(--text-dim);
+    margin: 16px 0;
+    line-height: 1.7;
+    display: none;
+  }
+  .install-hint.show { display: block; }
+  .install-hint strong { color: var(--gold); font-weight: 500; }
+  .install-hint .close {
+    float: right;
+    background: none;
+    border: none;
+    color: var(--text-faint);
+    font-size: 16px;
+    cursor: pointer;
+    padding: 0 4px;
+    margin: -4px -4px 0 0;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="ornament">
+    <div class="line"></div>
+    <span>✦</span>
+    <div class="line"></div>
+  </div>
+  <h1>七曜マントラ</h1>
+  <div class="date" id="todayDate"></div>
+  <div class="clock" id="todayClock"></div>
+</div>
+
+<div class="install-hint" id="installHint">
+  <button class="close" onclick="document.getElementById('installHint').style.display='none'">×</button>
+  <strong>ホーム画面に追加</strong>：iPhoneは Safari の共有ボタン → 「ホーム画面に追加」、Androidは Chrome のメニュー → 「ホーム画面に追加」でアプリのように使えます。
+</div>
+
+<!-- Now card -->
+<div class="card now-card" id="nowCard">
+  <!-- Filled by JS -->
+</div>
+
+<!-- Counter -->
+<div class="counter-card" id="counterCard">
+  <button class="counter-reset" id="counterReset" title="リセット" aria-label="リセット">↺</button>
+  <div class="counter-meta">
+    <span class="counter-label">カウンター</span>
+    <span class="counter-target" id="counterTarget">→ 3</span>
+  </div>
+  <div class="counter-progress">
+    <div class="counter-progress-bar" id="counterProgressBar"></div>
+  </div>
+  <button class="counter-tap-area" id="counterTap" type="button">
+    <div class="counter-display" id="counterDisplay">0</div>
+    <div class="counter-hint">タップして数える</div>
+  </button>
+  <div class="counter-milestones">
+    <span class="milestone" id="ms3">3</span>
+    <span class="milestone" id="ms9">9</span>
+    <span class="milestone" id="ms108">108</span>
+  </div>
+  <div class="counter-modes">
+    <div class="mode-tabs" role="tablist">
+      <button class="mode-tab active" data-mode="manual" type="button">指で数える</button>
+      <button class="mode-tab" data-mode="mic" type="button">🎙 マイク</button>
+      <button class="mode-tab" data-mode="timer" type="button">⏱ タイマー</button>
+    </div>
+    <div class="mode-pane" data-pane="mic" hidden>
+      <div class="mode-row">
+        <span class="mode-row-label">感度</span>
+        <input type="range" id="micSens" min="15" max="75" value="40" class="mode-slider">
+      </div>
+      <div class="mode-row">
+        <span class="mode-row-label">音量</span>
+        <div class="vu-meter"><div class="vu-bar" id="vuBar"></div><div class="vu-threshold" id="vuThreshold" style="left:40%"></div></div>
+      </div>
+      <div class="mode-hint">マントラを唱える声に合わせて自動でカウントします</div>
+    </div>
+    <div class="mode-pane" data-pane="timer" hidden>
+      <div class="mode-row">
+        <span class="mode-row-label">1回あたり</span>
+        <div class="mode-row-control">
+          <button class="step-btn" id="timerMinus" type="button">−</button>
+          <span class="step-value"><span id="timerValue">5</span>秒</span>
+          <button class="step-btn" id="timerPlus" type="button">＋</button>
+        </div>
+      </div>
+      <div class="mode-hint">一定の間隔で自動的にカウントが進みます</div>
+    </div>
+    <div class="mode-controls" id="modeControls" hidden>
+      <button class="mode-action-btn start" id="autoStartBtn" type="button">▶ 開始</button>
+      <button class="mode-action-btn stop" id="autoStopBtn" type="button" hidden>⏸ 停止</button>
+    </div>
+  </div>
+</div>
+
+<!-- Today's schedule -->
+<div class="section-heading">
+  <span>今日のスケジュール</span>
+  <div class="line"></div>
+</div>
+<div class="card timeline" id="timeline">
+  <!-- Filled by JS -->
+</div>
+
+<!-- Alert settings -->
+<div class="section-heading">
+  <span>アラート設定</span>
+  <div class="line"></div>
+</div>
+<div class="card settings-card">
+  <div class="settings-row">
+    <div class="settings-icon">♪</div>
+    <div class="settings-main">
+      <div class="settings-title">サウンドアラート</div>
+      <div class="settings-sub">マントラ時間の開始に鐘が鳴ります</div>
+    </div>
+    <div class="settings-action">
+      <label class="toggle">
+        <input type="checkbox" id="soundToggle">
+        <span class="slider"></span>
+      </label>
+    </div>
+  </div>
+  <div class="volume-row" id="volumeRow">
+    <label>音量</label>
+    <input type="range" id="volumeSlider" min="0" max="100" value="60">
+    <button class="test-btn" id="testBtn">▶ 試聴</button>
+  </div>
+  <div class="settings-row">
+    <div class="settings-icon">🔔</div>
+    <div class="settings-main">
+      <div class="settings-title">ブラウザ通知</div>
+      <div class="settings-sub" id="notifSub">画面外でも通知を表示します</div>
+    </div>
+    <div class="settings-action">
+      <label class="toggle">
+        <input type="checkbox" id="notifToggle">
+        <span class="slider"></span>
+      </label>
+    </div>
+  </div>
+</div>
+
+<!-- All mantras reference -->
+<details class="reference" id="reference">
+  <summary>マントラ一覧</summary>
+  <div class="reference-list" id="referenceList">
+    <!-- Filled by JS -->
+  </div>
+</details>
+
+<div class="footer">
+  <div>日の入り時間は東京（35.68°N, 139.65°E）を基準に自動計算</div>
+  <div class="small">朝 8:00-9:00 / 日の入り前後30分 / カラム時間</div>
+</div>
+
+<script>
+'use strict';
+
+// ========== DATA ==========
+
+const PLANETS = [
+  { // 0: Sunday
+    weekday: '日曜日', weekdayShort: '日', weekdayEn: 'SUN',
+    planet: '太陽', sanskrit: 'Surya', katakana: 'スーリヤ', icon: '☉',
+    color: 'var(--sun)',
+    mantra: 'Om Hraam Hreem Hroum Sah Suryaya Namaha',
+    reading: 'オーム ハラーム ハリーム ハローム サハ スーリヤーイェ ナマハ',
+    kaalam: { start: [16, 30], end: [18, 0] }
+  },
+  { // 1: Monday
+    weekday: '月曜日', weekdayShort: '月', weekdayEn: 'MON',
+    planet: '月', sanskrit: 'Chandra', katakana: 'チャンドラ', icon: '☽',
+    color: 'var(--moon)',
+    mantra: 'Om Shraam Shreem Shroum Sah Chandraya Namaha',
+    reading: 'オーム シュラーム シュリーム シュローム サハ チャンドラーイェ ナマハ',
+    kaalam: { start: [7, 30], end: [9, 0] }
+  },
+  { // 2: Tuesday
+    weekday: '火曜日', weekdayShort: '火', weekdayEn: 'TUE',
+    planet: '火星', sanskrit: 'Mangal', katakana: 'マンガル', icon: '♂',
+    color: 'var(--mars)',
+    mantra: 'Om Kraam Kreem Kroum Sah Bhaumaya Namaha',
+    reading: 'オーム クラーム クリーム クローム サハ バウマーイェ ナマハ',
+    kaalam: { start: [15, 0], end: [16, 30] }
+  },
+  { // 3: Wednesday
+    weekday: '水曜日', weekdayShort: '水', weekdayEn: 'WED',
+    planet: '水星', sanskrit: 'Budh', katakana: 'ブダ', icon: '☿',
+    color: 'var(--mercury)',
+    mantra: 'Om Braam Breem Broum Sah Buddhaya Namaha',
+    reading: 'オーム ブラーム ブリーム ブローム サハ ブダーイェ ナマハ',
+    kaalam: { start: [12, 0], end: [13, 30] }
+  },
+  { // 4: Thursday
+    weekday: '木曜日', weekdayShort: '木', weekdayEn: 'THU',
+    planet: '木星', sanskrit: 'Guru', katakana: 'グル', icon: '♃',
+    color: 'var(--jupiter)',
+    mantra: 'Om Graam Greem Groum Sah Gurave Namaha',
+    reading: 'オーム グラーム グリーム グローム サハ グラウェイ ナマハ',
+    kaalam: { start: [13, 30], end: [15, 0] }
+  },
+  { // 5: Friday
+    weekday: '金曜日', weekdayShort: '金', weekdayEn: 'FRI',
+    planet: '金星', sanskrit: 'Shukra', katakana: 'シュクラ', icon: '♀',
+    color: 'var(--venus)',
+    mantra: 'Om Draam Dreem Droum Sah Shukraya Namaha',
+    reading: 'オーム ドラーム ドリーム ドローム サハ シュクラーイェ ナマハ',
+    kaalam: { start: [10, 30], end: [12, 0] }
+  },
+  { // 6: Saturday
+    weekday: '土曜日', weekdayShort: '土', weekdayEn: 'SAT',
+    planet: '土星', sanskrit: 'Shani', katakana: 'シャニ', icon: '♄',
+    color: 'var(--saturn)',
+    mantra: 'Om Praam Preem Praum Sah Shanaishcharaya Namaha',
+    reading: 'オーム プラーム プリーム プロウム サハ シャナイシュチャラーイェ ナマハ',
+    kaalam: { start: [9, 0], end: [10, 30] }
+  },
+];
+
+const RAHU_KETU = {
+  rahu: {
+    name: 'ラーフ', sanskrit: 'Rahu', icon: '☊',
+    mantra: 'Om Bhraam Bhreem Bhraum Sah Rahave Namaha',
+    reading: 'オーム ブラーム ブリーム ブロウム サハ ラーハウェイ ナマハ',
+  },
+  ketu: {
+    name: 'ケートゥ', sanskrit: 'Ketu', icon: '☋',
+    mantra: 'Om Sraam Sreem Sraum Sah Ketave Namaha',
+    reading: 'オーム スラーム スリーム スロウム サハ ケータウェイ ナマハ',
+  },
+};
+
+// Tokyo location
+const TOKYO = { lat: 35.6762, lng: 139.6503, timezone: 9 };
+
+// User's preferred morning slot
+const MORNING_SLOT = { start: [8, 0], end: [9, 0] };
+// Evening slot: sunset ± 30 minutes
+
+// ========== SUNSET CALCULATION ==========
+// Based on simplified NOAA solar formulas. Accurate to within a few minutes.
+
+function getDayOfYear(date) {
+  const start = new Date(date.getFullYear(), 0, 0);
+  const diff = date - start + ((start.getTimezoneOffset() - date.getTimezoneOffset()) * 60 * 1000);
+  return Math.floor(diff / 86400000);
+}
+
+function calculateSunset(date, lat, lng, timezone) {
+  // Returns sunset time in decimal hours (local time)
+  const N = getDayOfYear(date);
+  const rad = Math.PI / 180;
+
+  // Approximate solar declination
+  const gamma = 2 * Math.PI / 365 * (N - 1);
+  const declination = (180 / Math.PI) * (
+    0.006918
+    - 0.399912 * Math.cos(gamma)
+    + 0.070257 * Math.sin(gamma)
+    - 0.006758 * Math.cos(2 * gamma)
+    + 0.000907 * Math.sin(2 * gamma)
+    - 0.002697 * Math.cos(3 * gamma)
+    + 0.00148  * Math.sin(3 * gamma)
+  );
+
+  // Equation of time (minutes)
+  const eqTime = 229.18 * (
+    0.000075
+    + 0.001868 * Math.cos(gamma)
+    - 0.032077 * Math.sin(gamma)
+    - 0.014615 * Math.cos(2 * gamma)
+    - 0.040849 * Math.sin(2 * gamma)
+  );
+
+  // Hour angle (sunset)
+  const cosH = (Math.cos(90.833 * rad) / (Math.cos(lat * rad) * Math.cos(declination * rad))
+    - Math.tan(lat * rad) * Math.tan(declination * rad));
+  if (cosH > 1 || cosH < -1) return null;
+  const H = Math.acos(cosH) / rad;
+
+  // Solar noon in UTC minutes
+  const solarNoonUTC = 720 - 4 * lng - eqTime;
+  // Sunset in UTC minutes
+  const sunsetUTC = solarNoonUTC + 4 * H;
+  // Convert to local time (decimal hours)
+  return (sunsetUTC / 60 + timezone + 24) % 24;
+}
+
+function decimalHoursToHM(h) {
+  const totalMin = Math.round(h * 60);
+  return [Math.floor(totalMin / 60), totalMin % 60];
+}
+
+// ========== TIME HELPERS ==========
+
+function pad2(n) { return n.toString().padStart(2, '0'); }
+function fmtTime([h, m]) { return `${pad2(h)}:${pad2(m)}`; }
+function toMinutes([h, m]) { return h * 60 + m; }
+function minutesToHM(min) {
+  min = ((min % 1440) + 1440) % 1440;
+  return [Math.floor(min / 60), min % 60];
+}
+
+// ========== SCHEDULE ==========
+
+function getTodaysSchedule(date) {
+  const day = date.getDay();
+  const planet = PLANETS[day];
+
+  // Sunset
+  const sunsetHrs = calculateSunset(date, TOKYO.lat, TOKYO.lng, TOKYO.timezone);
+  const sunsetHM = decimalHoursToHM(sunsetHrs);
+  const sunsetMin = toMinutes(sunsetHM);
+
+  const slots = [];
+
+  // Morning slot (planetary mantra)
+  slots.push({
+    type: 'morning',
+    label: '朝',
+    icon: '☼',
+    start: MORNING_SLOT.start,
+    end: MORNING_SLOT.end,
+    planet,
+    mantra: planet.mantra,
+    reading: planet.reading,
+    name: planet.planet,
+    sanskrit: planet.sanskrit,
+  });
+
+  // Kaalam slot (Rahu + Ketu)
+  slots.push({
+    type: 'kaalam',
+    label: 'カラム',
+    icon: '☊',
+    start: planet.kaalam.start,
+    end: planet.kaalam.end,
+    name: 'ラーフ・ケートゥ',
+    sanskrit: 'Rahu & Ketu',
+    isRahuKetu: true,
+  });
+
+  // Evening slot (planetary mantra) — sunset ± 30 min
+  slots.push({
+    type: 'sunset',
+    label: '日の入り',
+    icon: '☾',
+    start: minutesToHM(sunsetMin - 30),
+    end: minutesToHM(sunsetMin + 30),
+    planet,
+    mantra: planet.mantra,
+    reading: planet.reading,
+    name: planet.planet,
+    sanskrit: planet.sanskrit,
+    sunsetHM,
+  });
+
+  // Sort by start time
+  slots.sort((a, b) => toMinutes(a.start) - toMinutes(b.start));
+
+  return { slots, sunsetHM, planet };
+}
+
+function getCurrentState(date, schedule) {
+  const nowMin = date.getHours() * 60 + date.getMinutes() + date.getSeconds() / 60;
+  for (const slot of schedule.slots) {
+    const startM = toMinutes(slot.start);
+    const endM = toMinutes(slot.end);
+    if (nowMin >= startM && nowMin < endM) {
+      return {
+        inSlot: true,
+        slot,
+        elapsedMin: nowMin - startM,
+        totalMin: endM - startM,
+        remainingMin: endM - nowMin,
+      };
+    }
+  }
+  // Find next and previous
+  let next = null;
+  let previous = null;
+  for (const slot of schedule.slots) {
+    const startM = toMinutes(slot.start);
+    if (startM > nowMin) { next = slot; break; }
+  }
+  for (const slot of schedule.slots) {
+    if (toMinutes(slot.end) <= nowMin) previous = slot;
+  }
+  return {
+    inSlot: false,
+    next,
+    previous,
+    untilMin: next ? toMinutes(next.start) - nowMin : null,
+    sincePrevMin: previous ? nowMin - toMinutes(previous.end) : null,
+  };
+}
+
+// ========== RENDER ==========
+
+function renderHeader(date) {
+  const planet = PLANETS[date.getDay()];
+  const dateStr = `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDate()}日（${planet.weekdayShort}）`;
+  document.getElementById('todayDate').textContent = dateStr;
+}
+
+function renderClock(date) {
+  const t = `${pad2(date.getHours())}:${pad2(date.getMinutes())}:${pad2(date.getSeconds())}`;
+  document.getElementById('todayClock').textContent = t;
+}
+
+function renderNowCard(state, schedule, date) {
+  const el = document.getElementById('nowCard');
+  if (state.inSlot) {
+    const s = state.slot;
+    const progress = Math.min(100, Math.max(0, (state.elapsedMin / state.totalMin) * 100));
+    const remH = Math.floor(state.remainingMin / 60);
+    const remM = Math.floor(state.remainingMin % 60);
+    const remS = Math.floor((state.remainingMin * 60) % 60);
+    const remTxt = remH > 0
+      ? `${remH}時間${pad2(remM)}分`
+      : remM > 0
+        ? `${remM}分${pad2(remS)}秒`
+        : `${remS}秒`;
+
+    if (s.isRahuKetu) {
+      el.innerHTML = `
+        <div class="now-status"><span class="dot"></span><span>カラム時間 — 今唱える</span></div>
+        <div class="now-title">
+          <span class="planet-icon">${RAHU_KETU.rahu.icon}</span>ラーフ &amp; ケートゥ
+          <span class="slot-badge">${fmtTime(s.start)}–${fmtTime(s.end)}</span>
+        </div>
+        <div class="now-subtitle">Rahu &amp; Ketu — このマントラはカラム時間にのみ唱えます</div>
+        <div class="mantra-text">${RAHU_KETU.rahu.mantra}</div>
+        <div class="mantra-reading">${RAHU_KETU.rahu.reading}</div>
+        <div class="mantra-divider"></div>
+        <div class="mantra-text">${RAHU_KETU.ketu.mantra}</div>
+        <div class="mantra-reading">${RAHU_KETU.ketu.reading}</div>
+        <div class="progress"><div class="progress-bar" style="width:${progress.toFixed(1)}%"></div></div>
+        <div class="now-meta">
+          <div class="meta-item"><span class="label">残り時間</span><span class="value">${remTxt}</span></div>
+          <div class="meta-item" style="text-align:right"><span class="label">終了</span><span class="value">${fmtTime(s.end)}</span></div>
+        </div>
+      `;
+    } else {
+      el.innerHTML = `
+        <div class="now-status"><span class="dot"></span><span>${s.label}の時間 — 今唱える</span></div>
+        <div class="now-title">
+          <span class="planet-icon">${s.planet.icon}</span>${s.name}
+          <span class="slot-badge">${fmtTime(s.start)}–${fmtTime(s.end)}</span>
+        </div>
+        <div class="now-subtitle">${s.sanskrit} / ${s.planet.katakana}</div>
+        <div class="mantra-text">${s.mantra}</div>
+        <div class="mantra-reading">${s.reading}</div>
+        <div class="progress"><div class="progress-bar" style="width:${progress.toFixed(1)}%"></div></div>
+        <div class="now-meta">
+          <div class="meta-item"><span class="label">残り時間</span><span class="value">${remTxt}</span></div>
+          <div class="meta-item" style="text-align:right"><span class="label">終了</span><span class="value">${fmtTime(s.end)}</span></div>
+        </div>
+      `;
+    }
+  } else if (state.previous && state.next) {
+    // Between slots — keep just-finished mantra visible
+    const p = state.previous;
+    const n = state.next;
+    const untilH = Math.floor(state.untilMin / 60);
+    const untilM = Math.floor(state.untilMin % 60);
+    const untilTxt = untilH > 0 ? `${untilH}時間${pad2(untilM)}分後` : `${untilM}分後`;
+    const nextLabel = n.isRahuKetu ? 'ラーフ・ケートゥ' : n.name;
+    const nextIcon = n.isRahuKetu ? RAHU_KETU.rahu.icon : n.planet.icon;
+    if (p.isRahuKetu) {
+      el.innerHTML = `
+        <div class="now-status idle"><span class="dot"></span><span>カラム時間(${fmtTime(p.start)}–${fmtTime(p.end)})— まだ唱えられます</span></div>
+        <div class="now-title"><span class="planet-icon">${RAHU_KETU.rahu.icon}</span>ラーフ & ケートゥ</div>
+        <div class="now-subtitle">Rahu & Ketu</div>
+        <div class="mantra-text">${RAHU_KETU.rahu.mantra}</div>
+        <div class="mantra-reading">${RAHU_KETU.rahu.reading}</div>
+        <div class="mantra-divider"></div>
+        <div class="mantra-text">${RAHU_KETU.ketu.mantra}</div>
+        <div class="mantra-reading">${RAHU_KETU.ketu.reading}</div>
+        <div class="mantra-divider"></div>
+        <div class="now-meta">
+          <div class="meta-item"><span class="label">次のマントラ</span><span class="value">${nextIcon} ${nextLabel} (${untilTxt})</span></div>
+          <div class="meta-item" style="text-align:right"><span class="label">次の開始</span><span class="value">${fmtTime(n.start)}</span></div>
+        </div>`;
+    } else {
+      el.innerHTML = `
+        <div class="now-status idle"><span class="dot"></span><span>${p.label}の時間(${fmtTime(p.start)}–${fmtTime(p.end)})— まだ唱えられます</span></div>
+        <div class="now-title"><span class="planet-icon">${p.planet.icon}</span>${p.name}</div>
+        <div class="now-subtitle">${p.sanskrit} / ${p.planet.katakana}</div>
+        <div class="mantra-text">${p.mantra}</div>
+        <div class="mantra-reading">${p.reading}</div>
+        <div class="mantra-divider"></div>
+        <div class="now-meta">
+          <div class="meta-item"><span class="label">次のマントラ</span><span class="value">${nextIcon} ${nextLabel} (${untilTxt})</span></div>
+          <div class="meta-item" style="text-align:right"><span class="label">次の開始</span><span class="value">${fmtTime(n.start)}</span></div>
+        </div>`;
+    }
+  } else if (state.next) {
+    const n = state.next;
+    const untilH = Math.floor(state.untilMin / 60);
+    const untilM = Math.floor(state.untilMin % 60);
+    const untilTxt = untilH > 0
+      ? `${untilH}時間${pad2(untilM)}分後`
+      : `${untilM}分後`;
+    el.innerHTML = `
+      <div class="now-status idle"><span class="dot"></span><span>次のマントラまで</span></div>
+      <div class="now-title">
+        <span class="planet-icon">${n.isRahuKetu ? RAHU_KETU.rahu.icon : n.planet.icon}</span>${n.name}
+        <span class="slot-badge">${fmtTime(n.start)}–${fmtTime(n.end)}</span>
+      </div>
+      <div class="now-subtitle">${n.isRahuKetu ? 'カラム時間（ラーフ・ケートゥのみ）' : `${n.sanskrit} — ${n.label}の時間`}</div>
+      <div class="mantra-divider"></div>
+      <div class="now-meta">
+        <div class="meta-item"><span class="label">あと</span><span class="value">${untilTxt}</span></div>
+        <div class="meta-item" style="text-align:right"><span class="label">開始</span><span class="value">${fmtTime(n.start)}</span></div>
+      </div>
+    `;
+  } else if (state.previous) {
+    // Today's slots all done — show last mantra at top
+    const p = state.previous;
+    const tomorrow = new Date(date);
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    const tp = PLANETS[tomorrow.getDay()];
+    if (p.isRahuKetu) {
+      el.innerHTML = `
+        <div class="now-status idle"><span class="dot"></span><span>今日のマントラ時間は終了 — まだ唱えられます</span></div>
+        <div class="now-title"><span class="planet-icon">${RAHU_KETU.rahu.icon}</span>ラーフ & ケートゥ</div>
+        <div class="mantra-text">${RAHU_KETU.rahu.mantra}</div>
+        <div class="mantra-reading">${RAHU_KETU.rahu.reading}</div>
+        <div class="mantra-divider"></div>
+        <div class="mantra-text">${RAHU_KETU.ketu.mantra}</div>
+        <div class="mantra-reading">${RAHU_KETU.ketu.reading}</div>
+        <div class="mantra-divider"></div>
+        <div class="now-meta"><div class="meta-item"><span class="label">明日 朝の開始</span><span class="value">${fmtTime(MORNING_SLOT.start)} (${tp.planet})</span></div></div>`;
+    } else {
+      el.innerHTML = `
+        <div class="now-status idle"><span class="dot"></span><span>今日のマントラ時間は終了 — まだ唱えられます</span></div>
+        <div class="now-title"><span class="planet-icon">${p.planet.icon}</span>${p.name}</div>
+        <div class="now-subtitle">${p.sanskrit} / ${p.planet.katakana}</div>
+        <div class="mantra-text">${p.mantra}</div>
+        <div class="mantra-reading">${p.reading}</div>
+        <div class="mantra-divider"></div>
+        <div class="now-meta"><div class="meta-item"><span class="label">明日 朝の開始</span><span class="value">${fmtTime(MORNING_SLOT.start)} (${tp.planet})</span></div></div>`;
+    }
+  } else {
+    // No more slots today
+    const tomorrow = new Date(date);
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    const tomorrowPlanet = PLANETS[tomorrow.getDay()];
+    el.innerHTML = `
+      <div class="now-status idle"><span class="dot"></span><span>今日のマントラ時間は終了</span></div>
+      <div class="now-title">明日：${tomorrowPlanet.planet}</div>
+      <div class="now-subtitle">${tomorrowPlanet.sanskrit} / ${tomorrowPlanet.weekday}</div>
+      <div class="mantra-divider"></div>
+      <div class="now-meta">
+        <div class="meta-item"><span class="label">明日 朝の開始</span><span class="value">${fmtTime(MORNING_SLOT.start)}</span></div>
+      </div>
+    `;
+  }
+}
+
+function renderTimeline(state, schedule, date) {
+  const nowMin = date.getHours() * 60 + date.getMinutes();
+  const el = document.getElementById('timeline');
+  let html = '';
+  for (const s of schedule.slots) {
+    const startM = toMinutes(s.start);
+    const endM = toMinutes(s.end);
+    let cls = '';
+    if (nowMin >= startM && nowMin < endM) cls = 'active';
+    else if (nowMin >= endM) cls = 'past';
+
+    const name = s.isRahuKetu ? 'ラーフ・ケートゥ' : s.name;
+    const note = s.isRahuKetu
+      ? '※ カラム時間のみ唱える'
+      : s.type === 'morning'
+        ? '朝のマントラ'
+        : '日の入りのマントラ';
+    const icon = s.isRahuKetu ? '☊' : (s.type === 'morning' ? '☼' : '☾');
+    const badge = cls === 'active' ? `<span class="slot-badge">今</span>` : '';
+
+    html += `
+      <div class="slot ${cls}">
+        <div class="slot-marker">${icon}</div>
+        <div class="slot-content">
+          <div class="slot-time">${fmtTime(s.start)} – ${fmtTime(s.end)}${badge}</div>
+          <div class="slot-mantra">${name}</div>
+          <div class="slot-note">${note}</div>
+        </div>
+      </div>
+    `;
+  }
+  html += `
+    <div class="sunset-info">
+      <span>本日の日の入り（東京）</span>
+      <span class="value">${fmtTime(schedule.sunsetHM)}</span>
+    </div>
+  `;
+  el.innerHTML = html;
+}
+
+function renderReference() {
+  const el = document.getElementById('referenceList');
+  let html = '';
+  for (let i = 0; i < 7; i++) {
+    const p = PLANETS[i];
+    html += `
+      <div class="ref-item">
+        <div class="ref-header">
+          <span class="ref-day">${p.weekdayEn}</span>
+          <span class="ref-planet">${p.icon} ${p.planet}</span>
+          <span class="ref-sanskrit">${p.sanskrit} / ${p.katakana}</span>
+        </div>
+        <div class="ref-mantra">${p.mantra}</div>
+        <div class="ref-reading">${p.reading}</div>
+        <div style="margin-top:6px"><span class="ref-time">カラム ${fmtTime(p.kaalam.start)}–${fmtTime(p.kaalam.end)}</span></div>
+      </div>
+    `;
+  }
+  html += `
+    <div class="ref-item special">
+      <div class="ref-header">
+        <span class="ref-day">カラム時間のみ</span>
+        <span class="ref-planet">${RAHU_KETU.rahu.icon} ${RAHU_KETU.rahu.name}</span>
+        <span class="ref-sanskrit">${RAHU_KETU.rahu.sanskrit}</span>
+      </div>
+      <div class="ref-mantra">${RAHU_KETU.rahu.mantra}</div>
+      <div class="ref-reading">${RAHU_KETU.rahu.reading}</div>
+    </div>
+    <div class="ref-item special">
+      <div class="ref-header">
+        <span class="ref-day">カラム時間のみ</span>
+        <span class="ref-planet">${RAHU_KETU.ketu.icon} ${RAHU_KETU.ketu.name}</span>
+        <span class="ref-sanskrit">${RAHU_KETU.ketu.sanskrit}</span>
+      </div>
+      <div class="ref-mantra">${RAHU_KETU.ketu.mantra}</div>
+      <div class="ref-reading">${RAHU_KETU.ketu.reading}</div>
+    </div>
+  `;
+  el.innerHTML = html;
+}
+
+// ========== ALERTS ==========
+
+const SETTINGS_KEY = 'mantra-settings';
+const ALERT_LOG_KEY = 'mantra-alert-log';
+
+const defaultSettings = {
+  soundEnabled: true,
+  notifEnabled: false,
+  volume: 0.6,
+};
+
+function loadSettings() {
+  try {
+    const stored = JSON.parse(localStorage.getItem(SETTINGS_KEY) || '{}');
+    return Object.assign({}, defaultSettings, stored);
+  } catch (e) {
+    return Object.assign({}, defaultSettings);
+  }
+}
+
+function saveSettings(s) {
+  localStorage.setItem(SETTINGS_KEY, JSON.stringify(s));
+}
+
+let settings = loadSettings();
+
+// Audio: synthesize a temple bell using Web Audio API
+let audioCtx = null;
+function getAudioCtx() {
+  if (!audioCtx) {
+    const Ctor = window.AudioContext || window.webkitAudioContext;
+    if (!Ctor) return null;
+    audioCtx = new Ctor();
+  }
+  if (audioCtx.state === 'suspended') {
+    audioCtx.resume().catch(() => {});
+  }
+  return audioCtx;
+}
+
+function playBell(volume) {
+  const ctx = getAudioCtx();
+  if (!ctx) return;
+  const now = ctx.currentTime;
+  const v = (volume == null ? settings.volume : volume);
+  if (v <= 0) return;
+
+  // Master gain
+  const master = ctx.createGain();
+  master.gain.value = v;
+  master.connect(ctx.destination);
+
+  // Subtle reverb-like impression via two strikes very close together
+  const strike = (startOffset, gainScale = 1.0) => {
+    // Bell harmonics — partials of a temple bell
+    const partials = [
+      { freq: 523.25, gain: 0.32, decay: 4.5 },   // C5 (fundamental)
+      { freq: 1046.50, gain: 0.18, decay: 3.5 },  // C6 octave
+      { freq: 1568.00, gain: 0.10, decay: 2.5 },  // G6 fifth
+      { freq: 2093.00, gain: 0.06, decay: 1.8 },  // C7
+      { freq: 2637.02, gain: 0.04, decay: 1.2 },  // E7 sparkle
+    ];
+    const t = now + startOffset;
+    for (const p of partials) {
+      const osc = ctx.createOscillator();
+      osc.type = 'sine';
+      osc.frequency.value = p.freq;
+      const g = ctx.createGain();
+      g.gain.setValueAtTime(0, t);
+      g.gain.linearRampToValueAtTime(p.gain * gainScale, t + 0.008);
+      g.gain.exponentialRampToValueAtTime(0.0001, t + p.decay);
+      osc.connect(g);
+      g.connect(master);
+      osc.start(t);
+      osc.stop(t + p.decay + 0.05);
+    }
+  };
+
+  strike(0, 1.0);
+  strike(2.0, 0.7);  // Second strike for a meditative feel
+}
+
+// Notifications
+function notifPermission() {
+  return ('Notification' in window) ? Notification.permission : 'unsupported';
+}
+
+async function requestNotifPermission() {
+  if (!('Notification' in window)) return 'unsupported';
+  if (Notification.permission === 'granted') return 'granted';
+  if (Notification.permission === 'denied') return 'denied';
+  try {
+    return await Notification.requestPermission();
+  } catch (e) {
+    return Notification.permission;
+  }
+}
+
+function showNotification(title, body) {
+  if (!('Notification' in window)) return;
+  if (Notification.permission !== 'granted') return;
+  try {
+    const n = new Notification(title, {
+      body,
+      tag: 'mantra-alert',
+      icon: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><rect width="192" height="192" fill="%23fdf6e2" rx="36"/><circle cx="70" cy="80" r="28" fill="%23d8842c"/><path d="M132 60a38 38 0 1 0 24 66 30 30 0 1 1-24-66" fill="%23a87633"/></svg>',
+      silent: false,
+    });
+    n.onclick = () => {
+      window.focus();
+      n.close();
+    };
+  } catch (e) {
+    // Some browsers throw on certain Notification options
+    console.warn('Notification failed', e);
+  }
+}
+
+function fireAlert(slot) {
+  let title, body;
+  if (slot.isRahuKetu) {
+    title = '🔔 カラム時間 — ラーフ・ケートゥ';
+    body = `${fmtTime(slot.start)}〜${fmtTime(slot.end)}\nOm Bhraam Bhreem Bhraum Sah Rahave Namaha / Om Sraam Sreem Sraum Sah Ketave Namaha`;
+  } else {
+    title = `🔔 ${slot.label}のマントラ — ${slot.name}`;
+    body = `${fmtTime(slot.start)}〜${fmtTime(slot.end)}\n${slot.mantra}`;
+  }
+  // Sound bell
+  if (settings.soundEnabled) playBell();
+  // Browser notification (works on iOS PWA when added to home screen, iOS 16.4+)
+  if (settings.notifEnabled && notifPermission() === 'granted') {
+    showNotification(title, body);
+  }
+  // Visual alert overlay (always shown when app is open)
+  showSlotAlert(slot);
+}
+
+function showSlotAlert(slot) {
+  const overlay = document.getElementById('slotAlertOverlay');
+  const titleEl = document.getElementById('slotAlertTitle');
+  const timeEl = document.getElementById('slotAlertTime');
+  const mantraEl = document.getElementById('slotAlertMantra');
+  const iconEl = document.getElementById('slotAlertIcon');
+  if (!overlay) return;
+  if (slot.isRahuKetu) {
+    iconEl.textContent = '🌑';
+    titleEl.textContent = 'カラム時間';
+    timeEl.textContent = `${fmtTime(slot.start)}–${fmtTime(slot.end)} ラーフ&ケートゥ`;
+    mantraEl.innerHTML = `${RAHU_KETU.rahu.mantra}<br>${RAHU_KETU.ketu.mantra}`;
+  } else {
+    iconEl.textContent = slot.planet ? slot.planet.icon : '🔔';
+    titleEl.textContent = `${slot.label}のマントラ — ${slot.name}`;
+    timeEl.textContent = `${fmtTime(slot.start)}–${fmtTime(slot.end)}`;
+    mantraEl.innerHTML = `${slot.mantra}<br><span style="font-size:13px;color:var(--text-faint)">${slot.reading||''}</span>`;
+  }
+  overlay.hidden = false;
+  // Vibrate on mobile if available
+  vibrate([0, 60, 80, 60, 80, 100]);
+  // Auto-close after 30 seconds (so user doesn't have to dismiss manually)
+  clearTimeout(window._slotAlertTimer);
+  window._slotAlertTimer = setTimeout(() => {
+    overlay.hidden = true;
+  }, 30000);
+}
+
+function bindSlotAlert() {
+  const overlay = document.getElementById('slotAlertOverlay');
+  const closeBtn = document.getElementById('slotAlertClose');
+  if (!overlay || !closeBtn) return;
+  closeBtn.addEventListener('click', () => {
+    overlay.hidden = true;
+    clearTimeout(window._slotAlertTimer);
+  });
+  overlay.addEventListener('click', (e) => {
+    // Close when tapping the dim background, but not on the card itself
+    if (e.target === overlay) {
+      overlay.hidden = true;
+      clearTimeout(window._slotAlertTimer);
+    }
+  });
+}
+
+// Alert log: track which slots already fired today so we don't re-alert on reload
+function getAlertLog() {
+  try { return JSON.parse(localStorage.getItem(ALERT_LOG_KEY) || '{}'); }
+  catch (e) { return {}; }
+}
+function setAlertLog(log) {
+  localStorage.setItem(ALERT_LOG_KEY, JSON.stringify(log));
+}
+function todayKey(date) {
+  return `${date.getFullYear()}-${pad2(date.getMonth() + 1)}-${pad2(date.getDate())}`;
+}
+function hasAlertedToday(date, slotType) {
+  const log = getAlertLog();
+  return (log[todayKey(date)] || []).includes(slotType);
+}
+function markAlertedToday(date, slotType) {
+  const log = getAlertLog();
+  const key = todayKey(date);
+  // Prune old days
+  for (const k of Object.keys(log)) {
+    if (k !== key) delete log[k];
+  }
+  log[key] = Array.from(new Set([...(log[key] || []), slotType]));
+  setAlertLog(log);
+}
+
+// ========== COUNTER ==========
+
+const COUNTER_KEY = 'mantra-counter';
+const MILESTONES = [3, 9, 108];
+
+function loadCounter() {
+  try {
+    const n = parseInt(localStorage.getItem(COUNTER_KEY) || '0', 10);
+    return isNaN(n) ? 0 : Math.max(0, Math.min(108, n));
+  } catch (e) {
+    return 0;
+  }
+}
+function saveCounter(n) {
+  localStorage.setItem(COUNTER_KEY, String(n));
+}
+
+let counter = loadCounter();
+
+function getNextMilestone(c) {
+  for (const m of MILESTONES) {
+    if (c < m) return m;
+  }
+  return 108;
+}
+
+function renderCounter() {
+  const display = document.getElementById('counterDisplay');
+  const target = document.getElementById('counterTarget');
+  const progressBar = document.getElementById('counterProgressBar');
+  const msEls = { 3: document.getElementById('ms3'), 9: document.getElementById('ms9'), 108: document.getElementById('ms108') };
+
+  display.textContent = counter;
+  const next = getNextMilestone(counter);
+  const prevMilestone = MILESTONES.filter(m => m < next).pop() || 0;
+  const within = counter - prevMilestone;
+  const span = next - prevMilestone;
+  const pct = counter >= 108 ? 100 : Math.min(100, Math.max(0, (within / span) * 100));
+  progressBar.style.width = pct + '%';
+
+  if (counter >= 108) target.textContent = '完了 ✦';
+  else target.textContent = `次の目標 → ${next}`;
+
+  for (const m of MILESTONES) {
+    const el = msEls[m];
+    el.classList.remove('reached', 'current');
+    if (counter >= m) {
+      el.classList.add('reached');
+      el.innerHTML = `<span class="check">✓</span>${m}`;
+    } else {
+      el.innerHTML = `${m}`;
+      if (next === m) el.classList.add('current');
+    }
+  }
+}
+
+function vibrate(pattern) {
+  if (navigator.vibrate) {
+    try { navigator.vibrate(pattern); } catch (e) {}
+  }
+}
+
+function playTing(freq, durationSec, gainScale) {
+  const ctx = getAudioCtx();
+  if (!ctx) return;
+  const now = ctx.currentTime;
+  const v = settings.volume * (gainScale == null ? 0.5 : gainScale);
+  if (v <= 0) return;
+  const osc = ctx.createOscillator();
+  osc.type = 'sine';
+  osc.frequency.value = freq;
+  const g = ctx.createGain();
+  g.gain.setValueAtTime(0, now);
+  g.gain.linearRampToValueAtTime(v * 0.55, now + 0.005);
+  g.gain.exponentialRampToValueAtTime(0.0001, now + durationSec);
+  osc.connect(g);
+  g.connect(ctx.destination);
+  osc.start(now);
+  osc.stop(now + durationSec + 0.05);
+}
+
+function celebrateDisplay() {
+  const display = document.getElementById('counterDisplay');
+  display.classList.remove('celebrate');
+  void display.offsetWidth; // force reflow to restart animation
+  display.classList.add('celebrate');
+}
+
+function incrementCounter() {
+  if (counter >= 108) {
+    // Already complete — give gentle feedback but don't increment past 108
+    vibrate(8);
+    return;
+  }
+  counter++;
+  saveCounter(counter);
+  vibrate(12);
+  renderCounter();
+
+  // Milestone celebration
+  if (counter === 3) {
+    celebrateDisplay();
+    vibrate([0, 25, 40, 25]);
+    if (settings.soundEnabled) playTing(1318.51, 0.9, 0.45); // E6
+  } else if (counter === 9) {
+    celebrateDisplay();
+    vibrate([0, 30, 50, 30, 50, 30]);
+    if (settings.soundEnabled) {
+      playTing(1318.51, 0.9, 0.5);
+      setTimeout(() => playTing(1760.00, 1.0, 0.5), 220); // A6
+    }
+  } else if (counter === 108) {
+    celebrateDisplay();
+    vibrate([0, 100, 60, 100, 60, 200]);
+    if (settings.soundEnabled) playBell();
+  }
+}
+
+function resetCounter() {
+  if (counter === 0) return;
+  if (!confirm(`カウンターを 0 にリセットしますか？（現在 ${counter} 回）`)) return;
+  counter = 0;
+  saveCounter(0);
+  vibrate(8);
+  renderCounter();
+}
+
+function bindCounter() {
+  const tapBtn = document.getElementById('counterTap');
+  // Use pointerdown for near-instant response on touch + mouse,
+  // fall back to click if pointer events unsupported.
+  let handled = false;
+  if (window.PointerEvent) {
+    tapBtn.addEventListener('pointerdown', (e) => {
+      // Only count primary button / primary touch
+      if (e.button !== undefined && e.button !== 0) return;
+      handled = true;
+      incrementCounter();
+      // Prevent the synthetic click that follows on touch to avoid double counting
+      e.preventDefault();
+    });
+    tapBtn.addEventListener('click', (e) => {
+      if (handled) { handled = false; return; }
+      incrementCounter();
+    });
+  } else {
+    tapBtn.addEventListener('click', incrementCounter);
+  }
+
+  document.getElementById('counterReset').addEventListener('click', (e) => {
+    e.stopPropagation();
+    resetCounter();
+  });
+  renderCounter();
+}
+
+function updateCounterGlow(inSlot) {
+  const card = document.getElementById('counterCard');
+  if (!card) return;
+  card.classList.toggle('glow', !!inSlot);
+}
+
+// ========== TICK ==========
+
+let lastDayKey = '';
+let cachedSchedule = null;
+let prevSlotType = null;
+let firstTickDone = false;
+
+function tick() {
+  const now = new Date();
+  const dayKey = `${now.getFullYear()}-${now.getMonth()}-${now.getDate()}`;
+  if (dayKey !== lastDayKey || !cachedSchedule) {
+    lastDayKey = dayKey;
+    cachedSchedule = getTodaysSchedule(now);
+    renderHeader(now);
+    renderTimeline(getCurrentState(now, cachedSchedule), cachedSchedule, now);
+  }
+  const state = getCurrentState(now, cachedSchedule);
+  renderClock(now);
+  renderNowCard(state, cachedSchedule, now);
+  updateCounterGlow(state.inSlot);
+  // Re-render timeline marker state every minute
+  if (now.getSeconds() === 0) {
+    renderTimeline(state, cachedSchedule, now);
+  }
+
+  // Alert logic: fire when transitioning INTO a slot
+  const currentSlotType = state.inSlot ? state.slot.type : null;
+  if (currentSlotType && currentSlotType !== prevSlotType) {
+    // Only fire if this is a real transition during runtime,
+    // not just because the page loaded mid-slot.
+    if (firstTickDone && !hasAlertedToday(now, currentSlotType)) {
+      fireAlert(state.slot);
+      markAlertedToday(now, currentSlotType);
+    } else if (!firstTickDone) {
+      // On first tick, if we're already in a slot, just record it silently
+      // (so we don't alert mid-slot on page reload)
+      markAlertedToday(now, currentSlotType);
+    }
+  }
+  prevSlotType = currentSlotType;
+  firstTickDone = true;
+}
+
+// ========== COUNTER AUTO-MODES (Mic / Timer) ==========
+
+const AUTO_MODE_KEY = 'mantra-auto-mode';
+const AUTO_TIMER_INTERVAL_KEY = 'mantra-auto-timer-interval';
+const AUTO_MIC_SENS_KEY = 'mantra-auto-mic-sens';
+
+let currentMode = 'manual'; // 'manual' | 'mic' | 'timer'
+let autoRunning = false;
+let timerHandle = null;
+let micState = null; // { ctx, stream, analyser, raf, threshold, armed }
+
+function loadAutoSettings() {
+  const mode = localStorage.getItem(AUTO_MODE_KEY) || 'manual';
+  const interval = parseFloat(localStorage.getItem(AUTO_TIMER_INTERVAL_KEY) || '5');
+  const sens = parseInt(localStorage.getItem(AUTO_MIC_SENS_KEY) || '40', 10);
+  return { mode, interval: isNaN(interval) ? 5 : interval, sens: isNaN(sens) ? 40 : sens };
+}
+
+function saveAutoMode(mode) { localStorage.setItem(AUTO_MODE_KEY, mode); }
+function saveTimerInterval(v) { localStorage.setItem(AUTO_TIMER_INTERVAL_KEY, String(v)); }
+function saveMicSens(v) { localStorage.setItem(AUTO_MIC_SENS_KEY, String(v)); }
+
+function pulseDisplay() {
+  const display = document.getElementById('counterDisplay');
+  if (!display) return;
+  display.classList.remove('auto-pulse');
+  void display.offsetWidth;
+  display.classList.add('auto-pulse');
+}
+
+function autoIncrement() {
+  if (counter >= 108) {
+    stopAuto();
+    return;
+  }
+  incrementCounter();
+  pulseDisplay();
+  if (counter >= 108) stopAuto();
+}
+
+// ---------- Timer mode ----------
+function startTimer() {
+  stopTimer();
+  const intervalEl = document.getElementById('timerValue');
+  const sec = parseFloat(intervalEl.textContent) || 5;
+  timerHandle = setInterval(autoIncrement, Math.max(0.5, sec) * 1000);
+}
+function stopTimer() {
+  if (timerHandle) { clearInterval(timerHandle); timerHandle = null; }
+}
+
+// ---------- Mic mode ----------
+async function startMic() {
+  stopMic();
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: false, noiseSuppression: false, autoGainControl: false } });
+    const Ctor = window.AudioContext || window.webkitAudioContext;
+    const ctx = new Ctor();
+    const source = ctx.createMediaStreamSource(stream);
+    const analyser = ctx.createAnalyser();
+    analyser.fftSize = 1024;
+    analyser.smoothingTimeConstant = 0.4;
+    source.connect(analyser);
+    const data = new Uint8Array(analyser.fftSize);
+    const sens = parseInt(document.getElementById('micSens').value, 10) || 40;
+    // Threshold: sens 15-75 maps to RMS threshold 0.025-0.18
+    const thresholdRms = 0.025 + ((sens - 15) / 60) * 0.155;
+    micState = { ctx, stream, analyser, data, threshold: thresholdRms, armed: true, lastFireAt: 0, raf: null };
+    loopMic();
+  } catch (e) {
+    alert('マイクへのアクセスが拒否されました。設定からマイクを許可してください。');
+    console.warn('Mic error', e);
+    autoRunning = false;
+    updateAutoButtons();
+  }
+}
+
+function loopMic() {
+  if (!micState) return;
+  const { analyser, data } = micState;
+  analyser.getByteTimeDomainData(data);
+  // Compute RMS of waveform centered at 128
+  let sumSq = 0;
+  for (let i = 0; i < data.length; i++) {
+    const v = (data[i] - 128) / 128;
+    sumSq += v * v;
+  }
+  const rms = Math.sqrt(sumSq / data.length);
+  // Update VU meter (0 -> 0%, 0.3+ -> 100%)
+  const vuBar = document.getElementById('vuBar');
+  if (vuBar) vuBar.style.width = Math.min(100, (rms / 0.3) * 100) + '%';
+
+  // Peak detection: count when crossing threshold from below after a quiet period
+  const now = performance.now();
+  if (rms > micState.threshold && micState.armed && (now - micState.lastFireAt) > 250) {
+    micState.armed = false;
+    micState.lastFireAt = now;
+    autoIncrement();
+  } else if (rms < micState.threshold * 0.55) {
+    micState.armed = true;
+  }
+  micState.raf = requestAnimationFrame(loopMic);
+}
+
+function stopMic() {
+  if (!micState) return;
+  if (micState.raf) cancelAnimationFrame(micState.raf);
+  try { micState.stream.getTracks().forEach(t => t.stop()); } catch(e){}
+  try { micState.ctx.close(); } catch(e){}
+  micState = null;
+  const vuBar = document.getElementById('vuBar');
+  if (vuBar) vuBar.style.width = '0%';
+}
+
+// ---------- Mode switching ----------
+function switchMode(mode) {
+  // Stop current
+  if (autoRunning) stopAuto();
+  currentMode = mode;
+  saveAutoMode(mode);
+  // Update tab UI
+  document.querySelectorAll('.mode-tab').forEach(t => {
+    t.classList.toggle('active', t.dataset.mode === mode);
+  });
+  document.querySelectorAll('.mode-pane').forEach(p => {
+    p.hidden = (p.dataset.pane !== mode);
+  });
+  const controls = document.getElementById('modeControls');
+  if (controls) controls.hidden = (mode === 'manual');
+  // Update hint on tap area
+  const hint = document.querySelector('#counterTap .counter-hint');
+  if (hint) {
+    if (mode === 'manual') hint.textContent = 'タップして数える';
+    else if (mode === 'mic') hint.textContent = 'マイク自動 (タップでも数えられます)';
+    else hint.textContent = 'タイマー自動 (タップでも数えられます)';
+  }
+}
+
+function startAuto() {
+  if (currentMode === 'manual') return;
+  if (counter >= 108) {
+    if (!confirm('カウンターは既に108に達しています。リセットして始めますか？')) return;
+    counter = 0; saveCounter(0); renderCounter();
+  }
+  autoRunning = true;
+  if (currentMode === 'timer') startTimer();
+  else if (currentMode === 'mic') startMic();
+  updateAutoButtons();
+}
+
+function stopAuto() {
+  autoRunning = false;
+  stopTimer();
+  stopMic();
+  updateAutoButtons();
+}
+
+function updateAutoButtons() {
+  const startBtn = document.getElementById('autoStartBtn');
+  const stopBtn = document.getElementById('autoStopBtn');
+  if (!startBtn || !stopBtn) return;
+  startBtn.hidden = autoRunning;
+  stopBtn.hidden = !autoRunning;
+  startBtn.classList.toggle('running', autoRunning);
+}
+
+function bindAutoModes() {
+  const saved = loadAutoSettings();
+  // Init values
+  const sensInput = document.getElementById('micSens');
+  if (sensInput) sensInput.value = saved.sens;
+  const thr = document.getElementById('vuThreshold');
+  if (thr) thr.style.left = ((saved.sens - 15) / 60 * 100) + '%';
+  const tval = document.getElementById('timerValue');
+  if (tval) tval.textContent = String(saved.interval);
+
+  // Tabs
+  document.querySelectorAll('.mode-tab').forEach(tab => {
+    tab.addEventListener('click', () => switchMode(tab.dataset.mode));
+  });
+  // Start/Stop
+  const startBtn = document.getElementById('autoStartBtn');
+  const stopBtn = document.getElementById('autoStopBtn');
+  if (startBtn) startBtn.addEventListener('click', startAuto);
+  if (stopBtn) stopBtn.addEventListener('click', stopAuto);
+  // Mic sensitivity
+  if (sensInput) {
+    sensInput.addEventListener('input', () => {
+      const v = parseInt(sensInput.value, 10);
+      saveMicSens(v);
+      if (thr) thr.style.left = ((v - 15) / 60 * 100) + '%';
+      if (micState) {
+        micState.threshold = 0.025 + ((v - 15) / 60) * 0.155;
+      }
+    });
+  }
+  // Timer interval +/-
+  const plus = document.getElementById('timerPlus');
+  const minus = document.getElementById('timerMinus');
+  function setTimerVal(v) {
+    v = Math.max(2, Math.min(30, v));
+    if (tval) tval.textContent = String(v);
+    saveTimerInterval(v);
+    if (autoRunning && currentMode === 'timer') startTimer(); // restart with new interval
+  }
+  if (plus) plus.addEventListener('click', () => setTimerVal(parseFloat(tval.textContent) + 1));
+  if (minus) minus.addEventListener('click', () => setTimerVal(parseFloat(tval.textContent) - 1));
+
+  // Stop auto if tab hidden (avoid running mic in background)
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden && autoRunning && currentMode === 'mic') {
+      stopAuto();
+    }
+  });
+
+  // Restore mode
+  switchMode(saved.mode);
+}
+
+// ========== SETTINGS UI ==========
+
+function refreshNotifSub() {
+  const el = document.getElementById('notifSub');
+  const perm = notifPermission();
+  if (perm === 'unsupported') {
+    el.innerHTML = 'このブラウザは通知に対応していません';
+  } else if (perm === 'granted') {
+    el.innerHTML = '画面外でも通知を表示します <span class="perm-status granted">許可済み</span>';
+  } else if (perm === 'denied') {
+    el.innerHTML = 'ブラウザ設定で通知がブロックされています <span class="perm-status denied">ブロック中</span>';
+  } else {
+    el.innerHTML = '画面外でも通知を表示します（タブを開いている間）';
+  }
+}
+
+function bindSettings() {
+  const soundToggle = document.getElementById('soundToggle');
+  const volumeRow = document.getElementById('volumeRow');
+  const volumeSlider = document.getElementById('volumeSlider');
+  const testBtn = document.getElementById('testBtn');
+  const notifToggle = document.getElementById('notifToggle');
+
+  // Initial state
+  soundToggle.checked = settings.soundEnabled;
+  volumeSlider.value = Math.round(settings.volume * 100);
+  volumeRow.classList.toggle('show', settings.soundEnabled);
+  notifToggle.checked = settings.notifEnabled && notifPermission() === 'granted';
+
+  refreshNotifSub();
+
+  soundToggle.addEventListener('change', () => {
+    settings.soundEnabled = soundToggle.checked;
+    saveSettings(settings);
+    volumeRow.classList.toggle('show', settings.soundEnabled);
+    if (settings.soundEnabled) {
+      // Warm up audio context with a quiet ping (needed on iOS)
+      getAudioCtx();
+    }
+  });
+
+  volumeSlider.addEventListener('input', () => {
+    settings.volume = parseInt(volumeSlider.value, 10) / 100;
+    saveSettings(settings);
+  });
+  volumeSlider.addEventListener('change', () => {
+    // Play preview at new volume on release
+    playBell();
+  });
+
+  testBtn.addEventListener('click', () => {
+    playBell();
+  });
+
+  notifToggle.addEventListener('change', async () => {
+    if (notifToggle.checked) {
+      const result = await requestNotifPermission();
+      if (result === 'granted') {
+        settings.notifEnabled = true;
+        saveSettings(settings);
+        // Show a confirmation notification
+        showNotification('🔔 通知が有効になりました', 'マントラの時間にお知らせします。');
+      } else {
+        notifToggle.checked = false;
+        settings.notifEnabled = false;
+        saveSettings(settings);
+      }
+      refreshNotifSub();
+    } else {
+      settings.notifEnabled = false;
+      saveSettings(settings);
+    }
+  });
+}
+
+// ========== INIT ==========
+
+function showInstallHintIfNeeded() {
+  const isStandalone = window.matchMedia('(display-mode: standalone)').matches
+    || window.navigator.standalone === true;
+  if (isStandalone) return;
+  const dismissed = localStorage.getItem('mantra-install-dismissed');
+  if (dismissed) return;
+  document.getElementById('installHint').classList.add('show');
+  document.querySelector('#installHint .close').addEventListener('click', () => {
+    localStorage.setItem('mantra-install-dismissed', '1');
+  });
+}
+
+renderReference();
+bindSettings();
+bindCounter();
+bindAutoModes();
+bindSlotAlert();
+tick();
+setInterval(tick, 1000);
+scheduleUpcomingAlerts();
+showInstallHintIfNeeded();
+
+
+// ========== PRE-SCHEDULE ALERTS ==========
+// Schedule setTimeout-based alerts for upcoming slots today so they fire
+// even if the 1-second tick is throttled (e.g. by the browser).
+function scheduleUpcomingAlerts() {
+  // Clear any previously scheduled timers
+  if (window._scheduledAlertTimers) {
+    window._scheduledAlertTimers.forEach(id => clearTimeout(id));
+  }
+  window._scheduledAlertTimers = [];
+
+  const now = new Date();
+  const schedule = getTodaysSchedule(now);
+  if (!schedule || !schedule.slots) return;
+
+  for (const slot of schedule.slots) {
+    const startDate = new Date(now);
+    startDate.setHours(slot.start[0], slot.start[1], 0, 0);
+    const msUntil = startDate.getTime() - now.getTime();
+    // Only schedule slots in the future (with 2s safety margin), within next 24h
+    if (msUntil < 2000 || msUntil > 24 * 60 * 60 * 1000) continue;
+    const id = setTimeout(() => {
+      // Re-check inside timer in case clock jumped or user changed settings
+      if (!hasAlertedToday(new Date(), slot.type)) {
+        fireAlert(slot);
+        markAlertedToday(new Date(), slot.type);
+      }
+    }, msUntil);
+    window._scheduledAlertTimers.push(id);
+  }
+  // Re-schedule once a day (5 min past midnight) so tomorrow's slots get picked up
+  const tomorrow = new Date(now);
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  tomorrow.setHours(0, 5, 0, 0);
+  const msToTomorrow = tomorrow.getTime() - now.getTime();
+  if (msToTomorrow > 0 && msToTomorrow < 25 * 60 * 60 * 1000) {
+    const id = setTimeout(scheduleUpcomingAlerts, msToTomorrow);
+    window._scheduledAlertTimers.push(id);
+  }
+}
+
+// Re-check notification permission when tab gains focus (in case user changed it in settings)
+document.addEventListener('visibilitychange', () => {
+  if (!document.hidden) {
+    refreshNotifSub();
+    const notifToggle = document.getElementById('notifToggle');
+    if (notifToggle && notifPermission() !== 'granted' && notifToggle.checked) {
+      notifToggle.checked = false;
+      settings.notifEnabled = false;
+      saveSettings(settings);
+    }
+    // Re-schedule alerts in case the device was asleep and timers were dropped
+    scheduleUpcomingAlerts();
+  }
+});
+</script>
+
+<!-- Slot start visual alert overlay -->
+<div class="slot-alert-overlay" id="slotAlertOverlay" hidden>
+  <div class="slot-alert-card">
+    <div class="slot-alert-icon" id="slotAlertIcon">🔔</div>
+    <div class="slot-alert-title" id="slotAlertTitle">マントラの時間です</div>
+    <div class="slot-alert-time" id="slotAlertTime"></div>
+    <div class="slot-alert-mantra" id="slotAlertMantra"></div>
+    <button class="slot-alert-close" id="slotAlertClose" type="button">閉じる</button>
+  </div>
+</div>
+</body>
+</html>
