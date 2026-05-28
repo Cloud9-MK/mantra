@@ -1533,7 +1533,8 @@
 
 <div class="install-hint" id="installHint">
   <button class="close" type="button" aria-label="閉じる">×</button>
-  <strong>ホーム画面に追加</strong>：iPhoneは Safari の共有ボタン → 「ホーム画面に追加」、Androidは Chrome のメニュー → 「ホーム画面に追加」でアプリのように使えます。
+  <strong>ホーム画面に追加</strong>：iPhoneは Safari の共有ボタン → 「ホーム画面に追加」、Androidは Chrome のメニュー → 「ホーム画面に追加」でアプリのように使えます。<br/>
+  <span style="opacity:0.75">※通知はホーム画面に追加後（iPhone は iOS 16.4 以降）に動作します。</span>
 </div>
 
 <!-- Now card -->
@@ -1553,7 +1554,7 @@
   </div>
   <div class="target-hint">目標をタップして選択</div>
   <div class="counter-display-row">
-    <div class="counter-display" id="counterDisplay">0</div>
+    <div class="counter-display" id="counterDisplay" aria-live="polite" aria-atomic="true">0</div>
     <button class="counter-tap-area" id="counterTap" type="button" aria-label="マントラを1回数える">
       <span class="tap-ornament">✦</span>
       <span class="tap-label">唱える</span>
@@ -1633,7 +1634,7 @@
 </details>
 
 <!-- Saints / Gurus reverence section -->
-<details class="saints" id="saints" open>
+<details class="saints" id="saints">
   <summary>聖者への帰依</summary>
   <div class="saints-intro">このマントラの叡智を伝えてくださった<br/>偉大なる聖者の方々へ感謝を込めて</div>
   <div class="saints-grid">
@@ -1650,10 +1651,7 @@
         <h3 class="saint-name">アガスティア聖者</h3>
         <div class="saint-sanskrit">अगस्त्य महर्षि — Agastya Maharishi</div>
         <p class="saint-desc">
-          ヴェーダの七賢者（サプタ・リシ）の一人。ヴェーダ占星術と医学（シッダー医学）の祖と仰がれる古代の大聖者。
-          短い体ながら一口で大海を飲み干したとされる伝説、そして「ナーディー・リーフ」と呼ばれる<br/>
-          個人の運命を記した椰子葉の伝授者として知られる。<br/>
-          九曜マントラを含む多くの霊的教えの源流。
+          ヴェーダの七賢者（サプタ・リシ）の一人。ヴェーダ占星術と医学（シッダー医学）の祖と仰がれる古代の大聖者。小柄な体ながら一口で大海を飲み干したとされる伝説、そして「ナーディー・リーフ」と呼ばれる個人の運命を記した椰子葉の伝授者として知られる。九曜マントラを含む多くの霊的教えの源流。
         </p>
       </figcaption>
     </figure>
@@ -1671,10 +1669,7 @@
         <h3 class="saint-name">バーラクンバグルムニ</h3>
         <div class="saint-sanskrit">भार कुम्भ गुरु मुनि — Bhāra Kumbha Guru Muni</div>
         <p class="saint-desc">
-          「満ちた器（クンバ）を背負う師」を意味する尊称。<br/>
-          アガスティア聖者と同じく「クンバ（壺）」の象徴を持つ霊的系譜の継承者。<br/>
-          山中の静寂の中で深い瞑想と祈りを捧げ、<br/>
-          現代に古の智慧を伝える存在。
+          「満ちた器（クンバ）を背負う師」を意味する尊称。アガスティア聖者と同じく「クンバ（壺）」の象徴を持つ霊的系譜の継承者。山中の静寂の中で深い瞑想と祈りを捧げ、現代に古の智慧を伝える存在。
         </p>
       </figcaption>
     </figure>
@@ -1682,7 +1677,7 @@
   <div class="saints-mantra">
     <div class="saints-mantra-text">गुरुर्ब्रह्मा गुरुर्विष्णुः गुरुर्देवो महेश्वरः</div>
     <div class="saints-mantra-text">गुरुः साक्षात् परंब्रह्म तस्मै श्री गुरवे नमः</div>
-    <div class="saints-mantra-reading">グル・ブラフマー グル・ヴィシュヌ グル・デーヴォ・マヘーシュワラ<br/>グル・サークシャート パラブラフマ タスマイ シュリー・グラヴェー・ナマハ</div>
+    <div class="saints-mantra-reading">グルル・ブラフマー グルル・ヴィシュヌ グルル・デーヴォ・マヘーシュワラハ<br/>グルフ・サークシャート パラム・ブラフマ タスマイ シュリー・グラヴェー・ナマハ</div>
     <div class="saints-mantra-meaning">「師はブラフマー神、師はヴィシュヌ神、師は偉大なる神シヴァ。<br/>師はまさに至高のブラフマンそのもの。その師に礼拝します」</div>
   </div>
 </details>
@@ -1690,6 +1685,7 @@
 <div class="footer">
   <div>日の入り時間は東京（35.68°N, 139.65°E）を基準に自動計算</div>
   <div class="small">朝 8:00-9:00 / 日の入り前後30分 / カラム時間</div>
+  <div class="small">※カラム時間は伝統的な固定値（日の出6時／日没18時を想定した8等分）です</div>
 </div>
 
 <!-- Slot start visual alert overlay -->
@@ -1714,7 +1710,7 @@ const PLANETS = [
     planet: '太陽', sanskrit: 'Surya', katakana: 'スーリヤ', icon: '☉',
     color: 'var(--sun)',
     mantra: 'Om Hraam Hreem Hroum Sah Suryaya Namaha',
-    reading: 'オーム ハラーム ハリーム ハローム サハ スーリヤーイェ ナマハ',
+    reading: 'オーム ハラーム ハリーム ハローム サハ スーリヤーヤ ナマハ',
     simpleMantra: 'Om Suryaaya Namaha',
     simpleReading: 'オーム スーリヤーヤ ナマハ',
     meaning: {
@@ -1735,7 +1731,7 @@ const PLANETS = [
     planet: '月', sanskrit: 'Chandra', katakana: 'チャンドラ', icon: '☽',
     color: 'var(--moon)',
     mantra: 'Om Shraam Shreem Shroum Sah Chandraya Namaha',
-    reading: 'オーム シュラーム シュリーム シュローム サハ チャンドラーイェ ナマハ',
+    reading: 'オーム シュラーム シュリーム シュローム サハ チャンドラーヤ ナマハ',
     simpleMantra: 'Om Chandraaya Namaha',
     simpleReading: 'オーム チャンドラーヤ ナマハ',
     meaning: {
@@ -1756,7 +1752,7 @@ const PLANETS = [
     planet: '火星', sanskrit: 'Mangala', katakana: 'マンガラ', icon: '♂',
     color: 'var(--mars)',
     mantra: 'Om Kraam Kreem Kroum Sah Bhaumaya Namaha',
-    reading: 'オーム クラーム クリーム クローム サハ バウマーイェ ナマハ',
+    reading: 'オーム クラーム クリーム クローム サハ バウマーヤ ナマハ',
     simpleMantra: 'Om Mangalaaya Namaha',
     simpleReading: 'オーム マンガラーヤ ナマハ',
     meaning: {
@@ -1777,7 +1773,7 @@ const PLANETS = [
     planet: '水星', sanskrit: 'Budha', katakana: 'ブダ', icon: '☿',
     color: 'var(--mercury)',
     mantra: 'Om Braam Breem Broum Sah Budhaya Namaha',
-    reading: 'オーム ブラーム ブリーム ブローム サハ ブダーイェ ナマハ',
+    reading: 'オーム ブラーム ブリーム ブローム サハ ブダーヤ ナマハ',
     simpleMantra: 'Om Budhaaya Namaha',
     simpleReading: 'オーム ブダーヤ ナマハ',
     meaning: {
@@ -1798,7 +1794,7 @@ const PLANETS = [
     planet: '木星', sanskrit: 'Guru', katakana: 'グル', icon: '♃',
     color: 'var(--jupiter)',
     mantra: 'Om Graam Greem Groum Sah Gurave Namaha',
-    reading: 'オーム グラーム グリーム グローム サハ グラウェイ ナマハ',
+    reading: 'オーム グラーム グリーム グローム サハ グラヴェー ナマハ',
     simpleMantra: 'Om Gurave Namaha',
     simpleReading: 'オーム グラヴェー ナマハ',
     meaning: {
@@ -1819,7 +1815,7 @@ const PLANETS = [
     planet: '金星', sanskrit: 'Shukra', katakana: 'シュクラ', icon: '♀',
     color: 'var(--venus)',
     mantra: 'Om Draam Dreem Droum Sah Shukraya Namaha',
-    reading: 'オーム ドラーム ドリーム ドローム サハ シュクラーイェ ナマハ',
+    reading: 'オーム ドラーム ドリーム ドローム サハ シュクラーヤ ナマハ',
     simpleMantra: 'Om Shukraaya Namaha',
     simpleReading: 'オーム シュクラーヤ ナマハ',
     meaning: {
@@ -1840,7 +1836,7 @@ const PLANETS = [
     planet: '土星', sanskrit: 'Shani', katakana: 'シャニ', icon: '♄',
     color: 'var(--saturn)',
     mantra: 'Om Praam Preem Praum Sah Shanaishcharaya Namaha',
-    reading: 'オーム プラーム プリーム プロウム サハ シャナイシュチャラーイェ ナマハ',
+    reading: 'オーム プラーム プリーム プロウム サハ シャナイシュチャラーヤ ナマハ',
     simpleMantra: 'Om Shanaishwaraaya Namaha',
     simpleReading: 'オーム シャナイシュワラーヤ ナマハ',
     meaning: {
@@ -1862,7 +1858,7 @@ const RAHU_KETU = {
   rahu: {
     name: 'ラーフ', sanskrit: 'Rahu', icon: '☊',
     mantra: 'Om Bhraam Bhreem Bhraum Sah Rahave Namaha',
-    reading: 'オーム ブラーム ブリーム ブロウム サハ ラーハウェイ ナマハ',
+    reading: 'オーム ブラーム ブリーム ブロウム サハ ラーハヴェー ナマハ',
     simpleMantra: 'Om Raahave Namaha',
     simpleReading: 'オーム ラーハヴェー ナマハ',
     meaning: {
@@ -1880,7 +1876,7 @@ const RAHU_KETU = {
   ketu: {
     name: 'ケートゥ', sanskrit: 'Ketu', icon: '☋',
     mantra: 'Om Sraam Sreem Sraum Sah Ketave Namaha',
-    reading: 'オーム スラーム スリーム スロウム サハ ケータウェイ ナマハ',
+    reading: 'オーム スラーム スリーム スロウム サハ ケータヴェー ナマハ',
     simpleMantra: 'Om Ketave Namaha',
     simpleReading: 'オーム ケータヴェー ナマハ',
     meaning: {
@@ -2180,19 +2176,53 @@ function renderNowCard(state, schedule, date) {
     const untilTxt = untilH > 0
       ? `${untilH}時間${pad2(untilM)}分後`
       : `${untilM}分後`;
-    el.innerHTML = `
-      <div class="now-status idle"><span class="dot"></span><span>次のマントラまで</span></div>
-      <div class="now-title">
-        <span class="planet-icon">${n.isRahuKetu ? RAHU_KETU.rahu.icon : n.planet.icon}</span>${n.name}
-        <span class="slot-badge">${fmtTime(n.start)}–${fmtTime(n.end)}</span>
-      </div>
-      <div class="now-subtitle">${n.isRahuKetu ? 'カラム時間（ラーフ・ケートゥのみ）' : `${n.sanskrit} — ${n.label}の時間`}</div>
-      <div class="mantra-divider"></div>
-      <div class="now-meta">
-        <div class="meta-item"><span class="label">あと</span><span class="value">${untilTxt}</span></div>
-        <div class="meta-item" style="text-align:right"><span class="label">開始</span><span class="value">${fmtTime(n.start)}</span></div>
-      </div>
-    `;
+    if (n.isRahuKetu) {
+      el.innerHTML = `
+        <div class="now-status idle"><span class="dot"></span><span>次のマントラまで</span></div>
+        <div class="now-title">
+          <span class="planet-icon">${RAHU_KETU.rahu.icon}</span>ラーフ & ケートゥ
+          <span class="slot-badge">${fmtTime(n.start)}–${fmtTime(n.end)}</span>
+        </div>
+        <div class="now-subtitle">カラム時間（ラーフ・ケートゥのみ）</div>
+        <div class="mantra-essence">${shortEssence(RAHU_KETU.rahu.meaning)} / ${shortEssence(RAHU_KETU.ketu.meaning)}</div>
+        <span class="mantra-form-label primary">シンプル形式</span>
+        <div class="mantra-simple-text">${RAHU_KETU.rahu.simpleMantra}</div>
+        <div class="mantra-simple-reading">${RAHU_KETU.rahu.simpleReading}</div>
+        <div class="mantra-simple-text">${RAHU_KETU.ketu.simpleMantra}</div>
+        <div class="mantra-simple-reading">${RAHU_KETU.ketu.simpleReading}</div>
+        <span class="mantra-form-label">正式形式（ビージャ）</span>
+        <div class="mantra-text secondary">${RAHU_KETU.rahu.mantra}</div>
+        <div class="mantra-reading secondary">${RAHU_KETU.rahu.reading}</div>
+        <div class="mantra-text secondary">${RAHU_KETU.ketu.mantra}</div>
+        <div class="mantra-reading secondary">${RAHU_KETU.ketu.reading}</div>
+        <div class="mantra-divider"></div>
+        <div class="now-meta">
+          <div class="meta-item"><span class="label">あと</span><span class="value">${untilTxt}</span></div>
+          <div class="meta-item" style="text-align:right"><span class="label">開始</span><span class="value">${fmtTime(n.start)}</span></div>
+        </div>
+      `;
+    } else {
+      el.innerHTML = `
+        <div class="now-status idle"><span class="dot"></span><span>次のマントラまで</span></div>
+        <div class="now-title">
+          <span class="planet-icon">${n.planet.icon}</span>${n.name}
+          <span class="slot-badge">${fmtTime(n.start)}–${fmtTime(n.end)}</span>
+        </div>
+        <div class="now-subtitle">${n.sanskrit} / ${n.planet.katakana} — ${n.label}の時間</div>
+        <div class="mantra-essence">${shortEssence(n.planet.meaning)}</div>
+        <span class="mantra-form-label primary">シンプル形式</span>
+        <div class="mantra-simple-text">${n.planet.simpleMantra}</div>
+        <div class="mantra-simple-reading">${n.planet.simpleReading}</div>
+        <span class="mantra-form-label">正式形式（ビージャ）</span>
+        <div class="mantra-text secondary">${n.mantra}</div>
+        <div class="mantra-reading secondary">${n.reading}</div>
+        <div class="mantra-divider"></div>
+        <div class="now-meta">
+          <div class="meta-item"><span class="label">あと</span><span class="value">${untilTxt}</span></div>
+          <div class="meta-item" style="text-align:right"><span class="label">開始</span><span class="value">${fmtTime(n.start)}</span></div>
+        </div>
+      `;
+    }
   } else if (state.previous) {
     // Today's slots all done — show last mantra at top
     const p = state.previous;
@@ -2291,8 +2321,11 @@ function renderTimeline(state, schedule, date) {
 // (used in the now-card mantra-essence display).
 function shortEssence(m) {
   if (!m) return '';
-  const deity = (m.deity || '').split('。')[0]; // first sentence of deity
-  const symb = (m.symbolism || '').split('。')[0].split('・').slice(0, 4).join('・');
+  // Take first sentence of deity and truncate to a reasonable length.
+  let deity = (m.deity || '').split('。')[0];
+  if (deity.length > 28) deity = deity.slice(0, 26) + '…';
+  // Take only the first 3 symbolic keywords (・-separated).
+  const symb = (m.symbolism || '').split('。')[0].split('・').slice(0, 3).join('・');
   if (!deity) return symb;
   if (!symb) return deity;
   return `${deity} — ${symb}`;
@@ -2938,6 +2971,8 @@ function tick() {
     cachedSchedule = getTodaysSchedule(now);
     renderHeader(now);
     renderTimeline(getCurrentState(now, cachedSchedule), cachedSchedule, now);
+    // Reset transition tracker on date change to avoid stale slot-type carry-over
+    prevSlotType = null;
   }
   const state = getCurrentState(now, cachedSchedule);
   renderClock(now);
@@ -2953,11 +2988,12 @@ function tick() {
   if (currentSlotType && currentSlotType !== prevSlotType) {
     // Only fire if this is a real transition during runtime,
     // not just because the page loaded mid-slot.
-    if (firstTickDone && !hasAlertedToday(now, currentSlotType)) {
+    if (firstTickDone) {
+      // fireAlert() internally guards against duplicate fires (hasAlertedToday +
+      // markAlertedToday inside the function), so we don't need to mark here.
       fireAlert(state.slot);
-      markAlertedToday(now, currentSlotType);
-    } else if (!firstTickDone) {
-      // On first tick, if we're already in a slot, just record it silently
+    } else {
+      // On first tick, if we're already in a slot, record it silently
       // (so we don't alert mid-slot on page reload)
       markAlertedToday(now, currentSlotType);
     }
@@ -3089,6 +3125,29 @@ setInterval(tick, 1000);
 scheduleUpcomingAlerts();
 showInstallHintIfNeeded();
 
+// Remember saints section open/closed state across sessions.
+(function bindSaintsToggle() {
+  const saints = document.getElementById('saints');
+  if (!saints) return;
+  try {
+    if (localStorage.getItem('mantra-saints-open') === '1') saints.open = true;
+  } catch (e) {}
+  saints.addEventListener('toggle', () => {
+    try { localStorage.setItem('mantra-saints-open', saints.open ? '1' : '0'); } catch (e) {}
+  });
+})();
+
+// Register Service Worker for offline support.
+// Wrapped in try/catch so the app still works if SW registration fails (e.g. file:// or older browser).
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js').catch((err) => {
+      // Silent fail — app degrades gracefully to online-only mode.
+      console.warn('Service Worker registration failed:', err);
+    });
+  });
+}
+
 
 // ========== PRE-SCHEDULE ALERTS ==========
 // Schedule setTimeout-based alerts for upcoming slots today so they fire
@@ -3111,11 +3170,9 @@ function scheduleUpcomingAlerts() {
     // Only schedule slots in the future (with 2s safety margin), within next 24h
     if (msUntil < 2000 || msUntil > 24 * 60 * 60 * 1000) continue;
     const id = setTimeout(() => {
-      // Re-check inside timer in case clock jumped or user changed settings
-      if (!hasAlertedToday(new Date(), slot.type)) {
-        fireAlert(slot);
-        markAlertedToday(new Date(), slot.type);
-      }
+      // fireAlert() internally guards against duplicate fires (hasAlertedToday
+      // check + markAlertedToday). No need to re-check here.
+      fireAlert(slot);
     }, msUntil);
     window._scheduledAlertTimers.push(id);
   }
