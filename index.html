@@ -500,6 +500,341 @@
     letter-spacing: 0.04em;
   }
 
+  /* Mantra labels (シンプル形式 / 正式形式) */
+  .mantra-form-label {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--text-faint);
+    text-transform: uppercase;
+    margin-top: 10px;
+    margin-bottom: 2px;
+    padding: 1px 6px;
+    border: 1px solid var(--border-soft);
+    border-radius: 8px;
+    background: rgba(255,255,255,0.35);
+  }
+  .mantra-form-label.primary {
+    color: var(--gold-dim);
+    border-color: rgba(244,208,63,0.35);
+    background: rgba(244,208,63,0.06);
+  }
+
+  /* Simple mantra display in now-card — same size as the formal mantra */
+  .mantra-simple-text {
+    font-family: "Cormorant Garamond", "Hiragino Mincho ProN", "Yu Mincho", serif;
+    font-style: italic;
+    font-size: 23px;
+    font-weight: 500;
+    line-height: 1.5;
+    color: var(--mantra);
+    margin: 4px 0 8px;
+  }
+  .mantra-simple-reading {
+    font-size: 15.5px;
+    color: var(--text-dim);
+    line-height: 1.75;
+    letter-spacing: 0.03em;
+    margin-bottom: 10px;
+  }
+
+  /* Both mantra forms now share the same prominence — no demotion of secondary */
+  .mantra-text.secondary {
+    font-size: 23px;
+    margin: 4px 0 8px;
+    opacity: 1;
+  }
+  .mantra-reading.secondary {
+    font-size: 15.5px;
+    line-height: 1.75;
+    letter-spacing: 0.03em;
+    margin-bottom: 10px;
+  }
+
+  /* Compact essence line above mantra */
+  .mantra-essence {
+    font-size: 12.5px;
+    color: var(--text-dim);
+    letter-spacing: 0.05em;
+    margin: 8px 0 0;
+    padding: 6px 10px;
+    background: rgba(244,208,63,0.05);
+    border-left: 2px solid var(--gold-dim);
+    border-radius: 0 6px 6px 0;
+    line-height: 1.55;
+  }
+
+  /* Detailed meaning block (ref list) */
+  .mantra-meaning {
+    margin-top: 10px;
+    padding: 10px 12px;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-soft);
+    border-radius: 8px;
+    font-size: 12px;
+    line-height: 1.65;
+    color: var(--text);
+  }
+  .meaning-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 7px;
+    padding-bottom: 7px;
+    border-bottom: 1px dotted var(--border-soft);
+  }
+  .meaning-row:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+  .meaning-label {
+    flex: 0 0 72px;
+    color: var(--gold-dim);
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    padding-top: 1px;
+  }
+  .meaning-value {
+    flex: 1;
+    color: var(--text);
+    line-height: 1.7;
+  }
+  .meaning-row.caution {
+    background: rgba(214,138,106,0.05);
+    margin-left: -10px;
+    margin-right: -10px;
+    padding: 7px 10px;
+    border-radius: 6px;
+    border-bottom: none;
+  }
+  .meaning-row.caution .meaning-label {
+    color: #c97a4e;
+  }
+  .meaning-translation {
+    font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+    font-size: 13.5px;
+    color: var(--mantra);
+    margin-bottom: 8px;
+    padding-bottom: 8px;
+    border-bottom: 1px dashed var(--border-soft);
+    line-height: 1.55;
+  }
+
+  /* Simple/Long mantra labels in ref-item */
+  .ref-mantra-group {
+    margin-top: 6px;
+  }
+  .ref-mantra-group + .ref-mantra-group {
+    margin-top: 8px;
+  }
+  .ref-mantra-label {
+    display: inline-block;
+    font-size: 9.5px;
+    letter-spacing: 0.1em;
+    color: var(--text-faint);
+    text-transform: uppercase;
+    margin-bottom: 2px;
+    padding: 1px 5px;
+    border-radius: 6px;
+  }
+  .ref-mantra-label.primary {
+    color: var(--gold-dim);
+    background: rgba(244,208,63,0.08);
+  }
+  .ref-mantra-label.secondary {
+    color: var(--text-faint);
+    background: var(--bg-elevated);
+  }
+
+  /* Toggle button to show/hide meaning */
+  .meaning-toggle {
+    margin-top: 8px;
+    background: transparent;
+    border: 1px solid var(--border-soft);
+    color: var(--text-dim);
+    font-family: inherit;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    padding: 5px 12px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.15s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .meaning-toggle:hover, .meaning-toggle:active {
+    color: var(--gold);
+    border-color: var(--gold-dim);
+    background: rgba(244,208,63,0.05);
+  }
+  .meaning-toggle::after {
+    content: " ▾";
+    font-size: 9px;
+    margin-left: 2px;
+  }
+  .meaning-toggle[aria-expanded="true"]::after {
+    content: " ▴";
+  }
+  .mantra-meaning[hidden] { display: none; }
+
+  /* Saints reverence section */
+  .saints {
+    position: relative;
+    z-index: 1;
+    margin-top: 20px;
+    background: linear-gradient(180deg, rgba(214,138,106,0.04) 0%, rgba(244,208,63,0.03) 100%);
+    border: 1px solid rgba(244,208,63,0.2);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .saints > summary {
+    padding: 16px 20px;
+    cursor: pointer;
+    list-style: none;
+    font-family: "Cormorant Garamond", "Hiragino Mincho ProN", "Yu Mincho", serif;
+    font-size: 16px;
+    letter-spacing: 0.1em;
+    color: var(--gold-dim);
+    text-align: center;
+    border-bottom: 1px solid rgba(244,208,63,0.15);
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+  }
+  .saints > summary::-webkit-details-marker { display: none; }
+  .saints > summary::after {
+    content: "▾";
+    margin-left: 8px;
+    font-size: 10px;
+    transition: transform 0.2s;
+    display: inline-block;
+  }
+  .saints[open] > summary::after { transform: rotate(180deg); }
+  .saints-intro {
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 13px;
+    padding: 16px 20px 8px;
+    line-height: 1.7;
+    letter-spacing: 0.04em;
+    font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+  }
+  .saints-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 12px 16px 20px;
+  }
+  .saint-card {
+    margin: 0;
+    background: var(--bg);
+    border: 1px solid var(--border-soft);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(85,55,20,0.04);
+  }
+  .saint-image-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    background:
+      radial-gradient(ellipse at 50% 30%, rgba(244,208,63,0.12), transparent 65%),
+      linear-gradient(180deg, #fbf6e9 0%, #f0e7d0 100%);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .saint-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    display: block;
+  }
+  .saint-image-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: "Noto Serif Devanagari", serif;
+    font-size: 96px;
+    color: var(--gold-dim);
+    opacity: 0;
+    transition: opacity 0.3s;
+    text-shadow: 0 2px 12px rgba(244,208,63,0.3);
+    pointer-events: none;
+  }
+  .saint-image-placeholder span {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 16px;
+    letter-spacing: 0.15em;
+    color: var(--text-faint);
+    margin-top: 8px;
+    text-shadow: none;
+  }
+  .saint-image-wrap.image-failed .saint-image-placeholder {
+    opacity: 1;
+  }
+  .saint-caption {
+    padding: 16px 18px 18px;
+    text-align: center;
+  }
+  .saint-name {
+    font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--mantra);
+    margin: 0 0 4px;
+    letter-spacing: 0.05em;
+  }
+  .saint-sanskrit {
+    font-family: "Cormorant Garamond", "Noto Serif Devanagari", serif;
+    font-size: 13px;
+    color: var(--gold-dim);
+    margin-bottom: 10px;
+    letter-spacing: 0.04em;
+    font-style: italic;
+  }
+  .saint-desc {
+    font-size: 12.5px;
+    color: var(--text);
+    line-height: 1.85;
+    letter-spacing: 0.03em;
+    margin: 0;
+    font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+  }
+  .saints-mantra {
+    margin: 4px 16px 20px;
+    padding: 18px 20px;
+    background: var(--bg);
+    border: 1px solid rgba(244,208,63,0.25);
+    border-radius: 12px;
+    text-align: center;
+  }
+  .saints-mantra-text {
+    font-family: "Noto Serif Devanagari", "Hiragino Mincho ProN", serif;
+    font-size: 15px;
+    color: var(--mantra);
+    line-height: 1.7;
+    margin-bottom: 2px;
+    letter-spacing: 0.02em;
+  }
+  .saints-mantra-reading {
+    font-size: 11.5px;
+    color: var(--text-dim);
+    line-height: 1.7;
+    letter-spacing: 0.05em;
+    margin-top: 10px;
+    margin-bottom: 8px;
+  }
+  .saints-mantra-meaning {
+    font-size: 11.5px;
+    color: var(--text-faint);
+    line-height: 1.7;
+    font-family: "Hiragino Mincho ProN", serif;
+    padding-top: 10px;
+    border-top: 1px dashed var(--border-soft);
+    letter-spacing: 0.03em;
+  }
+
   /* Footer */
   .footer {
     position: relative;
@@ -1197,7 +1532,7 @@
 </div>
 
 <div class="install-hint" id="installHint">
-  <button class="close" onclick="document.getElementById('installHint').style.display='none'">×</button>
+  <button class="close" type="button" aria-label="閉じる">×</button>
   <strong>ホーム画面に追加</strong>：iPhoneは Safari の共有ボタン → 「ホーム画面に追加」、Androidは Chrome のメニュー → 「ホーム画面に追加」でアプリのように使えます。
 </div>
 
@@ -1254,7 +1589,7 @@
     </div>
     <div class="settings-action">
       <label class="toggle">
-        <input type="checkbox" id="soundToggle">
+        <input type="checkbox" id="soundToggle" aria-label="サウンドアラート">
         <span class="slider"></span>
       </label>
     </div>
@@ -1272,7 +1607,7 @@
     </div>
     <div class="settings-action">
       <label class="toggle">
-        <input type="checkbox" id="notifToggle">
+        <input type="checkbox" id="notifToggle" aria-label="ブラウザ通知">
         <span class="slider"></span>
       </label>
     </div>
@@ -1294,6 +1629,61 @@
   <summary>マントラ一覧</summary>
   <div class="reference-list" id="referenceList">
     <!-- Filled by JS -->
+  </div>
+</details>
+
+<!-- Saints / Gurus reverence section -->
+<details class="saints" id="saints" open>
+  <summary>聖者への帰依</summary>
+  <div class="saints-intro">このマントラの叡智を伝えてくださった<br/>偉大なる聖者の方々へ感謝を込めて</div>
+  <div class="saints-grid">
+    <figure class="saint-card">
+      <div class="saint-image-wrap">
+        <img class="saint-image"
+             src="agastya.jpg"
+             onerror="this.onerror=null;this.src='https://drive.google.com/thumbnail?id=1Z2e7rGtcw-J1Iy9-5IZUqcy4pLPvuojC&amp;sz=w1200';this.classList.add('fallback-loading');this.addEventListener('error',()=>{this.style.display='none';this.parentElement.classList.add('image-failed');},{once:true});"
+             alt="アガスティア聖者 — Agastya Maharishi"
+             loading="lazy" />
+        <div class="saint-image-placeholder">अ<br/><span>Agastya</span></div>
+      </div>
+      <figcaption class="saint-caption">
+        <h3 class="saint-name">アガスティア聖者</h3>
+        <div class="saint-sanskrit">अगस्त्य महर्षि — Agastya Maharishi</div>
+        <p class="saint-desc">
+          ヴェーダの七賢者（サプタ・リシ）の一人。ヴェーダ占星術と医学（シッダー医学）の祖と仰がれる古代の大聖者。
+          短い体ながら一口で大海を飲み干したとされる伝説、そして「ナーディー・リーフ」と呼ばれる<br/>
+          個人の運命を記した椰子葉の伝授者として知られる。<br/>
+          九曜マントラを含む多くの霊的教えの源流。
+        </p>
+      </figcaption>
+    </figure>
+
+    <figure class="saint-card">
+      <div class="saint-image-wrap">
+        <img class="saint-image"
+             src="bhara-kumbha.jpg"
+             onerror="this.onerror=null;this.src='https://drive.google.com/thumbnail?id=1MNA5wvkMqLixmEjlMdg6I9H7OXPndbjP&amp;sz=w1200';this.classList.add('fallback-loading');this.addEventListener('error',()=>{this.style.display='none';this.parentElement.classList.add('image-failed');},{once:true});"
+             alt="バーラクンバグルムニ — Bhāra Kumbha Guru Muni"
+             loading="lazy" />
+        <div class="saint-image-placeholder">भ<br/><span>Bhāra Kumbha</span></div>
+      </div>
+      <figcaption class="saint-caption">
+        <h3 class="saint-name">バーラクンバグルムニ</h3>
+        <div class="saint-sanskrit">भार कुम्भ गुरु मुनि — Bhāra Kumbha Guru Muni</div>
+        <p class="saint-desc">
+          「満ちた器（クンバ）を背負う師」を意味する尊称。<br/>
+          アガスティア聖者と同じく「クンバ（壺）」の象徴を持つ霊的系譜の継承者。<br/>
+          山中の静寂の中で深い瞑想と祈りを捧げ、<br/>
+          現代に古の智慧を伝える存在。
+        </p>
+      </figcaption>
+    </figure>
+  </div>
+  <div class="saints-mantra">
+    <div class="saints-mantra-text">गुरुर्ब्रह्मा गुरुर्विष्णुः गुरुर्देवो महेश्वरः</div>
+    <div class="saints-mantra-text">गुरुः साक्षात् परंब्रह्म तस्मै श्री गुरवे नमः</div>
+    <div class="saints-mantra-reading">グル・ブラフマー グル・ヴィシュヌ グル・デーヴォ・マヘーシュワラ<br/>グル・サークシャート パラブラフマ タスマイ シュリー・グラヴェー・ナマハ</div>
+    <div class="saints-mantra-meaning">「師はブラフマー神、師はヴィシュヌ神、師は偉大なる神シヴァ。<br/>師はまさに至高のブラフマンそのもの。その師に礼拝します」</div>
   </div>
 </details>
 
@@ -1325,6 +1715,19 @@ const PLANETS = [
     color: 'var(--sun)',
     mantra: 'Om Hraam Hreem Hroum Sah Suryaya Namaha',
     reading: 'オーム ハラーム ハリーム ハローム サハ スーリヤーイェ ナマハ',
+    simpleMantra: 'Om Suryaaya Namaha',
+    simpleReading: 'オーム スーリヤーヤ ナマハ',
+    meaning: {
+      translation: '「オーム、太陽神スーリヤに礼拝します」',
+      deity: '太陽神スーリヤ（Surya）。インド神話では7頭の馬が引く黄金の戦車に乗り、天空を渡る神。リグ・ヴェーダ最古の讃歌にも歌われた、最も古い神格の一つ。日々東から昇り、すべての生命に光と熱を与える根源的存在。',
+      symbolism: '生命力（プラーナ）・自信・健康・リーダーシップ・父性。目に見える成功と名声、政府・公的機関、父親、自己（アートマン）、心臓、目、骨を司る。',
+      benefits: '生命エネルギーの活性化、自信の回復、心臓と目の健康、リーダー資質の開花、名声と地位、父との関係改善、骨と背骨の強化、自己実現、リウマチや関節炎の緩和。',
+      vedic: 'ナヴァグラハ（九曜）の王。ホロスコープで太陽が弱い・凶座にある人は、健康・自信・父との関係に課題が出やすく、このマントラで強化する。マハダシャー（人生周期）の太陽期は6年。',
+      when: '自信を取り戻したい時、新しい挑戦の前、健康（特に心臓・目）を願う時、リーダーシップが必要な場面、父との関係を癒したい時、自己嫌悪に陥った時、人前に立つ前。',
+      howTo: '朝、太陽の方角（東）を向いて立ち、または座って唱える。7回、21回、108回が一般的。スーリヤ・ナマスカール（太陽礼拝のヨガ）と組み合わせると特に効果的。アルギャ（水の捧げ物）を東に注ぐと吉。',
+      bestTime: '日曜日全般。最も推奨されるのは日の出から1時間以内。日中の太陽が中天にある時間も良い。',
+      caution: '太陽を直視しない。空腹時または食後3時間以上経った時が望ましい。'
+    },
     kaalam: { start: [16, 30], end: [18, 0] }
   },
   { // 1: Monday
@@ -1333,22 +1736,61 @@ const PLANETS = [
     color: 'var(--moon)',
     mantra: 'Om Shraam Shreem Shroum Sah Chandraya Namaha',
     reading: 'オーム シュラーム シュリーム シュローム サハ チャンドラーイェ ナマハ',
+    simpleMantra: 'Om Chandraaya Namaha',
+    simpleReading: 'オーム チャンドラーヤ ナマハ',
+    meaning: {
+      translation: '「オーム、月神チャンドラに礼拝します」',
+      deity: '月神チャンドラ（Chandra / Soma）。28人のナクシャトラ（星宿）の女神たちの夫。心（マナス）と感情を司る神格。乳海撹拌から生まれたとも、アトリ仙の眼から生まれたとも伝わる。乳白色の衣をまとい、両手に蓮を持つ。',
+      symbolism: '心（マナス）・感情・母性・直感・安らぎ・優しさ・女性性。水、液体、潜在意識、満潮と引き潮、夢、記憶、母親、女性ホルモンを司る。',
+      benefits: '心の平穏、情緒の安定、安眠、直感力の向上、母との関係の調和、女性ホルモンのバランス、創造性の開花、共感力、夢の質の改善、月経周期の安定。',
+      vedic: '月は「マナス（心）」を司る惑星。月が弱いとうつ傾向、情緒不安定、母との葛藤、安眠困難などが現れやすい。マハダシャーの月期は10年あり、その時期に特に有効。新月から満月にかけて唱えると効果が高まる。',
+      when: '心が乱れている時、不安や憂鬱を感じる時、感情の波が激しい時、不眠の夜、月経前後の不調、母との関係を整えたい時、創造的な仕事の前、瞑想を深めたい時。',
+      howTo: '夜、できれば月を見ながら唱える。白い服を着るのがよい。11回、108回が推奨。銀の器に入れた水や白い花、ライス（米）を供える。月の出ている時は月光浴をしながら唱えると吉。',
+      bestTime: '月曜日の夜全般。満月の夜は特に強力。月が空に見える時間帯。',
+      caution: '満月の夜は感情が増幅されやすい。瞑想と組み合わせて落ち着いた状態で唱える。新月の夜は控えめに。'
+    },
     kaalam: { start: [7, 30], end: [9, 0] }
   },
   { // 2: Tuesday
     weekday: '火曜日', weekdayShort: '火', weekdayEn: 'TUE',
-    planet: '火星', sanskrit: 'Mangal', katakana: 'マンガル', icon: '♂',
+    planet: '火星', sanskrit: 'Mangala', katakana: 'マンガラ', icon: '♂',
     color: 'var(--mars)',
     mantra: 'Om Kraam Kreem Kroum Sah Bhaumaya Namaha',
     reading: 'オーム クラーム クリーム クローム サハ バウマーイェ ナマハ',
+    simpleMantra: 'Om Mangalaaya Namaha',
+    simpleReading: 'オーム マンガラーヤ ナマハ',
+    meaning: {
+      translation: '「オーム、マンガラ神に礼拝します」※「マンガラ」には「吉祥」「縁起の良い」の意味も含む。',
+      deity: '火星神マンガラ（Mangala / Bhauma / Angaraka）。大地ブーミから生まれた神（Bhauma＝大地の子）。赤い肌、四本の腕、三叉の槍を持つ。武勇と保護、結婚守護の神。',
+      symbolism: '勇気・行動力・エネルギー・闘争・兄弟・土地・不動産・結婚。技術、外科手術、軍人、警察、競技、機械、火、血液、筋肉を司る。',
+      benefits: '勇気の覚醒、敵やライバルに打ち勝つ力、行動力と決断力、兄弟との関係改善、不動産取得、結婚障害の除去、血液関連の健康、技術職での成功、自衛力。',
+      vedic: 'ヴェーダ占星術で「マンガリク・ドーシャ」（火星の凶位）は結婚運に影響を与えるとされ、このマントラで軽減する。土地・不動産取引の前にも推奨される。マハダシャーの火星期は7年。',
+      when: '困難に立ち向かう時、争いごとや裁判の前、勇気が欲しい時、結婚運を高めたい時（特にマンガリク・ドーシャがある場合）、不動産取引の前、競技や試験の前、手術の前、兄弟との関係修復。',
+      howTo: '火曜日に赤い服を着て、南の方角を向いて唱える。21回または108回。赤い花、赤い珊瑚、赤レンズ豆を供える。ハヌマーン（同じく赤の神格）への祈りと組み合わせると相乗効果。',
+      bestTime: '火曜日の朝〜午前中。特に火曜日の日の出時。',
+      caution: '怒りや攻撃性が高まりやすい状態の時は、冷静さを保ちながら唱える。喧嘩腰の意図で唱えるのは避ける — 火星のエネルギーは諸刃の剣。'
+    },
     kaalam: { start: [15, 0], end: [16, 30] }
   },
   { // 3: Wednesday
     weekday: '水曜日', weekdayShort: '水', weekdayEn: 'WED',
-    planet: '水星', sanskrit: 'Budh', katakana: 'ブダ', icon: '☿',
+    planet: '水星', sanskrit: 'Budha', katakana: 'ブダ', icon: '☿',
     color: 'var(--mercury)',
-    mantra: 'Om Braam Breem Broum Sah Buddhaya Namaha',
+    mantra: 'Om Braam Breem Broum Sah Budhaya Namaha',
     reading: 'オーム ブラーム ブリーム ブローム サハ ブダーイェ ナマハ',
+    simpleMantra: 'Om Budhaaya Namaha',
+    simpleReading: 'オーム ブダーヤ ナマハ',
+    meaning: {
+      translation: '「オーム、水星神ブダに礼拝します」',
+      deity: '水星神ブダ（Budha）。月神チャンドラと女神ターラーの息子。緑の肌、知性と機転に富む若き神。注：仏陀（ブッダ）とは別の神格で、つづりも音も異なる（Budha vs Buddha）。',
+      symbolism: '知性・コミュニケーション・商売・学問・話術・文章・ユーモア。機転、若さ、適応力、神経系、皮膚、声、双子座と乙女座の守護星。',
+      benefits: '知性の向上、学業成就、商売繁盛、コミュニケーション能力、文章力、交渉力、神経系の調整、皮膚の健康、ユーモアセンス、適応力、語学習得。',
+      vedic: '水星は教育・コミュニケーション・商業を司る。学生、教師、ライター、商人、外交官、IT技術者、通訳、占星術師などに特に重要。マハダシャーの水星期は17年と長め。',
+      when: '試験の前、商談や交渉の前、新しいスキルを学ぶ時、文章を書く時、重要なプレゼンの前、就職活動中、留学前、語学学習、子供の学業を願う時。',
+      howTo: '水曜日の朝、東を向いて唱える。緑の服がよい。11回、21回、108回。緑の植物のそばで唱えると効果的。緑豆、ミントの葉、エメラルドを供える。',
+      bestTime: '水曜日の朝〜正午。',
+      caution: '軽率さや表面的な言葉を避け、深い意味を込めて唱える。嘘や欺瞞のためには絶対に使わない。'
+    },
     kaalam: { start: [12, 0], end: [13, 30] }
   },
   { // 4: Thursday
@@ -1357,6 +1799,19 @@ const PLANETS = [
     color: 'var(--jupiter)',
     mantra: 'Om Graam Greem Groum Sah Gurave Namaha',
     reading: 'オーム グラーム グリーム グローム サハ グラウェイ ナマハ',
+    simpleMantra: 'Om Gurave Namaha',
+    simpleReading: 'オーム グラヴェー ナマハ',
+    meaning: {
+      translation: '「オーム、グル（師・木星神）に礼拝します」',
+      deity: '木星神グル／ブリハスパティ（Guru / Brihaspati）。神々の師（デーヴァ・グル）と呼ばれる最高位の智者。リシ・アンギラスの息子。黄色の衣を纏い、数珠と聖典、杖を持つ。聖典『リグ・ヴェーダ』に多数の讃歌がある古い神格。',
+      symbolism: '知恵・霊性・教師・富・子供・幸運。宗教、哲学、法律、教育、長寿、肝臓、楽観、寛大さ、射手座と魚座の守護星。',
+      benefits: '知恵の獲得、霊的成長、子宝、富、良き師との出会い、霊的保護、人生の指針、法的問題の解決、学問・宗教関係での成功、肝臓の健康、寛大な心、楽観性。',
+      vedic: 'ヴェーダ占星術で最も吉祥な惑星とされる。グルが強い人は人生の指針が明確で、知恵と富に恵まれる。マハダシャーのグル期は16年。子供を望む夫婦、霊的修行者、教育者には特に重要。グルが配偶者の家にあれば理想的な伴侶を得るとされる。',
+      when: '人生の指針が欲しい時、学びを深めたい時、子供を願う時、結婚や学業の節目、霊性を深めたい時、法的問題がある時、富を願う時、新しいプロジェクトの開始時、結婚式・命名式・入学式などの吉事の前。',
+      howTo: '木曜日の朝、北東を向いて唱える。黄色の服がよい。16回、108回が推奨。バナナ、黄色い花、ターメリック、サフランを供える。グル（霊的指導者）への帰依の心で唱える。',
+      bestTime: '木曜日全般（グルの日として最も吉日）。特に朝のサット・サンガ（聖なる集い）の時間帯。',
+      caution: '純粋な帰依の心で唱える。物質的な欲だけで唱えると効果が薄い。傲慢さは木星のエネルギーを損なう。'
+    },
     kaalam: { start: [13, 30], end: [15, 0] }
   },
   { // 5: Friday
@@ -1365,6 +1820,19 @@ const PLANETS = [
     color: 'var(--venus)',
     mantra: 'Om Draam Dreem Droum Sah Shukraya Namaha',
     reading: 'オーム ドラーム ドリーム ドローム サハ シュクラーイェ ナマハ',
+    simpleMantra: 'Om Shukraaya Namaha',
+    simpleReading: 'オーム シュクラーヤ ナマハ',
+    meaning: {
+      translation: '「オーム、金星神シュクラに礼拝します」',
+      deity: '金星神シュクラ（Shukra）。阿修羅族の師（アスラ・グル）。リシ・ブリグの息子で、ムリタ・サンジーヴァニ（死者を蘇らせる秘呪）を授かったとされる。白い肌、白い衣、片目（神話による）。芸術と愛の保護神。',
+      symbolism: '愛・美・芸術・贅沢・結婚・女性性。ロマンス、音楽、舞踊、宝石、ファッション、官能、生殖器系、腎臓、糖分、牡牛座と天秤座の守護星。',
+      benefits: '愛と恋愛の成就、美しさと魅力の向上、芸術的才能の開花、贅沢と豊かさ、結婚生活の和合、創造性、生殖器系の健康、優雅さ、贅沢品の獲得、官能性のバランス。',
+      vedic: '金星は愛・美・贅沢を司る。芸術家、デザイナー、エンターテイナー、化粧品関係には特に重要。結婚における配偶者の質と関係性を司る重要な星。マハダシャーの金星期は20年と最長級で、人生に豊かさと美をもたらす時期。',
+      when: '恋愛・結婚を願う時、芸術活動の前、美しさを高めたい時、パートナーシップを深めたい時、結婚記念日、ファッション関係の仕事の前、宝石を購入する前、創作活動を始める時。',
+      howTo: '金曜日の朝または夕方、東または南東を向いて唱える。白または明るい色の服がよい。15回、108回が推奨。白い花、ココナッツ、糖、ダイヤモンドかクリスタルを供える。香水や良い香りを焚くと吉。',
+      bestTime: '金曜日の朝〜午前中、または日の入り後。',
+      caution: '官能性に溺れないよう、内面的な美と愛を意識して唱える。表面的な欲のためだけに唱えると本質を見失う。'
+    },
     kaalam: { start: [10, 30], end: [12, 0] }
   },
   { // 6: Saturday
@@ -1373,6 +1841,19 @@ const PLANETS = [
     color: 'var(--saturn)',
     mantra: 'Om Praam Preem Praum Sah Shanaishcharaya Namaha',
     reading: 'オーム プラーム プリーム プロウム サハ シャナイシュチャラーイェ ナマハ',
+    simpleMantra: 'Om Shanaishwaraaya Namaha',
+    simpleReading: 'オーム シャナイシュワラーヤ ナマハ',
+    meaning: {
+      translation: '「オーム、土星神シャニ（シャナイシュワラ）に礼拝します」',
+      deity: '土星神シャニ／シャナイシュワラ（Shani / Shanaishwara）。太陽神スーリヤと影の女神チャーヤーの息子。黒い肌、黒い衣、片足を引きずるとされる。「シャナイ」は「ゆっくり」の意で、ゆっくりと、しかし確実に正義を執行する厳格な神。',
+      symbolism: '試練・忍耐・カルマ・長寿・努力・規律・正義。貧困、奉仕、労働、骨、関節、寿命、死、孤独、出家、山羊座と水瓶座の守護星。',
+      benefits: '試練からの保護、忍耐力、カルマの浄化、長寿、困難を乗り越える精神力、規律ある生活、奉仕の精神、骨と関節の健康、悪業の軽減、誠実さ、深い知恵。',
+      vedic: '土星は「ダルマ・カルマの監督官」と呼ばれる。「サーデー・サティ（土星7年半周期）」と「アシュタマ・シャニ（8番目の家を通過する2年半）」は人生で最も試練の多い時期とされ、このマントラで保護される。マハダシャーの土星期は19年で最長 — 人生で必ず一度は経験する。',
+      when: '人生が停滞している時、試練の最中にある時、サーデー・サティ／アシュタマ・シャニの時期、努力を続ける力が欲しい時、貧困や失業の時、不正に苦しむ時、ご年配の方のため、慢性疾患がある時。',
+      howTo: '土曜日の夕方、西または南を向いて唱える。黒、または濃紺の服がよい。19回、108回が推奨。ゴマ油、黒ゴマ、鉄製品、青い花をシャニ・デーヴァの像に供える。ハヌマーン（猿神）への祈りと組み合わせるとシャニの厳しさが和らぐとされる。',
+      bestTime: '土曜日の夕方〜夜（土星は夕暮れの星）。',
+      caution: 'シャニは厳格で正義の神。不正や怠惰を続けながら唱えても効果は得られない — むしろ罰せられる可能性がある。誠実さと努力を伴って唱えること。'
+    },
     kaalam: { start: [9, 0], end: [10, 30] }
   },
 ];
@@ -1382,11 +1863,37 @@ const RAHU_KETU = {
     name: 'ラーフ', sanskrit: 'Rahu', icon: '☊',
     mantra: 'Om Bhraam Bhreem Bhraum Sah Rahave Namaha',
     reading: 'オーム ブラーム ブリーム ブロウム サハ ラーハウェイ ナマハ',
+    simpleMantra: 'Om Raahave Namaha',
+    simpleReading: 'オーム ラーハヴェー ナマハ',
+    meaning: {
+      translation: '「オーム、ラーフに礼拝します」',
+      deity: 'ラーフ（Rahu）— 月の北交点。実体のない「影の惑星」（チャヤ・グラハ）。神話では乳海撹拌の際にアムリタ（不死の甘露）を盗み飲んだアスラ（スワラブハーヌ）の首が、太陽と月に告発されてヴィシュヌに切られ、首から上だけが不死の存在として残ったもの。蛇の頭の姿で描かれる。',
+      symbolism: '野心・執着・突然の変化・外国・テクノロジー。薬物、毒、幻惑、混乱、欲望、機会主義、独学、ボディ的でない存在、影、煙、革新。',
+      benefits: '突然の障害からの保護、混乱や悪夢からの解放、霊的攪乱の鎮静、海外関連の運、技術系の成功、不可解な健康問題の改善、依存症からの解放、未知の領域での成功。',
+      vedic: 'ラーフは「カルマの起爆装置」。マハダシャーのラーフ期は18年で、人生に劇的な変化と試練をもたらす。月や太陽との合（ラーフ・ケートゥ・ヨーガ）は「カラ・サルパ・ドーシャ」と呼ばれ、特別な対処が必要。現代生活（IT、海外、SNS）と深く関わる「現代の星」とも。',
+      when: '不可解な不調や突然のトラブルがある時、悪夢や霊的な攪乱を感じる時、海外関連の悩み、依存症からの解放を願う時、技術職の重要な場面、ラーフカラム時間中。',
+      howTo: 'ラーフカラム時間中（曜日ごとに変動）に限定して唱える。南西または北西を向く。18回または108回。ウラドダール豆、青や紫の花、ゴーメダ（ヘソナイト・ガーネット）を供える。',
+      bestTime: 'ラーフカラム時間のみ（その日のラーフカラムは曜日ごとに異なる時間帯）。',
+      caution: 'ラーフは「幻惑の星」。執着や欲望から唱えると逆効果。霊的浄化の意図で唱える。ラーフ・カラム時間外に唱えるのは推奨されない。'
+    },
   },
   ketu: {
     name: 'ケートゥ', sanskrit: 'Ketu', icon: '☋',
     mantra: 'Om Sraam Sreem Sraum Sah Ketave Namaha',
     reading: 'オーム スラーム スリーム スロウム サハ ケータウェイ ナマハ',
+    simpleMantra: 'Om Ketave Namaha',
+    simpleReading: 'オーム ケータヴェー ナマハ',
+    meaning: {
+      translation: '「オーム、ケートゥに礼拝します」',
+      deity: 'ケートゥ（Ketu）— 月の南交点。ラーフと同じく首を切られたアスラ（スワラブハーヌ）から生まれた「尾」の部分。実体のない影の惑星。蛇の尾の姿。煙、旗、過去世のカルマの蓄積を象徴する。',
+      symbolism: '解脱・霊性・過去世・孤独・神秘・モクシャ（解放）。放棄、出家、超能力、原因不明の現象、直感、神秘思想、超越的知恵。',
+      benefits: '霊的解脱、過去のカルマからの解放、神秘的な知恵、瞑想の深まり、超能力の覚醒、原因不明の問題の浄化、執着からの自由、究極の真理への目覚め。',
+      vedic: 'ケートゥは「モクシャ・カラカ（解脱の因子）」。マハダシャーのケートゥ期は7年で、内省と霊性が深まる時期。霊的進化と過去世の浄化に深く関わる。聖者・神秘家・隠遁者には特別な意味を持つ。',
+      when: '霊性を深めたい時、過去から離れたい時、原因不明の健康問題、瞑想の前、出家・隠遁を考える時、超常体験を整理したい時、ケートゥカラム時間中、過去世のトラウマを癒したい時。',
+      howTo: 'ケートゥカラム時間中に限定。南東を向く。7回または108回。ホースグラム豆、にんにくのような葉、複数色の旗、キャッツアイ（猫目石）を供える。瞑想と組み合わせる。',
+      bestTime: 'ケートゥカラム時間のみ（曜日ごとに異なる）。',
+      caution: 'ケートゥは霊的解放を急かす力もあり、世俗的な願望のために唱えるのは不適切。準備のできていない人が深く関わると人生が突然変化することがある。'
+    },
   },
 };
 
@@ -1632,11 +2139,17 @@ function renderNowCard(state, schedule, date) {
         <div class="now-status idle"><span class="dot"></span><span>カラム時間(${fmtTime(p.start)}–${fmtTime(p.end)})— まだ唱えられます</span></div>
         <div class="now-title"><span class="planet-icon">${RAHU_KETU.rahu.icon}</span>ラーフ & ケートゥ</div>
         <div class="now-subtitle">Rahu & Ketu</div>
-        <div class="mantra-text">${RAHU_KETU.rahu.mantra}</div>
-        <div class="mantra-reading">${RAHU_KETU.rahu.reading}</div>
-        <div class="mantra-divider"></div>
-        <div class="mantra-text">${RAHU_KETU.ketu.mantra}</div>
-        <div class="mantra-reading">${RAHU_KETU.ketu.reading}</div>
+        <div class="mantra-essence">${shortEssence(RAHU_KETU.rahu.meaning)} / ${shortEssence(RAHU_KETU.ketu.meaning)}</div>
+        <span class="mantra-form-label primary">シンプル形式</span>
+        <div class="mantra-simple-text">${RAHU_KETU.rahu.simpleMantra}</div>
+        <div class="mantra-simple-reading">${RAHU_KETU.rahu.simpleReading}</div>
+        <div class="mantra-simple-text">${RAHU_KETU.ketu.simpleMantra}</div>
+        <div class="mantra-simple-reading">${RAHU_KETU.ketu.simpleReading}</div>
+        <span class="mantra-form-label">正式形式（ビージャ）</span>
+        <div class="mantra-text secondary">${RAHU_KETU.rahu.mantra}</div>
+        <div class="mantra-reading secondary">${RAHU_KETU.rahu.reading}</div>
+        <div class="mantra-text secondary">${RAHU_KETU.ketu.mantra}</div>
+        <div class="mantra-reading secondary">${RAHU_KETU.ketu.reading}</div>
         <div class="mantra-divider"></div>
         <div class="now-meta">
           <div class="meta-item"><span class="label">次のマントラ</span><span class="value">${nextIcon} ${nextLabel} (${untilTxt})</span></div>
@@ -1647,8 +2160,13 @@ function renderNowCard(state, schedule, date) {
         <div class="now-status idle"><span class="dot"></span><span>${p.label}の時間(${fmtTime(p.start)}–${fmtTime(p.end)})— まだ唱えられます</span></div>
         <div class="now-title"><span class="planet-icon">${p.planet.icon}</span>${p.name}</div>
         <div class="now-subtitle">${p.sanskrit} / ${p.planet.katakana}</div>
-        <div class="mantra-text">${p.mantra}</div>
-        <div class="mantra-reading">${p.reading}</div>
+        <div class="mantra-essence">${shortEssence(p.planet.meaning)}</div>
+        <span class="mantra-form-label primary">シンプル形式</span>
+        <div class="mantra-simple-text">${p.planet.simpleMantra}</div>
+        <div class="mantra-simple-reading">${p.planet.simpleReading}</div>
+        <span class="mantra-form-label">正式形式（ビージャ）</span>
+        <div class="mantra-text secondary">${p.mantra}</div>
+        <div class="mantra-reading secondary">${p.reading}</div>
         <div class="mantra-divider"></div>
         <div class="now-meta">
           <div class="meta-item"><span class="label">次のマントラ</span><span class="value">${nextIcon} ${nextLabel} (${untilTxt})</span></div>
@@ -1685,11 +2203,16 @@ function renderNowCard(state, schedule, date) {
       el.innerHTML = `
         <div class="now-status idle"><span class="dot"></span><span>今日のマントラ時間は終了 — まだ唱えられます</span></div>
         <div class="now-title"><span class="planet-icon">${RAHU_KETU.rahu.icon}</span>ラーフ & ケートゥ</div>
-        <div class="mantra-text">${RAHU_KETU.rahu.mantra}</div>
-        <div class="mantra-reading">${RAHU_KETU.rahu.reading}</div>
-        <div class="mantra-divider"></div>
-        <div class="mantra-text">${RAHU_KETU.ketu.mantra}</div>
-        <div class="mantra-reading">${RAHU_KETU.ketu.reading}</div>
+        <span class="mantra-form-label primary">シンプル形式</span>
+        <div class="mantra-simple-text">${RAHU_KETU.rahu.simpleMantra}</div>
+        <div class="mantra-simple-reading">${RAHU_KETU.rahu.simpleReading}</div>
+        <div class="mantra-simple-text">${RAHU_KETU.ketu.simpleMantra}</div>
+        <div class="mantra-simple-reading">${RAHU_KETU.ketu.simpleReading}</div>
+        <span class="mantra-form-label">正式形式（ビージャ）</span>
+        <div class="mantra-text secondary">${RAHU_KETU.rahu.mantra}</div>
+        <div class="mantra-reading secondary">${RAHU_KETU.rahu.reading}</div>
+        <div class="mantra-text secondary">${RAHU_KETU.ketu.mantra}</div>
+        <div class="mantra-reading secondary">${RAHU_KETU.ketu.reading}</div>
         <div class="mantra-divider"></div>
         <div class="now-meta"><div class="meta-item"><span class="label">明日 朝の開始</span><span class="value">${fmtTime(MORNING_SLOT.start)} (${tp.planet})</span></div></div>`;
     } else {
@@ -1697,8 +2220,13 @@ function renderNowCard(state, schedule, date) {
         <div class="now-status idle"><span class="dot"></span><span>今日のマントラ時間は終了 — まだ唱えられます</span></div>
         <div class="now-title"><span class="planet-icon">${p.planet.icon}</span>${p.name}</div>
         <div class="now-subtitle">${p.sanskrit} / ${p.planet.katakana}</div>
-        <div class="mantra-text">${p.mantra}</div>
-        <div class="mantra-reading">${p.reading}</div>
+        <div class="mantra-essence">${shortEssence(p.planet.meaning)}</div>
+        <span class="mantra-form-label primary">シンプル形式</span>
+        <div class="mantra-simple-text">${p.planet.simpleMantra}</div>
+        <div class="mantra-simple-reading">${p.planet.simpleReading}</div>
+        <span class="mantra-form-label">正式形式（ビージャ）</span>
+        <div class="mantra-text secondary">${p.mantra}</div>
+        <div class="mantra-reading secondary">${p.reading}</div>
         <div class="mantra-divider"></div>
         <div class="now-meta"><div class="meta-item"><span class="label">明日 朝の開始</span><span class="value">${fmtTime(MORNING_SLOT.start)} (${tp.planet})</span></div></div>`;
     }
@@ -1759,6 +2287,35 @@ function renderTimeline(state, schedule, date) {
   el.innerHTML = html;
 }
 
+// Extract a short one-line "essence" from the long deity + symbolism fields
+// (used in the now-card mantra-essence display).
+function shortEssence(m) {
+  if (!m) return '';
+  const deity = (m.deity || '').split('。')[0]; // first sentence of deity
+  const symb = (m.symbolism || '').split('。')[0].split('・').slice(0, 4).join('・');
+  if (!deity) return symb;
+  if (!symb) return deity;
+  return `${deity} — ${symb}`;
+}
+
+function meaningBlockHtml(m, id) {
+  if (!m) return '';
+  return `
+    <button class="meaning-toggle" type="button" aria-expanded="false" data-meaning-target="${id}">解説を見る</button>
+    <div class="mantra-meaning" id="${id}" hidden>
+      <div class="meaning-translation">${m.translation}</div>
+      <div class="meaning-row"><div class="meaning-label">神格</div><div class="meaning-value">${m.deity}</div></div>
+      <div class="meaning-row"><div class="meaning-label">象徴</div><div class="meaning-value">${m.symbolism}</div></div>
+      <div class="meaning-row"><div class="meaning-label">ご利益</div><div class="meaning-value">${m.benefits}</div></div>
+      ${m.vedic ? `<div class="meaning-row"><div class="meaning-label">占星術</div><div class="meaning-value">${m.vedic}</div></div>` : ''}
+      <div class="meaning-row"><div class="meaning-label">唱える時</div><div class="meaning-value">${m.when}</div></div>
+      ${m.howTo ? `<div class="meaning-row"><div class="meaning-label">唱え方</div><div class="meaning-value">${m.howTo}</div></div>` : ''}
+      <div class="meaning-row"><div class="meaning-label">最適時間</div><div class="meaning-value">${m.bestTime}</div></div>
+      ${m.caution ? `<div class="meaning-row caution"><div class="meaning-label">注意</div><div class="meaning-value">${m.caution}</div></div>` : ''}
+    </div>
+  `;
+}
+
 function renderReference() {
   const el = document.getElementById('referenceList');
   let html = '';
@@ -1771,9 +2328,18 @@ function renderReference() {
           <span class="ref-planet">${p.icon} ${p.planet}</span>
           <span class="ref-sanskrit">${p.sanskrit} / ${p.katakana}</span>
         </div>
-        <div class="ref-mantra">${p.mantra}</div>
-        <div class="ref-reading">${p.reading}</div>
-        <div style="margin-top:6px"><span class="ref-time">カラム ${fmtTime(p.kaalam.start)}–${fmtTime(p.kaalam.end)}</span></div>
+        <div class="ref-mantra-group">
+          <span class="ref-mantra-label primary">シンプル形式</span>
+          <div class="ref-mantra">${p.simpleMantra}</div>
+          <div class="ref-reading">${p.simpleReading}</div>
+        </div>
+        <div class="ref-mantra-group">
+          <span class="ref-mantra-label secondary">正式形式（ビージャ）</span>
+          <div class="ref-mantra">${p.mantra}</div>
+          <div class="ref-reading">${p.reading}</div>
+        </div>
+        <div style="margin-top:8px"><span class="ref-time">カラム ${fmtTime(p.kaalam.start)}–${fmtTime(p.kaalam.end)}</span></div>
+        ${meaningBlockHtml(p.meaning, `meaning-w${i}`)}
       </div>
     `;
   }
@@ -1784,8 +2350,17 @@ function renderReference() {
         <span class="ref-planet">${RAHU_KETU.rahu.icon} ${RAHU_KETU.rahu.name}</span>
         <span class="ref-sanskrit">${RAHU_KETU.rahu.sanskrit}</span>
       </div>
-      <div class="ref-mantra">${RAHU_KETU.rahu.mantra}</div>
-      <div class="ref-reading">${RAHU_KETU.rahu.reading}</div>
+      <div class="ref-mantra-group">
+        <span class="ref-mantra-label primary">シンプル形式</span>
+        <div class="ref-mantra">${RAHU_KETU.rahu.simpleMantra}</div>
+        <div class="ref-reading">${RAHU_KETU.rahu.simpleReading}</div>
+      </div>
+      <div class="ref-mantra-group">
+        <span class="ref-mantra-label secondary">正式形式（ビージャ）</span>
+        <div class="ref-mantra">${RAHU_KETU.rahu.mantra}</div>
+        <div class="ref-reading">${RAHU_KETU.rahu.reading}</div>
+      </div>
+      ${meaningBlockHtml(RAHU_KETU.rahu.meaning, 'meaning-rahu')}
     </div>
     <div class="ref-item special">
       <div class="ref-header">
@@ -1793,11 +2368,33 @@ function renderReference() {
         <span class="ref-planet">${RAHU_KETU.ketu.icon} ${RAHU_KETU.ketu.name}</span>
         <span class="ref-sanskrit">${RAHU_KETU.ketu.sanskrit}</span>
       </div>
-      <div class="ref-mantra">${RAHU_KETU.ketu.mantra}</div>
-      <div class="ref-reading">${RAHU_KETU.ketu.reading}</div>
+      <div class="ref-mantra-group">
+        <span class="ref-mantra-label primary">シンプル形式</span>
+        <div class="ref-mantra">${RAHU_KETU.ketu.simpleMantra}</div>
+        <div class="ref-reading">${RAHU_KETU.ketu.simpleReading}</div>
+      </div>
+      <div class="ref-mantra-group">
+        <span class="ref-mantra-label secondary">正式形式（ビージャ）</span>
+        <div class="ref-mantra">${RAHU_KETU.ketu.mantra}</div>
+        <div class="ref-reading">${RAHU_KETU.ketu.reading}</div>
+      </div>
+      ${meaningBlockHtml(RAHU_KETU.ketu.meaning, 'meaning-ketu')}
     </div>
   `;
   el.innerHTML = html;
+
+  // Wire up meaning toggles (delegated)
+  el.querySelectorAll('.meaning-toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.getAttribute('data-meaning-target');
+      const target = document.getElementById(id);
+      if (!target) return;
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      target.hidden = expanded;
+      btn.textContent = expanded ? '解説を見る' : '解説を閉じる';
+    });
+  });
 }
 
 // ========== ALERTS ==========
@@ -1813,8 +2410,21 @@ const defaultSettings = {
 
 function loadSettings() {
   try {
-    const stored = JSON.parse(localStorage.getItem(SETTINGS_KEY) || '{}');
-    return Object.assign({}, defaultSettings, stored);
+    const raw = localStorage.getItem(SETTINGS_KEY);
+    if (!raw) return Object.assign({}, defaultSettings);
+    const stored = JSON.parse(raw);
+    // Type-guard: only merge if stored is a plain object
+    if (typeof stored !== 'object' || stored === null || Array.isArray(stored)) {
+      return Object.assign({}, defaultSettings);
+    }
+    const merged = Object.assign({}, defaultSettings, stored);
+    // Clamp volume to [0, 1]
+    if (typeof merged.volume !== 'number' || !isFinite(merged.volume)) merged.volume = defaultSettings.volume;
+    merged.volume = Math.min(1, Math.max(0, merged.volume));
+    // Coerce booleans
+    merged.soundEnabled = !!merged.soundEnabled;
+    merged.notifEnabled = !!merged.notifEnabled;
+    return merged;
   } catch (e) {
     return Object.assign({}, defaultSettings);
   }
@@ -1858,6 +2468,16 @@ function playBell(volume) {
   master.connect(lp);
   lp.connect(ctx.destination);
 
+  // Inharmonic partials of a struck metal bowl (ratios over the fundamental)
+  const fundamental = 432;
+  const partials = [
+    { ratio: 1.00, gain: 0.36, decay: 8.5 },
+    { ratio: 2.74, gain: 0.17, decay: 6.5 },
+    { ratio: 5.38, gain: 0.085, decay: 4.5 },
+    { ratio: 8.90, gain: 0.04, decay: 3.0 },
+  ];
+  const longestDecay = Math.max(...partials.map(p => p.decay)) + 0.5;
+
   // Slow "breathing" shimmer — the characteristic singing-bowl wah-wah
   const shimmer = ctx.createGain();
   shimmer.gain.value = 1.0;
@@ -1870,16 +2490,11 @@ function playBell(volume) {
   lfo.connect(lfoGain);
   lfoGain.connect(shimmer.gain);
   lfo.start(now);
-  lfo.stop(now + 11);
-
-  // Inharmonic partials of a struck metal bowl (ratios over the fundamental)
-  const fundamental = 432;
-  const partials = [
-    { ratio: 1.00, gain: 0.36, decay: 8.5 },
-    { ratio: 2.74, gain: 0.17, decay: 6.5 },
-    { ratio: 5.38, gain: 0.085, decay: 4.5 },
-    { ratio: 8.90, gain: 0.04, decay: 3.0 },
-  ];
+  lfo.stop(now + longestDecay);
+  // Clean up nodes when the LFO finishes — prevents graph buildup on repeated plays
+  lfo.onended = () => {
+    try { lfo.disconnect(); lfoGain.disconnect(); shimmer.disconnect(); master.disconnect(); lp.disconnect(); } catch (e) {}
+  };
 
   for (const p of partials) {
     const base = fundamental * p.ratio;
@@ -1896,6 +2511,7 @@ function playBell(volume) {
       g.connect(shimmer);
       osc.start(now);
       osc.stop(now + p.decay + 0.1);
+      osc.onended = () => { try { osc.disconnect(); g.disconnect(); } catch (e) {} };
     });
   }
 }
@@ -1937,6 +2553,12 @@ function showNotification(title, body) {
 }
 
 function fireAlert(slot) {
+  // Race-condition guard: ensure we only fire once per slot per day, even if tick() and
+  // scheduleUpcomingAlerts' setTimeout race against each other.
+  const today = new Date();
+  if (hasAlertedToday(today, slot.type)) return;
+  markAlertedToday(today, slot.type);
+
   let title, body;
   if (slot.isRahuKetu) {
     title = '🔔 カラム時間 — ラーフ・ケートゥ';
@@ -1987,6 +2609,9 @@ function bindSlotAlert() {
   const overlay = document.getElementById('slotAlertOverlay');
   const closeBtn = document.getElementById('slotAlertClose');
   if (!overlay || !closeBtn) return;
+  // Guard against double-binding (e.g. if bindSlotAlert is ever called twice)
+  if (overlay._wired) return;
+  overlay._wired = true;
   closeBtn.addEventListener('click', () => {
     overlay.hidden = true;
     clearTimeout(window._slotAlertTimer);
@@ -2442,10 +3067,16 @@ function showInstallHintIfNeeded() {
   if (isStandalone) return;
   const dismissed = localStorage.getItem('mantra-install-dismissed');
   if (dismissed) return;
-  document.getElementById('installHint').classList.add('show');
-  document.querySelector('#installHint .close').addEventListener('click', () => {
-    localStorage.setItem('mantra-install-dismissed', '1');
-  });
+  const hint = document.getElementById('installHint');
+  hint.classList.add('show');
+  const closeBtn = hint.querySelector('.close');
+  if (closeBtn && !closeBtn._wired) {
+    closeBtn._wired = true;
+    closeBtn.addEventListener('click', () => {
+      hint.classList.remove('show');
+      try { localStorage.setItem('mantra-install-dismissed', '1'); } catch (e) {}
+    }, { once: true });
+  }
 }
 
 renderReference();
