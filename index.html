@@ -607,6 +607,19 @@
   .meaning-row.caution .meaning-label {
     color: #c97a4e;
   }
+  .meaning-section-title {
+    font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--gold-dim);
+    margin: 4px 0 6px;
+    letter-spacing: 0.06em;
+  }
+  .meaning-divider {
+    height: 1px;
+    background: var(--border-soft);
+    margin: 12px 0;
+  }
   .meaning-translation {
     font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
     font-size: 13.5px;
@@ -2093,11 +2106,18 @@ function renderNowCard(state, schedule, date) {
           <span class="slot-badge">${fmtTime(s.start)}–${fmtTime(s.end)}</span>
         </div>
         <div class="now-subtitle">Rahu &amp; Ketu — このマントラはカラム時間にのみ唱えます</div>
-        <div class="mantra-text">${RAHU_KETU.rahu.mantra}</div>
-        <div class="mantra-reading">${RAHU_KETU.rahu.reading}</div>
-        <div class="mantra-divider"></div>
-        <div class="mantra-text">${RAHU_KETU.ketu.mantra}</div>
-        <div class="mantra-reading">${RAHU_KETU.ketu.reading}</div>
+        <div class="mantra-essence">${shortEssence(RAHU_KETU.rahu.meaning)} / ${shortEssence(RAHU_KETU.ketu.meaning)}</div>
+        <span class="mantra-form-label primary">シンプル形式</span>
+        <div class="mantra-simple-text">${RAHU_KETU.rahu.simpleMantra}</div>
+        <div class="mantra-simple-reading">${RAHU_KETU.rahu.simpleReading}</div>
+        <div class="mantra-simple-text">${RAHU_KETU.ketu.simpleMantra}</div>
+        <div class="mantra-simple-reading">${RAHU_KETU.ketu.simpleReading}</div>
+        <span class="mantra-form-label">正式形式（ビージャ）</span>
+        <div class="mantra-text secondary">${RAHU_KETU.rahu.mantra}</div>
+        <div class="mantra-reading secondary">${RAHU_KETU.rahu.reading}</div>
+        <div class="mantra-text secondary">${RAHU_KETU.ketu.mantra}</div>
+        <div class="mantra-reading secondary">${RAHU_KETU.ketu.reading}</div>
+        ${rahuKetuMeaningBlockHtml('now-meaning-rk-active')}
         <div class="progress"><div class="progress-bar" style="width:${progress.toFixed(1)}%"></div></div>
         <div class="now-meta">
           <div class="meta-item"><span class="label">残り時間</span><span class="value">${remTxt}</span></div>
@@ -2112,8 +2132,14 @@ function renderNowCard(state, schedule, date) {
           <span class="slot-badge">${fmtTime(s.start)}–${fmtTime(s.end)}</span>
         </div>
         <div class="now-subtitle">${s.sanskrit} / ${s.planet.katakana}</div>
-        <div class="mantra-text">${s.mantra}</div>
-        <div class="mantra-reading">${s.reading}</div>
+        <div class="mantra-essence">${shortEssence(s.planet.meaning)}</div>
+        <span class="mantra-form-label primary">シンプル形式</span>
+        <div class="mantra-simple-text">${s.planet.simpleMantra}</div>
+        <div class="mantra-simple-reading">${s.planet.simpleReading}</div>
+        <span class="mantra-form-label">正式形式（ビージャ）</span>
+        <div class="mantra-text secondary">${s.mantra}</div>
+        <div class="mantra-reading secondary">${s.reading}</div>
+        ${meaningBlockHtml(s.planet.meaning, 'now-meaning-active')}
         <div class="progress"><div class="progress-bar" style="width:${progress.toFixed(1)}%"></div></div>
         <div class="now-meta">
           <div class="meta-item"><span class="label">残り時間</span><span class="value">${remTxt}</span></div>
@@ -2146,6 +2172,7 @@ function renderNowCard(state, schedule, date) {
         <div class="mantra-reading secondary">${RAHU_KETU.rahu.reading}</div>
         <div class="mantra-text secondary">${RAHU_KETU.ketu.mantra}</div>
         <div class="mantra-reading secondary">${RAHU_KETU.ketu.reading}</div>
+        ${rahuKetuMeaningBlockHtml('now-meaning-rk-between')}
         <div class="mantra-divider"></div>
         <div class="now-meta">
           <div class="meta-item"><span class="label">次のマントラ</span><span class="value">${nextIcon} ${nextLabel} (${untilTxt})</span></div>
@@ -2163,6 +2190,7 @@ function renderNowCard(state, schedule, date) {
         <span class="mantra-form-label">正式形式（ビージャ）</span>
         <div class="mantra-text secondary">${p.mantra}</div>
         <div class="mantra-reading secondary">${p.reading}</div>
+        ${meaningBlockHtml(p.planet.meaning, 'now-meaning-between')}
         <div class="mantra-divider"></div>
         <div class="now-meta">
           <div class="meta-item"><span class="label">次のマントラ</span><span class="value">${nextIcon} ${nextLabel} (${untilTxt})</span></div>
@@ -2195,6 +2223,7 @@ function renderNowCard(state, schedule, date) {
         <div class="mantra-reading secondary">${RAHU_KETU.rahu.reading}</div>
         <div class="mantra-text secondary">${RAHU_KETU.ketu.mantra}</div>
         <div class="mantra-reading secondary">${RAHU_KETU.ketu.reading}</div>
+        ${rahuKetuMeaningBlockHtml('now-meaning-rk-next')}
         <div class="mantra-divider"></div>
         <div class="now-meta">
           <div class="meta-item"><span class="label">あと</span><span class="value">${untilTxt}</span></div>
@@ -2216,6 +2245,7 @@ function renderNowCard(state, schedule, date) {
         <span class="mantra-form-label">正式形式（ビージャ）</span>
         <div class="mantra-text secondary">${n.mantra}</div>
         <div class="mantra-reading secondary">${n.reading}</div>
+        ${meaningBlockHtml(n.planet.meaning, 'now-meaning-next')}
         <div class="mantra-divider"></div>
         <div class="now-meta">
           <div class="meta-item"><span class="label">あと</span><span class="value">${untilTxt}</span></div>
@@ -2243,6 +2273,7 @@ function renderNowCard(state, schedule, date) {
         <div class="mantra-reading secondary">${RAHU_KETU.rahu.reading}</div>
         <div class="mantra-text secondary">${RAHU_KETU.ketu.mantra}</div>
         <div class="mantra-reading secondary">${RAHU_KETU.ketu.reading}</div>
+        ${rahuKetuMeaningBlockHtml('now-meaning-rk-end')}
         <div class="mantra-divider"></div>
         <div class="now-meta"><div class="meta-item"><span class="label">明日 朝の開始</span><span class="value">${fmtTime(MORNING_SLOT.start)} (${tp.planet})</span></div></div>`;
     } else {
@@ -2257,6 +2288,7 @@ function renderNowCard(state, schedule, date) {
         <span class="mantra-form-label">正式形式（ビージャ）</span>
         <div class="mantra-text secondary">${p.mantra}</div>
         <div class="mantra-reading secondary">${p.reading}</div>
+        ${meaningBlockHtml(p.planet.meaning, 'now-meaning-end')}
         <div class="mantra-divider"></div>
         <div class="now-meta"><div class="meta-item"><span class="label">明日 朝の開始</span><span class="value">${fmtTime(MORNING_SLOT.start)} (${tp.planet})</span></div></div>`;
     }
@@ -2331,11 +2363,16 @@ function shortEssence(m) {
   return `${deity} — ${symb}`;
 }
 
+// State store for the open/closed status of each meaning block, keyed by id.
+// This survives the per-second re-render of the now-card.
+const meaningOpenState = {};
+
 function meaningBlockHtml(m, id) {
   if (!m) return '';
+  const isOpen = meaningOpenState[id] === true;
   return `
-    <button class="meaning-toggle" type="button" aria-expanded="false" data-meaning-target="${id}">解説を見る</button>
-    <div class="mantra-meaning" id="${id}" hidden>
+    <button class="meaning-toggle" type="button" aria-expanded="${isOpen}" data-meaning-target="${id}">${isOpen ? '解説を閉じる' : '解説を見る'}</button>
+    <div class="mantra-meaning" id="${id}"${isOpen ? '' : ' hidden'}>
       <div class="meaning-translation">${m.translation}</div>
       <div class="meaning-row"><div class="meaning-label">神格</div><div class="meaning-value">${m.deity}</div></div>
       <div class="meaning-row"><div class="meaning-label">象徴</div><div class="meaning-value">${m.symbolism}</div></div>
@@ -2345,6 +2382,34 @@ function meaningBlockHtml(m, id) {
       ${m.howTo ? `<div class="meaning-row"><div class="meaning-label">唱え方</div><div class="meaning-value">${m.howTo}</div></div>` : ''}
       <div class="meaning-row"><div class="meaning-label">最適時間</div><div class="meaning-value">${m.bestTime}</div></div>
       ${m.caution ? `<div class="meaning-row caution"><div class="meaning-label">注意</div><div class="meaning-value">${m.caution}</div></div>` : ''}
+    </div>
+  `;
+}
+
+// Build a combined meaning block for Rahu + Ketu (used in now-card when in カラム時間).
+function rahuKetuMeaningBlockHtml(id) {
+  const r = RAHU_KETU.rahu.meaning;
+  const k = RAHU_KETU.ketu.meaning;
+  if (!r || !k) return '';
+  const isOpen = meaningOpenState[id] === true;
+  const section = (title, mm) => `
+    <div class="meaning-section-title">${title}</div>
+    <div class="meaning-translation">${mm.translation}</div>
+    <div class="meaning-row"><div class="meaning-label">神格</div><div class="meaning-value">${mm.deity}</div></div>
+    <div class="meaning-row"><div class="meaning-label">象徴</div><div class="meaning-value">${mm.symbolism}</div></div>
+    <div class="meaning-row"><div class="meaning-label">ご利益</div><div class="meaning-value">${mm.benefits}</div></div>
+    ${mm.vedic ? `<div class="meaning-row"><div class="meaning-label">占星術</div><div class="meaning-value">${mm.vedic}</div></div>` : ''}
+    <div class="meaning-row"><div class="meaning-label">唱える時</div><div class="meaning-value">${mm.when}</div></div>
+    ${mm.howTo ? `<div class="meaning-row"><div class="meaning-label">唱え方</div><div class="meaning-value">${mm.howTo}</div></div>` : ''}
+    <div class="meaning-row"><div class="meaning-label">最適時間</div><div class="meaning-value">${mm.bestTime}</div></div>
+    ${mm.caution ? `<div class="meaning-row caution"><div class="meaning-label">注意</div><div class="meaning-value">${mm.caution}</div></div>` : ''}
+  `;
+  return `
+    <button class="meaning-toggle" type="button" aria-expanded="${isOpen}" data-meaning-target="${id}">${isOpen ? '解説を閉じる' : '解説を見る'}</button>
+    <div class="mantra-meaning"  id="${id}"${isOpen ? '' : ' hidden'}>
+      ${section('☊ ラーフ（北の月の交点）', r)}
+      <div class="meaning-divider"></div>
+      ${section('☋ ケートゥ（南の月の交点）', k)}
     </div>
   `;
 }
@@ -2415,18 +2480,26 @@ function renderReference() {
     </div>
   `;
   el.innerHTML = html;
+  // Click handling for `.meaning-toggle` is centralized in a single document-level
+  // listener (bindMeaningToggles below) so it works for both the reference list
+  // AND the dynamically re-rendered now-card.
+}
 
-  // Wire up meaning toggles (delegated)
-  el.querySelectorAll('.meaning-toggle').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const id = btn.getAttribute('data-meaning-target');
-      const target = document.getElementById(id);
-      if (!target) return;
-      const expanded = btn.getAttribute('aria-expanded') === 'true';
-      btn.setAttribute('aria-expanded', expanded ? 'false' : 'true');
-      target.hidden = expanded;
-      btn.textContent = expanded ? '解説を見る' : '解説を閉じる';
-    });
+// One global delegated click handler for all .meaning-toggle buttons.
+// Works for elements that are added later by re-renders.
+function bindMeaningToggles() {
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.meaning-toggle');
+    if (!btn) return;
+    const id = btn.getAttribute('data-meaning-target');
+    if (!id) return;
+    const target = document.getElementById(id);
+    if (!target) return;
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+    target.hidden = expanded;
+    btn.textContent = expanded ? '解説を見る' : '解説を閉じる';
+    meaningOpenState[id] = !expanded;
   });
 }
 
@@ -3116,6 +3189,7 @@ function showInstallHintIfNeeded() {
 }
 
 renderReference();
+bindMeaningToggles();
 bindSettings();
 bindCounter();
 bindMilestoneSelectors();
