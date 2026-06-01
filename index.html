@@ -621,6 +621,155 @@
     margin: 12px 0;
   }
 
+  /* === Karma-dissolving mantra card (Tuesday & Thursday only) === */
+  .karma-card {
+    position: relative;
+    z-index: 1;
+    margin-top: 18px;
+    padding: 0;
+    background: linear-gradient(180deg, rgba(214,138,106,0.07) 0%, rgba(244,208,63,0.05) 100%);
+    border: 1px solid rgba(244,208,63,0.32);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 2px 14px rgba(85,55,20,0.06);
+  }
+  .karma-card[hidden] { display: none; }
+  .karma-header {
+    padding: 14px 18px 10px;
+    text-align: center;
+    border-bottom: 1px solid rgba(244,208,63,0.2);
+    background: linear-gradient(180deg, rgba(244,208,63,0.08), transparent);
+  }
+  .karma-icon {
+    font-size: 28px;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .karma-label {
+    font-size: 10.5px;
+    letter-spacing: 0.16em;
+    color: var(--gold);
+    text-transform: uppercase;
+    font-family: "Cormorant Garamond", "Hiragino Mincho ProN", serif;
+    margin-bottom: 2px;
+  }
+  .karma-title {
+    font-size: 16px;
+    color: var(--mantra);
+    font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    margin-bottom: 4px;
+  }
+  .karma-deity-sanskrit {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 12px;
+    color: var(--gold-dim);
+    font-style: italic;
+    letter-spacing: 0.06em;
+  }
+  .karma-body {
+    padding: 16px 18px 18px;
+  }
+  .karma-mantra-text {
+    font-family: "Cormorant Garamond", "Hiragino Mincho ProN", "Yu Mincho", serif;
+    font-style: italic;
+    font-size: 23px;
+    font-weight: 500;
+    line-height: 1.5;
+    color: var(--mantra);
+    text-align: center;
+    margin: 6px 0 8px;
+  }
+  .karma-mantra-reading {
+    font-size: 15.5px;
+    color: var(--text-dim);
+    line-height: 1.7;
+    letter-spacing: 0.06em;
+    text-align: center;
+    margin-bottom: 8px;
+  }
+  .karma-meaning {
+    font-size: 12px;
+    color: var(--text);
+    line-height: 1.75;
+    text-align: center;
+    padding: 8px 4px;
+    border-top: 1px dashed var(--border-soft);
+    border-bottom: 1px dashed var(--border-soft);
+    margin: 10px 0;
+    font-family: "Hiragino Mincho ProN", serif;
+  }
+  .karma-section {
+    margin-top: 14px;
+    padding: 12px 14px;
+    background: var(--bg);
+    border: 1px solid var(--border-soft);
+    border-radius: 10px;
+  }
+  .karma-section h4 {
+    font-size: 11.5px;
+    color: var(--gold-dim);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    margin: 0 0 6px;
+    font-family: "Hiragino Mincho ProN", serif;
+  }
+  .karma-section p, .karma-section li {
+    font-size: 12px;
+    color: var(--text);
+    line-height: 1.75;
+    margin: 4px 0;
+  }
+  .karma-section ol {
+    padding-left: 1.4em;
+    margin: 4px 0;
+  }
+  .karma-closing {
+    margin-top: 14px;
+    padding: 12px 14px;
+    background: rgba(244,208,63,0.05);
+    border: 1px solid rgba(244,208,63,0.2);
+    border-radius: 10px;
+    text-align: center;
+  }
+  .karma-closing h4 {
+    font-size: 11.5px;
+    color: var(--gold-dim);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    margin: 0 0 8px;
+  }
+  .karma-closing-mantra {
+    font-family: "Cormorant Garamond", "Hiragino Mincho ProN", serif;
+    font-style: italic;
+    font-size: 14.5px;
+    color: var(--mantra);
+    line-height: 1.55;
+    margin: 6px 0 1px;
+    letter-spacing: 0.04em;
+  }
+  .karma-closing-meaning {
+    font-size: 11px;
+    color: var(--text-faint);
+    letter-spacing: 0.04em;
+    margin-bottom: 6px;
+  }
+  .karma-protocol {
+    margin-top: 12px;
+    padding: 10px 14px;
+    background: rgba(214,138,106,0.06);
+    border-left: 3px solid var(--gold-dim);
+    border-radius: 0 8px 8px 0;
+    font-size: 12px;
+    line-height: 1.65;
+    color: var(--text);
+  }
+  .karma-protocol strong {
+    color: var(--gold-dim);
+    font-weight: 600;
+  }
+
   /* === Mantra audio sample player === */
   .mantra-audio {
     margin: 14px 0 6px;
@@ -1658,6 +1807,11 @@
   <!-- Filled by JS -->
 </div>
 
+<!-- Karma-dissolving mantra card (shown only on Tuesday & Thursday) -->
+<div class="card karma-card" id="karmaCard" hidden>
+  <!-- Filled by JS -->
+</div>
+
 <!-- Counter -->
 <div class="counter-card" id="counterCard">
   <button class="counter-reset" id="counterReset" title="リセット" aria-label="リセット">↺</button>
@@ -1677,7 +1831,6 @@
     </button>
   </div>
   <div class="counter-milestones">
-    <button type="button" class="milestone" id="ms3" data-target="3"><div class="milestone-fill"></div><div class="milestone-num">3</div><div class="milestone-status" id="msStatus3">あと 3 回</div></button>
     <button type="button" class="milestone" id="ms9" data-target="9"><div class="milestone-fill"></div><div class="milestone-num">9</div><div class="milestone-status" id="msStatus9">あと 9 回</div></button>
     <button type="button" class="milestone" id="ms108" data-target="108"><div class="milestone-fill"></div><div class="milestone-num">108</div><div class="milestone-status" id="msStatus108">あと 108 回</div></button>
   </div>
@@ -1767,7 +1920,7 @@
         <h3 class="saint-name">アガスティア聖者</h3>
         <div class="saint-sanskrit">अगस्त्य महर्षि — Agastya Maharishi</div>
         <p class="saint-desc">
-          ヴェーダの七賢者（サプタ・リシ）の一人。ヴェーダ占星術と医学（シッダー医学）の祖と仰がれる古代の大聖者。小柄な体ながら一口で大海を飲み干したとされる伝説、そして「ナーディー・リーフ」と呼ばれる個人の運命を記した椰子葉の伝授者として知られる。九曜マントラを含む多くの霊的教えの源流。
+          ヴェーダの七賢者（サプタ・リシ）の一人。ヴェーダ占星術とシッダー医学の祖と仰がれる古代の大聖者。聖仙ミトラとヴァルナから「壺（クンバ）」の中に生まれたとされ、「クンバ・サンバーヴァ（壺から生まれし者）」の異名を持つ。小柄な体ながら一口で大海を飲み干したとされる伝説、また個人の運命を記した椰子葉「ナーディー・リーフ」の伝授者として知られ、ヴェーダの霊的智慧を体系化し後世に伝えた源流的存在。
         </p>
       </figcaption>
     </figure>
@@ -1785,7 +1938,8 @@
         <h3 class="saint-name">バーラクンバグルムニ</h3>
         <div class="saint-sanskrit">भार कुम्भ गुरु मुनि — Bhāra Kumbha Guru Muni</div>
         <p class="saint-desc">
-          「満ちた器（クンバ）を背負う師」を意味する尊称。アガスティア聖者と同じく「クンバ（壺）」の象徴を持つ霊的系譜の継承者。山中の静寂の中で深い瞑想と祈りを捧げ、現代に古の智慧を伝える存在。
+          <strong>アガスティア聖者の生まれかわり</strong>とされる現代の大聖者。「満ちた器（クンバ）を背負う師」を意味する尊称を持ち、アガスティア聖者と同じく「クンバ（壺）」の象徴を継承する霊的系譜の継承者。<br>
+          インドの歴史ある修行僧団体「<strong>アカラ（Akhara）</strong>」から、最高位の聖者や指導者にのみ贈られる栄誉称号「<strong>マハー・マンダレシュワ（Maha Mandaleshwar）</strong>」を授与された大聖者。山中の静寂の中で深い瞑想と祈りを捧げ、現代に古の智慧を伝える存在。
         </p>
       </figcaption>
     </figure>
@@ -2021,6 +2175,39 @@ const RAHU_KETU = {
     },
   },
 };
+
+// Karma-dissolving mantras (火曜日と木曜日に唱える 108回×108週のマントラ)
+// These are SEPARATE from the weekday planetary mantras.
+const KARMA_MANTRAS = {
+  // 2 = Tuesday (火曜日)
+  2: {
+    deity: 'ムルガン神',
+    deitySanskrit: 'Murugan',
+    title: 'カルマ解消マントラ（火曜日 — ムルガン神）',
+    mantra: 'Om Saravana Bhava',
+    reading: 'オーム サラヴァナ バワ',
+    audio: 'mantra-murugan.mp3',
+    meaning: '「オーム」は宇宙が始まった時の聖なる音。「サラヴァナバワ」はムルガン神の別名であり、ムルガン神をお呼びするイメージ。',
+    icon: '🔱',
+  },
+  // 4 = Thursday (木曜日)
+  4: {
+    deity: 'アガスティア聖者',
+    deitySanskrit: 'Agastya Maharishi',
+    title: 'カルマ解消マントラ（木曜日 — アガスティア聖者）',
+    mantra: 'Om Agastheesaye Namaha',
+    reading: 'オーム アガッティサーイェ ナマハ',
+    audio: 'mantra-agastya.mp3',
+    meaning: '「オーム」は聖なる音。「アガッティサーイェ」はアガスティア聖者のこと。「ナマハ」は御讃します — アガスティア聖者をお讃します。',
+    icon: '🕉',
+  },
+};
+
+// Closing mantras chanted at the end of karma-dissolving practice
+const KARMA_CLOSING_MANTRAS = [
+  { reading: 'シャンティ シャンティ シャンティヒー', meaning: '平安 平安 平安' },
+  { reading: 'ティルチットゥルアンバラン ティルチットゥルアンバラン ティルチットゥルアンバラン', meaning: '魂が平安でありますように' },
+];
 
 // Tokyo location
 const TOKYO = { lat: 35.6762, lng: 139.6503, timezone: 9 };
@@ -2613,6 +2800,73 @@ function renderReference() {
   // AND the dynamically re-rendered now-card.
 }
 
+// ========== KARMA-DISSOLVING MANTRA CARD (Tue/Thu) ==========
+
+function renderKarmaCard(date) {
+  const el = document.getElementById('karmaCard');
+  if (!el) return;
+  const day = date.getDay();
+  const km = KARMA_MANTRAS[day];
+  if (!km) {
+    el.hidden = true;
+    el.innerHTML = '';
+    return;
+  }
+  el.hidden = false;
+  el.innerHTML = `
+    <div class="karma-header">
+      <div class="karma-icon">${km.icon}</div>
+      <div class="karma-label">カルマ解消マントラ</div>
+      <div class="karma-title">${km.deity}</div>
+      <div class="karma-deity-sanskrit">${km.deitySanskrit}</div>
+    </div>
+    <div class="karma-body">
+      <div class="karma-mantra-text">${km.mantra}</div>
+      <div class="karma-mantra-reading">${km.reading}</div>
+      ${audioPlayerHtml(km.audio, km.deity + 'のお手本')}
+      <div class="karma-meaning">${km.meaning}</div>
+
+      <div class="karma-protocol">
+        <strong>唱える回数</strong>：108回 × 108週<br>
+        毎週連続で108週でなくても大丈夫です。難しい週があれば、翌週以降に続けていただければ問題ありません。<br>
+        途中で分からなくなったり、回数を間違えた・中断した場合は、「もう一度やり直します」と心の中で言って、最初から唱え直してください。<br>
+        108回目で「特異点」とも言われるエネルギーが高まります。
+      </div>
+
+      <details class="karma-section">
+        <summary style="cursor:pointer;color:var(--gold-dim);font-size:12px;font-weight:600;letter-spacing:0.06em;">▾ 唱える前の準備（身を清める）</summary>
+        <ol>
+          <li>一番良い方法は<strong>シャワーを浴びる</strong>こと。</li>
+          <li>できない場合は、手を洗った後に右手の平に少量の水を持ち、<strong>頭から肩に振りかける</strong>ことで身を清められます。</li>
+          <li>時間は<strong>朝5時〜8時 / 夕方16時〜19時</strong>が望ましい。難しい場合は別の時間帯でも可。</li>
+          <li>心を落ち着かせられる場所で行う。</li>
+          <li><strong>東を向く</strong>のが望ましい。神棚など聖なる場所がある場合はそちらに向いてもOK。</li>
+        </ol>
+      </details>
+
+      <details class="karma-section">
+        <summary style="cursor:pointer;color:var(--gold-dim);font-size:12px;font-weight:600;letter-spacing:0.06em;">▾ 大切な心構え</summary>
+        <ol>
+          <li>ご自身で唱えてカルマ解消される部分が100%とした場合、1週間行うごとに数％ずつカルマが消えていきます。</li>
+          <li><strong>「やりたくない・面倒だ」という気持ち</strong>で唱えるのであれば、全ての回数を行っても100%にならないと言われています。</li>
+          <li>カルマ解消をお手伝いくださる神様に、その想いが届くからです。</li>
+          <li>唱える日には、神様をイメージして、<strong>感謝の気持ちで、集中して</strong>唱えることが重要です。</li>
+          <li>マントラは声に出しても、心の中で唱えてもOK。集中できる方法で行ってください。</li>
+          <li>言われている回数以外にも、日常生活の中で心の中で唱えることで、常に心を落ち着かせ、平安を保つことに繋がります。</li>
+        </ol>
+      </details>
+
+      <div class="karma-closing">
+        <h4>♪ 締めくくりのマントラ（108回終了後に1回ずつ）</h4>
+        ${KARMA_CLOSING_MANTRAS.map(c => `
+          <div class="karma-closing-mantra">${c.reading}</div>
+          <div class="karma-closing-meaning">— ${c.meaning} —</div>
+        `).join('')}
+      </div>
+    </div>
+  `;
+}
+
 // ========== MANTRA AUDIO SAMPLE PLAYER ==========
 // Plays per-weekday recorded chanting from /mantra-{planet}.mp3 files.
 // Uses one persistent <audio> element (id=mantraSampleAudio) so playback is
@@ -3035,7 +3289,7 @@ function markAlertedToday(date, slotType) {
 // ========== COUNTER ==========
 
 const COUNTER_KEY = 'mantra-counter';
-const MILESTONES = [3, 9, 108];
+const MILESTONES = [9, 108];
 
 function loadCounter() {
   try {
@@ -3080,8 +3334,8 @@ function renderCounter() {
   const display = document.getElementById('counterDisplay');
   const target = document.getElementById('counterTarget');
   const progressBar = document.getElementById('counterProgressBar');
-  const msEls = { 3: document.getElementById('ms3'), 9: document.getElementById('ms9'), 108: document.getElementById('ms108') };
-  const msStatusEls = { 3: document.getElementById('msStatus3'), 9: document.getElementById('msStatus9'), 108: document.getElementById('msStatus108') };
+  const msEls = { 9: document.getElementById('ms9'), 108: document.getElementById('ms108') };
+  const msStatusEls = { 9: document.getElementById('msStatus9'), 108: document.getElementById('msStatus108') };
 
   display.textContent = counter;
 
@@ -3319,6 +3573,7 @@ function tick() {
     cachedSchedule = getTodaysSchedule(now);
     renderHeader(now);
     renderTimeline(getCurrentState(now, cachedSchedule), cachedSchedule, now);
+    renderKarmaCard(now);
     // Reset transition tracker on date change to avoid stale slot-type carry-over
     prevSlotType = null;
   }

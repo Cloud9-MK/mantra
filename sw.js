@@ -2,7 +2,7 @@
 // Cache-first strategy for offline support.
 // Bump CACHE_VERSION whenever you push new assets to invalidate old caches.
 
-const CACHE_VERSION = 'v4-2026-06-02';
+const CACHE_VERSION = 'v5-2026-06-02b';
 const CACHE_NAME = `mantra-${CACHE_VERSION}`;
 
 // Files to pre-cache when the SW installs.
@@ -22,6 +22,9 @@ const PRECACHE = [
   './mantra-saturn.mp3',
   './mantra-rahu.mp3',
   './mantra-ketu.mp3',
+  // Karma-dissolving mantras (Tuesday: Murugan, Thursday: Agastya)
+  './mantra-murugan.mp3',
+  './mantra-agastya.mp3',
 ];
 
 self.addEventListener('install', (event) => {
@@ -30,7 +33,7 @@ self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
       // Use { cache: 'reload' } to bypass HTTP cache during pre-cache.
-      // Best-effort: if an asset (e.g. an optional image) isn't there, don't fail install.
+      // Best-effort: if an asset isn't there, don't fail install.
       return Promise.all(
         PRECACHE.map((url) =>
           cache.add(new Request(url, { cache: 'reload' })).catch(() => null)
@@ -55,18 +58,15 @@ self.addEventListener('activate', (event) => {
 
 self.addEventListener('fetch', (event) => {
   const req = event.request;
-  // Only handle GET. Don't try to cache POSTs / cross-origin Drive thumbnails.
   if (req.method !== 'GET') return;
   const url = new URL(req.url);
   // Skip cross-origin requests (e.g. Google Drive thumbnail fallback images).
-  // They go straight to the network; if offline, the image just won't load.
   if (url.origin !== self.location.origin) return;
 
   event.respondWith(
     caches.match(req).then((cached) => {
       if (cached) {
-        // Cache-first: serve cached version immediately.
-        // In the background, fetch a fresh copy to update the cache for next time.
+        // Cache-first: serve cached version immediately, fetch fresh in background.
         fetch(req)
           .then((res) => {
             if (res && res.ok) {
@@ -76,7 +76,7 @@ self.addEventListener('fetch', (event) => {
           .catch(() => {});
         return cached;
       }
-      // Not cached → go to network, and store the response if successful.
+      // Not cached → go to network and store the response if successful.
       return fetch(req)
         .then((res) => {
           if (res && res.ok) {
@@ -86,11 +86,9 @@ self.addEventListener('fetch', (event) => {
           return res;
         })
         .catch(() => {
-          // Offline and not in cache → for navigation requests, fall back to index.
           if (req.mode === 'navigate') {
             return caches.match('./index.html');
           }
-          // Otherwise return a basic offline error response
           return new Response('Offline', { status: 503, statusText: 'Offline' });
         });
     })
