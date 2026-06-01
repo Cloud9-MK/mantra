@@ -620,6 +620,109 @@
     background: var(--border-soft);
     margin: 12px 0;
   }
+
+  /* === Mantra audio sample player === */
+  .mantra-audio {
+    margin: 14px 0 6px;
+    padding: 12px 14px;
+    background: linear-gradient(135deg, rgba(244,208,63,0.06), rgba(214,138,106,0.05));
+    border: 1px solid rgba(244,208,63,0.25);
+    border-radius: 12px;
+  }
+  .mantra-audio-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 11.5px;
+    letter-spacing: 0.08em;
+    color: var(--gold-dim);
+    font-family: "Hiragino Mincho ProN", serif;
+  }
+  .mantra-audio-header::before {
+    content: "♪";
+    margin-right: 6px;
+    font-size: 13px;
+  }
+  .mantra-audio-loop {
+    background: transparent;
+    border: 1px solid var(--border-soft);
+    color: var(--text-faint);
+    font-family: inherit;
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    padding: 3px 9px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.15s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .mantra-audio-loop[data-loop="on"] {
+    color: var(--gold);
+    border-color: var(--gold-dim);
+    background: rgba(244,208,63,0.1);
+  }
+  .mantra-audio-loop::before {
+    content: "↻ ";
+    margin-right: 2px;
+  }
+  .mantra-audio-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .mantra-audio-play {
+    flex: 0 0 44px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid var(--gold-dim);
+    background: linear-gradient(135deg, #f8e8b8 0%, #d4b574 100%);
+    color: #553720;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s;
+    -webkit-tap-highlight-color: transparent;
+    box-shadow: 0 2px 6px rgba(85,55,20,0.15);
+    padding: 0;
+    line-height: 1;
+  }
+  .mantra-audio-play:active {
+    transform: scale(0.94);
+    box-shadow: 0 1px 3px rgba(85,55,20,0.2);
+  }
+  .mantra-audio-play[data-state="playing"] {
+    background: linear-gradient(135deg, #c69f5e 0%, #a87633 100%);
+    color: #fbf6e9;
+  }
+  .mantra-audio-progress {
+    flex: 1;
+    height: 4px;
+    background: var(--bg-elevated);
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+  }
+  .mantra-audio-progress-bar {
+    position: absolute;
+    inset: 0 auto 0 0;
+    background: linear-gradient(90deg, var(--gold-dim), var(--gold));
+    width: 0%;
+    transition: width 0.2s linear;
+    border-radius: 2px;
+  }
+  .mantra-audio-time {
+    flex: 0 0 auto;
+    font-size: 11px;
+    color: var(--text-dim);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.03em;
+    min-width: 64px;
+    text-align: right;
+  }
   .meaning-translation {
     font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
     font-size: 13.5px;
@@ -1701,6 +1804,10 @@
   <div class="small">※カラム時間は伝統的な固定値（日の出6時／日没18時を想定した8等分）です</div>
 </div>
 
+<!-- Persistent audio element for the mantra example recording.
+     src is set dynamically based on the current planet (see updateAudioPlayer). -->
+<audio id="mantraSampleAudio" preload="metadata" playsinline></audio>
+
 <!-- Slot start visual alert overlay -->
 <div class="slot-alert-overlay" id="slotAlertOverlay" hidden>
   <div class="slot-alert-card">
@@ -1726,6 +1833,7 @@ const PLANETS = [
     reading: 'オーム ハラーム ハリーム ハローム サハ スーリヤーイェ ナマハ',
     simpleMantra: 'Om Suryaaya Namaha',
     simpleReading: 'オーム スーリヤーイェ ナマハ',
+    audio: 'mantra-sun.mp3',
     meaning: {
       translation: '「オーム、太陽神スーリヤに礼拝します」',
       deity: '太陽神スーリヤ（Surya）。インド神話では7頭の馬が引く黄金の戦車に乗り、天空を渡る神。リグ・ヴェーダ最古の讃歌にも歌われた、最も古い神格の一つ。日々東から昇り、すべての生命に光と熱を与える根源的存在。',
@@ -1747,6 +1855,7 @@ const PLANETS = [
     reading: 'オーム シュラーム シュリーム シュローム サハ チャンドラーイェ ナマハ',
     simpleMantra: 'Om Chandraaya Namaha',
     simpleReading: 'オーム チャンドラーイェ ナマハ',
+    audio: 'mantra-moon.mp3',
     meaning: {
       translation: '「オーム、月神チャンドラに礼拝します」',
       deity: '月神チャンドラ（Chandra / Soma）。28人のナクシャトラ（星宿）の女神たちの夫。心（マナス）と感情を司る神格。乳海撹拌から生まれたとも、アトリ仙の眼から生まれたとも伝わる。乳白色の衣をまとい、両手に蓮を持つ。',
@@ -1768,6 +1877,7 @@ const PLANETS = [
     reading: 'オーム クラーム クリーム クローム サハ バウマーイェ ナマハ',
     simpleMantra: 'Om Mangalaaya Namaha',
     simpleReading: 'オーム マンガラーイェ ナマハ',
+    audio: 'mantra-mars.mp3',
     meaning: {
       translation: '「オーム、マンガラ神に礼拝します」※「マンガラ」には「吉祥」「縁起の良い」の意味も含む。',
       deity: '火星神マンガラ（Mangala / Bhauma / Angaraka）。大地ブーミから生まれた神（Bhauma＝大地の子）。赤い肌、四本の腕、三叉の槍を持つ。武勇と保護、結婚守護の神。',
@@ -1789,6 +1899,7 @@ const PLANETS = [
     reading: 'オーム ブラーム ブリーム ブローム サハ ブダーイェ ナマハ',
     simpleMantra: 'Om Budhaaya Namaha',
     simpleReading: 'オーム ブダーイェ ナマハ',
+    audio: 'mantra-mercury.mp3',
     meaning: {
       translation: '「オーム、水星神ブダに礼拝します」',
       deity: '水星神ブダ（Budha）。月神チャンドラと女神ターラーの息子。緑の肌、知性と機転に富む若き神。注：仏陀（ブッダ）とは別の神格で、つづりも音も異なる（Budha vs Buddha）。',
@@ -1810,6 +1921,7 @@ const PLANETS = [
     reading: 'オーム グラーム グリーム グローム サハ グラヴェー イェ ナマハ',
     simpleMantra: 'Om Gurave Namaha',
     simpleReading: 'オーム グラヴェー イェ ナマハ',
+    audio: 'mantra-jupiter.mp3',
     meaning: {
       translation: '「オーム、グル（師・木星神）に礼拝します」',
       deity: '木星神グル／ブリハスパティ（Guru / Brihaspati）。神々の師（デーヴァ・グル）と呼ばれる最高位の智者。リシ・アンギラスの息子。黄色の衣を纏い、数珠と聖典、杖を持つ。聖典『リグ・ヴェーダ』に多数の讃歌がある古い神格。',
@@ -1831,6 +1943,7 @@ const PLANETS = [
     reading: 'オーム ドラーム ドリーム ドローム サハ シュクラーイェ ナマハ',
     simpleMantra: 'Om Shukraaya Namaha',
     simpleReading: 'オーム シュクラーイェ ナマハ',
+    audio: 'mantra-venus.mp3',
     meaning: {
       translation: '「オーム、金星神シュクラに礼拝します」',
       deity: '金星神シュクラ（Shukra）。阿修羅族の師（アスラ・グル）。リシ・ブリグの息子で、ムリタ・サンジーヴァニ（死者を蘇らせる秘呪）を授かったとされる。白い肌、白い衣、片目（神話による）。芸術と愛の保護神。',
@@ -1852,6 +1965,7 @@ const PLANETS = [
     reading: 'オーム プラーム プリーム プロウム サハ シャナイシュチャラーイェ ナマハ',
     simpleMantra: 'Om Shanaishwaraaya Namaha',
     simpleReading: 'オーム シャナイシュワラーイェ ナマハ',
+    audio: 'mantra-saturn.mp3',
     meaning: {
       translation: '「オーム、土星神シャニ（シャナイシュワラ）に礼拝します」',
       deity: '土星神シャニ／シャナイシュワラ（Shani / Shanaishwara）。太陽神スーリヤと影の女神チャーヤーの息子。黒い肌、黒い衣、片足を引きずるとされる。「シャナイ」は「ゆっくり」の意で、ゆっくりと、しかし確実に正義を執行する厳格な神。',
@@ -1874,6 +1988,7 @@ const RAHU_KETU = {
     reading: 'オーム ブラーム ブリーム ブロウム サハ ラーハヴェー イェ ナマハ',
     simpleMantra: 'Om Raahave Namaha',
     simpleReading: 'オーム ラーハヴェー イェ ナマハ',
+    audio: 'mantra-rahu.mp3',
     meaning: {
       translation: '「オーム、ラーフに礼拝します」',
       deity: 'ラーフ（Rahu）— 月の北交点。実体のない「影の惑星」（チャヤ・グラハ）。神話では乳海撹拌の際にアムリタ（不死の甘露）を盗み飲んだアスラ（スワラブハーヌ）の首が、太陽と月に告発されてヴィシュヌに切られ、首から上だけが不死の存在として残ったもの。蛇の頭の姿で描かれる。',
@@ -1892,6 +2007,7 @@ const RAHU_KETU = {
     reading: 'オーム スラーム スリーム スロウム サハ ケータヴェー イェ ナマハ',
     simpleMantra: 'Om Ketave Namaha',
     simpleReading: 'オーム ケータヴェー イェ ナマハ',
+    audio: 'mantra-ketu.mp3',
     meaning: {
       translation: '「オーム、ケートゥに礼拝します」',
       deity: 'ケートゥ（Ketu）— 月の南交点。ラーフと同じく首を切られたアスラ（スワラブハーヌ）から生まれた「尾」の部分。実体のない影の惑星。蛇の尾の姿。煙、旗、過去世のカルマの蓄積を象徴する。',
@@ -2117,6 +2233,8 @@ function renderNowCard(state, schedule, date) {
         <div class="mantra-reading secondary">${RAHU_KETU.rahu.reading}</div>
         <div class="mantra-text secondary">${RAHU_KETU.ketu.mantra}</div>
         <div class="mantra-reading secondary">${RAHU_KETU.ketu.reading}</div>
+        ${audioPlayerHtml(RAHU_KETU.rahu.audio, 'ラーフのお手本')}
+        ${audioPlayerHtml(RAHU_KETU.ketu.audio, 'ケートゥのお手本')}
         ${rahuKetuMeaningBlockHtml('now-meaning-rk-active')}
         <div class="progress"><div class="progress-bar" style="width:${progress.toFixed(1)}%"></div></div>
         <div class="now-meta">
@@ -2139,6 +2257,7 @@ function renderNowCard(state, schedule, date) {
         <span class="mantra-form-label">正式形式（ビージャ）</span>
         <div class="mantra-text secondary">${s.mantra}</div>
         <div class="mantra-reading secondary">${s.reading}</div>
+        ${audioPlayerHtml(s.planet.audio)}
         ${meaningBlockHtml(s.planet.meaning, 'now-meaning-active')}
         <div class="progress"><div class="progress-bar" style="width:${progress.toFixed(1)}%"></div></div>
         <div class="now-meta">
@@ -2172,6 +2291,8 @@ function renderNowCard(state, schedule, date) {
         <div class="mantra-reading secondary">${RAHU_KETU.rahu.reading}</div>
         <div class="mantra-text secondary">${RAHU_KETU.ketu.mantra}</div>
         <div class="mantra-reading secondary">${RAHU_KETU.ketu.reading}</div>
+        ${audioPlayerHtml(RAHU_KETU.rahu.audio, 'ラーフのお手本')}
+        ${audioPlayerHtml(RAHU_KETU.ketu.audio, 'ケートゥのお手本')}
         ${rahuKetuMeaningBlockHtml('now-meaning-rk-between')}
         <div class="mantra-divider"></div>
         <div class="now-meta">
@@ -2190,6 +2311,7 @@ function renderNowCard(state, schedule, date) {
         <span class="mantra-form-label">正式形式（ビージャ）</span>
         <div class="mantra-text secondary">${p.mantra}</div>
         <div class="mantra-reading secondary">${p.reading}</div>
+        ${audioPlayerHtml(p.planet.audio)}
         ${meaningBlockHtml(p.planet.meaning, 'now-meaning-between')}
         <div class="mantra-divider"></div>
         <div class="now-meta">
@@ -2223,6 +2345,8 @@ function renderNowCard(state, schedule, date) {
         <div class="mantra-reading secondary">${RAHU_KETU.rahu.reading}</div>
         <div class="mantra-text secondary">${RAHU_KETU.ketu.mantra}</div>
         <div class="mantra-reading secondary">${RAHU_KETU.ketu.reading}</div>
+        ${audioPlayerHtml(RAHU_KETU.rahu.audio, 'ラーフのお手本')}
+        ${audioPlayerHtml(RAHU_KETU.ketu.audio, 'ケートゥのお手本')}
         ${rahuKetuMeaningBlockHtml('now-meaning-rk-next')}
         <div class="mantra-divider"></div>
         <div class="now-meta">
@@ -2245,6 +2369,7 @@ function renderNowCard(state, schedule, date) {
         <span class="mantra-form-label">正式形式（ビージャ）</span>
         <div class="mantra-text secondary">${n.mantra}</div>
         <div class="mantra-reading secondary">${n.reading}</div>
+        ${audioPlayerHtml(n.planet.audio)}
         ${meaningBlockHtml(n.planet.meaning, 'now-meaning-next')}
         <div class="mantra-divider"></div>
         <div class="now-meta">
@@ -2273,6 +2398,8 @@ function renderNowCard(state, schedule, date) {
         <div class="mantra-reading secondary">${RAHU_KETU.rahu.reading}</div>
         <div class="mantra-text secondary">${RAHU_KETU.ketu.mantra}</div>
         <div class="mantra-reading secondary">${RAHU_KETU.ketu.reading}</div>
+        ${audioPlayerHtml(RAHU_KETU.rahu.audio, 'ラーフのお手本')}
+        ${audioPlayerHtml(RAHU_KETU.ketu.audio, 'ケートゥのお手本')}
         ${rahuKetuMeaningBlockHtml('now-meaning-rk-end')}
         <div class="mantra-divider"></div>
         <div class="now-meta"><div class="meta-item"><span class="label">明日 朝の開始</span><span class="value">${fmtTime(MORNING_SLOT.start)} (${tp.planet})</span></div></div>`;
@@ -2288,6 +2415,7 @@ function renderNowCard(state, schedule, date) {
         <span class="mantra-form-label">正式形式（ビージャ）</span>
         <div class="mantra-text secondary">${p.mantra}</div>
         <div class="mantra-reading secondary">${p.reading}</div>
+        ${audioPlayerHtml(p.planet.audio)}
         ${meaningBlockHtml(p.planet.meaning, 'now-meaning-end')}
         <div class="mantra-divider"></div>
         <div class="now-meta"><div class="meta-item"><span class="label">明日 朝の開始</span><span class="value">${fmtTime(MORNING_SLOT.start)} (${tp.planet})</span></div></div>`;
@@ -2483,6 +2611,153 @@ function renderReference() {
   // Click handling for `.meaning-toggle` is centralized in a single document-level
   // listener (bindMeaningToggles below) so it works for both the reference list
   // AND the dynamically re-rendered now-card.
+}
+
+// ========== MANTRA AUDIO SAMPLE PLAYER ==========
+// Plays per-weekday recorded chanting from /mantra-{planet}.mp3 files.
+// Uses one persistent <audio> element (id=mantraSampleAudio) so playback is
+// not interrupted when the now-card re-renders every second.
+
+const audioState = {
+  src: null,        // currently loaded src
+  playing: false,
+  loop: false,
+  current: 0,       // current playback position (seconds)
+  duration: 0,
+};
+
+function getAudioEl() {
+  return document.getElementById('mantraSampleAudio');
+}
+
+function setAudioSource(src) {
+  const a = getAudioEl();
+  if (!a) return;
+  if (audioState.src !== src) {
+    a.pause();
+    a.src = src;
+    audioState.src = src;
+    audioState.playing = false;
+    audioState.current = 0;
+    audioState.duration = 0;
+  }
+}
+
+function fmtAudioTime(sec) {
+  if (!isFinite(sec) || sec < 0) sec = 0;
+  const m = Math.floor(sec / 60);
+  const s = Math.floor(sec % 60);
+  return `${m}:${s.toString().padStart(2, '0')}`;
+}
+
+// HTML snippet for the audio player. `src` is the mp3 path for the current planet.
+// `label` is an optional header text (e.g. "ラーフのお手本"); defaults to "マントラのお手本".
+function audioPlayerHtml(src, label) {
+  if (!src) return '';
+  const isThisLoaded = audioState.src === src;
+  const playing = isThisLoaded && audioState.playing;
+  const cur = isThisLoaded ? audioState.current : 0;
+  const dur = isThisLoaded ? audioState.duration : 0;
+  const pct = (dur > 0) ? Math.min(100, (cur / dur) * 100) : 0;
+  const headerText = label || 'マントラのお手本';
+  return `
+    <div class="mantra-audio" data-audio-src="${src}">
+      <div class="mantra-audio-header">
+        ${headerText}
+        <button class="mantra-audio-loop" type="button" data-loop="${audioState.loop ? 'on' : 'off'}" aria-label="リピート再生">${audioState.loop ? 'リピート ON' : 'リピート OFF'}</button>
+      </div>
+      <div class="mantra-audio-controls">
+        <button class="mantra-audio-play" type="button" data-state="${playing ? 'playing' : 'paused'}" aria-label="${playing ? '一時停止' : '再生'}">${playing ? '❚❚' : '▶'}</button>
+        <div class="mantra-audio-progress"><div class="mantra-audio-progress-bar" style="width:${pct.toFixed(1)}%"></div></div>
+        <div class="mantra-audio-time">${fmtAudioTime(cur)} / ${fmtAudioTime(dur)}</div>
+      </div>
+    </div>
+  `;
+}
+
+function bindMantraAudio() {
+  const a = getAudioEl();
+  if (!a) return;
+  // Hydrate playback-state on every native event.
+  a.addEventListener('loadedmetadata', () => {
+    audioState.duration = a.duration || 0;
+  });
+  a.addEventListener('timeupdate', () => {
+    audioState.current = a.currentTime || 0;
+    audioState.duration = a.duration || audioState.duration;
+    syncAudioPlayerUI();
+  });
+  a.addEventListener('play', () => {
+    audioState.playing = true;
+    syncAudioPlayerUI();
+  });
+  a.addEventListener('pause', () => {
+    audioState.playing = false;
+    syncAudioPlayerUI();
+  });
+  a.addEventListener('ended', () => {
+    audioState.playing = false;
+    audioState.current = 0;
+    if (audioState.loop) {
+      a.currentTime = 0;
+      a.play().catch(() => {});
+    } else {
+      syncAudioPlayerUI();
+    }
+  });
+
+  // Delegated click handlers for all play/loop buttons
+  document.addEventListener('click', (e) => {
+    const playBtn = e.target.closest('.mantra-audio-play');
+    if (playBtn) {
+      const wrap = playBtn.closest('.mantra-audio');
+      if (!wrap) return;
+      const src = wrap.getAttribute('data-audio-src');
+      if (!src) return;
+      // Switch source if a different planet's player was tapped
+      if (audioState.src !== src) setAudioSource(src);
+      if (a.paused) {
+        a.play().catch((err) => console.warn('audio play failed:', err));
+      } else {
+        a.pause();
+      }
+      return;
+    }
+    const loopBtn = e.target.closest('.mantra-audio-loop');
+    if (loopBtn) {
+      audioState.loop = !audioState.loop;
+      a.loop = audioState.loop;
+      syncAudioPlayerUI();
+      return;
+    }
+  });
+}
+
+// Lightweight in-place UI update — avoids a full now-card re-render mid-second.
+function syncAudioPlayerUI() {
+  document.querySelectorAll('.mantra-audio').forEach(wrap => {
+    const src = wrap.getAttribute('data-audio-src');
+    const isThisLoaded = audioState.src === src;
+    const playing = isThisLoaded && audioState.playing;
+    const cur = isThisLoaded ? audioState.current : 0;
+    const dur = isThisLoaded ? audioState.duration : 0;
+    const pct = (dur > 0) ? Math.min(100, (cur / dur) * 100) : 0;
+    const playBtn = wrap.querySelector('.mantra-audio-play');
+    const bar = wrap.querySelector('.mantra-audio-progress-bar');
+    const time = wrap.querySelector('.mantra-audio-time');
+    const loopBtn = wrap.querySelector('.mantra-audio-loop');
+    if (playBtn) {
+      playBtn.setAttribute('data-state', playing ? 'playing' : 'paused');
+      playBtn.textContent = playing ? '❚❚' : '▶';
+      playBtn.setAttribute('aria-label', playing ? '一時停止' : '再生');
+    }
+    if (bar) bar.style.width = pct.toFixed(1) + '%';
+    if (time) time.textContent = `${fmtAudioTime(cur)} / ${fmtAudioTime(dur)}`;
+    if (loopBtn) {
+      loopBtn.setAttribute('data-loop', audioState.loop ? 'on' : 'off');
+      loopBtn.textContent = audioState.loop ? 'リピート ON' : 'リピート OFF';
+    }
+  });
 }
 
 // One global delegated click handler for all .meaning-toggle buttons.
@@ -3190,6 +3465,7 @@ function showInstallHintIfNeeded() {
 
 renderReference();
 bindMeaningToggles();
+bindMantraAudio();
 bindSettings();
 bindCounter();
 bindMilestoneSelectors();

@@ -2,7 +2,7 @@
 // Cache-first strategy for offline support.
 // Bump CACHE_VERSION whenever you push new assets to invalidate old caches.
 
-const CACHE_VERSION = 'v3-2026-05-29';
+const CACHE_VERSION = 'v4-2026-06-02';
 const CACHE_NAME = `mantra-${CACHE_VERSION}`;
 
 // Files to pre-cache when the SW installs.
@@ -12,6 +12,16 @@ const PRECACHE = [
   './index.html',
   './agastya.jpg',
   './bhara-kumbha.jpg',
+  // Per-weekday mantra recordings (Bhara Kumbha Guru Muni / acharya chanting)
+  './mantra-sun.mp3',
+  './mantra-moon.mp3',
+  './mantra-mars.mp3',
+  './mantra-mercury.mp3',
+  './mantra-jupiter.mp3',
+  './mantra-venus.mp3',
+  './mantra-saturn.mp3',
+  './mantra-rahu.mp3',
+  './mantra-ketu.mp3',
 ];
 
 self.addEventListener('install', (event) => {
