@@ -621,6 +621,260 @@
     margin: 12px 0;
   }
 
+  /* === Calendar / Practice log === */
+  .calendar-card {
+    margin-top: 18px;
+    padding: 16px 18px 18px;
+  }
+  .calendar-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+    font-size: 15.5px;
+    font-weight: 600;
+    color: var(--mantra);
+    letter-spacing: 0.07em;
+    margin-bottom: 14px;
+  }
+  .calendar-title-icon {
+    font-size: 20px;
+    line-height: 1;
+  }
+  .calendar-today-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  .calendar-today-btn {
+    width: 100%;
+    padding: 11px 14px;
+    background: var(--bg);
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    color: var(--text-dim);
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: all 0.18s;
+    -webkit-tap-highlight-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  .calendar-today-btn:active {
+    transform: scale(0.98);
+  }
+  .calendar-today-btn[data-active="true"] {
+    background: linear-gradient(135deg, rgba(244,208,63,0.18), rgba(214,138,106,0.12));
+    border-color: var(--gold-dim);
+    color: var(--mantra);
+    font-weight: 600;
+  }
+  .calendar-today-btn[data-active="true"] .check {
+    color: var(--gold);
+  }
+  .calendar-today-btn .check {
+    color: var(--text-faint);
+    font-size: 16px;
+  }
+  .calendar-today-btn.karma {
+    background: rgba(244,208,63,0.04);
+  }
+  .calendar-today-btn.karma[data-active="true"] {
+    background: linear-gradient(135deg, rgba(244,208,63,0.22), rgba(214,138,106,0.16));
+  }
+  .calendar-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    margin-bottom: 10px;
+  }
+  .calendar-nav-btn {
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    border: 1px solid var(--border-soft);
+    background: var(--bg);
+    color: var(--text-dim);
+    font-family: inherit;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    padding: 0;
+    transition: all 0.15s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .calendar-nav-btn:active {
+    color: var(--gold);
+    border-color: var(--gold-dim);
+  }
+  .calendar-month-label {
+    font-family: "Cormorant Garamond", "Hiragino Mincho ProN", serif;
+    font-size: 14.5px;
+    color: var(--text);
+    letter-spacing: 0.06em;
+    font-variant-numeric: tabular-nums;
+    min-width: 110px;
+    text-align: center;
+  }
+  .calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+    margin-bottom: 14px;
+  }
+  .calendar-dow {
+    text-align: center;
+    font-size: 10px;
+    color: var(--text-faint);
+    letter-spacing: 0.08em;
+    padding: 4px 0;
+    font-family: "Hiragino Mincho ProN", serif;
+  }
+  .calendar-dow.sun { color: #c97a6a; }
+  .calendar-dow.sat { color: #6a8ec9; }
+  .calendar-cell {
+    aspect-ratio: 1 / 1;
+    border-radius: 8px;
+    background: transparent;
+    border: 1px solid transparent;
+    color: var(--text-dim);
+    font-size: 12px;
+    font-family: inherit;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1px;
+    padding: 0;
+    transition: all 0.15s;
+    -webkit-tap-highlight-color: transparent;
+    position: relative;
+    font-variant-numeric: tabular-nums;
+  }
+  .calendar-cell.empty {
+    cursor: default;
+  }
+  .calendar-cell:not(.empty):active {
+    transform: scale(0.93);
+  }
+  .calendar-cell.today {
+    border-color: var(--gold-dim);
+    font-weight: 600;
+    color: var(--mantra);
+  }
+  .calendar-cell.practiced {
+    background: linear-gradient(135deg, rgba(244,208,63,0.22), rgba(214,138,106,0.14));
+    color: var(--mantra);
+    font-weight: 500;
+  }
+  .calendar-cell.practiced.today {
+    background: linear-gradient(135deg, rgba(244,208,63,0.4), rgba(214,138,106,0.25));
+    border-color: var(--gold);
+  }
+  .calendar-cell.karma-done::after {
+    content: "🔱";
+    position: absolute;
+    bottom: 0;
+    right: 1px;
+    font-size: 8px;
+    line-height: 1;
+  }
+  .calendar-cell.karma-thu-done::after {
+    content: "🕉";
+  }
+  .calendar-cell.future {
+    color: var(--text-faint);
+    opacity: 0.4;
+    cursor: default;
+  }
+  .calendar-cell.sun-day { color: #c97a6a; }
+  .calendar-cell.sat-day { color: #6a8ec9; }
+  .calendar-cell.practiced.sun-day,
+  .calendar-cell.practiced.sat-day {
+    color: var(--mantra);
+  }
+  .calendar-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    padding: 12px 0 4px;
+    border-top: 1px solid var(--border-soft);
+  }
+  .calendar-stat {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 10px;
+    background: var(--bg);
+    border: 1px solid var(--border-soft);
+    border-radius: 8px;
+  }
+  .calendar-stat-icon {
+    font-size: 16px;
+    line-height: 1;
+    flex: 0 0 auto;
+  }
+  .calendar-stat-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    min-width: 0;
+  }
+  .calendar-stat-label {
+    font-size: 10px;
+    color: var(--text-faint);
+    letter-spacing: 0.04em;
+    line-height: 1.2;
+  }
+  .calendar-stat-value {
+    font-size: 14px;
+    color: var(--mantra);
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    line-height: 1.2;
+  }
+  .calendar-stat-value .sub {
+    font-size: 10px;
+    color: var(--text-faint);
+    font-weight: normal;
+    margin-left: 2px;
+  }
+  .calendar-stat.karma {
+    grid-column: span 2;
+    background: rgba(244,208,63,0.04);
+    border-color: rgba(244,208,63,0.2);
+  }
+  .calendar-legend {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    font-size: 10px;
+    color: var(--text-faint);
+    margin-top: 8px;
+    flex-wrap: wrap;
+  }
+  .calendar-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .calendar-legend-swatch {
+    width: 10px; height: 10px;
+    border-radius: 3px;
+    background: linear-gradient(135deg, rgba(244,208,63,0.4), rgba(214,138,106,0.25));
+    border: 1px solid var(--gold-dim);
+  }
+
   /* === Karma-dissolving mantra card (Tuesday & Thursday only) === */
   .karma-card {
     position: relative;
@@ -1894,6 +2148,28 @@
   </div>
 </div>
 
+<!-- Calendar / practice log -->
+<div class="card calendar-card" id="calendarCard">
+  <div class="calendar-title">
+    <span class="calendar-title-icon">📅</span>
+    <span>マントラ記録</span>
+  </div>
+  <div class="calendar-today-actions" id="calendarTodayActions">
+    <!-- Filled by JS — today's record buttons -->
+  </div>
+  <div class="calendar-nav">
+    <button class="calendar-nav-btn" id="calPrevBtn" type="button" aria-label="前の月">‹</button>
+    <span class="calendar-month-label" id="calMonthLabel">2026年6月</span>
+    <button class="calendar-nav-btn" id="calNextBtn" type="button" aria-label="次の月">›</button>
+  </div>
+  <div class="calendar-grid" id="calendarGrid">
+    <!-- Filled by JS -->
+  </div>
+  <div class="calendar-stats" id="calendarStats">
+    <!-- Filled by JS -->
+  </div>
+</div>
+
 <!-- All mantras reference -->
 <details class="reference" id="reference">
   <summary>マントラ一覧</summary>
@@ -2798,6 +3074,296 @@ function renderReference() {
   // Click handling for `.meaning-toggle` is centralized in a single document-level
   // listener (bindMeaningToggles below) so it works for both the reference list
   // AND the dynamically re-rendered now-card.
+}
+
+// ========== CALENDAR / PRACTICE LOG ==========
+// Tracks daily mantra practice in localStorage. Each day has a record:
+//   { main: bool, karma: bool }
+// `main` = the user practiced any weekday mantra that day
+// `karma` = on Tue/Thu only, the user completed the karma-dissolving mantra
+
+const CALENDAR_LOG_KEY = 'mantra-calendar-log-v1';
+const CALENDAR_VIEW_KEY = 'mantra-calendar-view';   // remembers which month was being viewed
+let calendarViewYM = null;                          // {year, month0}
+
+function dateKey(d) {
+  const y = d.getFullYear();
+  const m = (d.getMonth() + 1).toString().padStart(2, '0');
+  const day = d.getDate().toString().padStart(2, '0');
+  return `${y}-${m}-${day}`;
+}
+
+// ISO week key — used to count distinct weeks for the karma 108週 stat
+function isoWeekKey(d) {
+  const t = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+  const dayNum = (t.getUTCDay() + 6) % 7;          // Mon=0..Sun=6
+  t.setUTCDate(t.getUTCDate() - dayNum + 3);
+  const firstThursday = new Date(Date.UTC(t.getUTCFullYear(), 0, 4));
+  const week = 1 + Math.round(
+    ((t - firstThursday) / 86400000 - 3 + ((firstThursday.getUTCDay() + 6) % 7)) / 7
+  );
+  return `${t.getUTCFullYear()}-W${week.toString().padStart(2, '0')}`;
+}
+
+function getCalLog() {
+  try {
+    const raw = localStorage.getItem(CALENDAR_LOG_KEY);
+    if (!raw) return {};
+    const parsed = JSON.parse(raw);
+    if (typeof parsed !== 'object' || parsed === null || Array.isArray(parsed)) return {};
+    return parsed;
+  } catch (e) { return {}; }
+}
+function setCalLog(log) {
+  try { localStorage.setItem(CALENDAR_LOG_KEY, JSON.stringify(log)); } catch (e) {}
+}
+
+function toggleCalEntry(key, field) {
+  const log = getCalLog();
+  if (!log[key]) log[key] = { main: false, karma: false };
+  log[key][field] = !log[key][field];
+  // Cleanup: if both false, remove entry
+  if (!log[key].main && !log[key].karma) delete log[key];
+  setCalLog(log);
+  renderCalendar();
+}
+
+function getCurrentStreak(log) {
+  // Count consecutive days ending today (or yesterday, if today wasn't practiced yet)
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  let streak = 0;
+  let d = new Date(today);
+  // If today not marked, start from yesterday so we don't break the streak before evening
+  if (!(log[dateKey(d)] && log[dateKey(d)].main)) {
+    d.setDate(d.getDate() - 1);
+  }
+  while (log[dateKey(d)] && log[dateKey(d)].main) {
+    streak++;
+    d.setDate(d.getDate() - 1);
+  }
+  return streak;
+}
+
+function getLongestStreak(log) {
+  const keys = Object.keys(log).filter(k => log[k].main).sort();
+  if (!keys.length) return 0;
+  let longest = 1, current = 1;
+  for (let i = 1; i < keys.length; i++) {
+    const prev = new Date(keys[i - 1]);
+    const cur = new Date(keys[i]);
+    const diff = Math.round((cur - prev) / 86400000);
+    if (diff === 1) {
+      current++;
+      if (current > longest) longest = current;
+    } else {
+      current = 1;
+    }
+  }
+  return longest;
+}
+
+function getMonthCount(log, year, month0) {
+  let count = 0;
+  for (const k of Object.keys(log)) {
+    if (!log[k].main) continue;
+    const d = new Date(k);
+    if (d.getFullYear() === year && d.getMonth() === month0) count++;
+  }
+  return count;
+}
+
+function getKarmaWeekCount(log, dow) {
+  // dow: 2 (Tuesday) or 4 (Thursday)
+  // Returns number of distinct ISO weeks where the user marked karma on that DOW
+  const weeks = new Set();
+  for (const k of Object.keys(log)) {
+    if (!log[k].karma) continue;
+    const d = new Date(k);
+    if (d.getDay() !== dow) continue;
+    weeks.add(isoWeekKey(d));
+  }
+  return weeks.size;
+}
+
+function renderCalendar() {
+  const log = getCalLog();
+  const now = new Date();
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+
+  // Decide which month to display
+  if (!calendarViewYM) {
+    calendarViewYM = { year: now.getFullYear(), month0: now.getMonth() };
+  }
+  const year = calendarViewYM.year;
+  const month0 = calendarViewYM.month0;
+
+  // Today actions (buttons)
+  const todayKey = dateKey(today);
+  const todayRec = log[todayKey] || { main: false, karma: false };
+  const dow = today.getDay();
+  const km = KARMA_MANTRAS[dow];
+  const actionsEl = document.getElementById('calendarTodayActions');
+  if (actionsEl) {
+    let html = `
+      <button class="calendar-today-btn" type="button" data-cal-toggle="${todayKey}|main" data-active="${todayRec.main}">
+        <span class="check">${todayRec.main ? '✓' : '○'}</span>
+        <span>${todayRec.main ? '今日のマントラを記録済み' : '今日のマントラを記録する'}</span>
+      </button>
+    `;
+    if (km) {
+      html += `
+        <button class="calendar-today-btn karma" type="button" data-cal-toggle="${todayKey}|karma" data-active="${todayRec.karma}">
+          <span class="check">${todayRec.karma ? '✓' : '○'}</span>
+          <span>${todayRec.karma ? `${km.icon} ${km.deity} 108回達成済み` : `${km.icon} ${km.deity} 108回達成を記録`}</span>
+        </button>
+      `;
+    }
+    actionsEl.innerHTML = html;
+  }
+
+  // Month label
+  const monthLabel = document.getElementById('calMonthLabel');
+  if (monthLabel) {
+    monthLabel.textContent = `${year}年${month0 + 1}月`;
+  }
+
+  // Calendar grid
+  const grid = document.getElementById('calendarGrid');
+  if (grid) {
+    const dowLabels = ['日', '月', '火', '水', '木', '金', '土'];
+    let html = '';
+    for (let i = 0; i < 7; i++) {
+      const cls = i === 0 ? 'sun' : i === 6 ? 'sat' : '';
+      html += `<div class="calendar-dow ${cls}">${dowLabels[i]}</div>`;
+    }
+    const firstDay = new Date(year, month0, 1);
+    const lastDay = new Date(year, month0 + 1, 0);
+    const startDow = firstDay.getDay();
+    const numDays = lastDay.getDate();
+    // Empty cells before day 1
+    for (let i = 0; i < startDow; i++) {
+      html += '<div class="calendar-cell empty"></div>';
+    }
+    for (let d = 1; d <= numDays; d++) {
+      const cellDate = new Date(year, month0, d);
+      const cellKey = dateKey(cellDate);
+      const rec = log[cellKey] || { main: false, karma: false };
+      const cellDow = cellDate.getDay();
+      const classes = ['calendar-cell'];
+      if (cellDate.getTime() === today.getTime()) classes.push('today');
+      if (cellDate > today) classes.push('future');
+      if (rec.main) classes.push('practiced');
+      if (rec.karma && cellDow === 2) classes.push('karma-done');
+      if (rec.karma && cellDow === 4) classes.push('karma-thu-done');
+      if (cellDow === 0) classes.push('sun-day');
+      if (cellDow === 6) classes.push('sat-day');
+      const dataAttr = cellDate <= today ? `data-cal-cell="${cellKey}"` : '';
+      html += `<button class="${classes.join(' ')}" type="button" ${dataAttr}>${d}</button>`;
+    }
+    grid.innerHTML = html;
+  }
+
+  // Stats
+  const statsEl = document.getElementById('calendarStats');
+  if (statsEl) {
+    const curStreak = getCurrentStreak(log);
+    const longestStreak = getLongestStreak(log);
+    const lastDay = new Date(year, month0 + 1, 0).getDate();
+    const monthCount = getMonthCount(log, year, month0);
+    const tueWeeks = getKarmaWeekCount(log, 2);
+    const thuWeeks = getKarmaWeekCount(log, 4);
+    statsEl.innerHTML = `
+      <div class="calendar-stat">
+        <span class="calendar-stat-icon">📈</span>
+        <div class="calendar-stat-content">
+          <span class="calendar-stat-label">連続日数</span>
+          <span class="calendar-stat-value">${curStreak}<span class="sub">日</span></span>
+        </div>
+      </div>
+      <div class="calendar-stat">
+        <span class="calendar-stat-icon">🏆</span>
+        <div class="calendar-stat-content">
+          <span class="calendar-stat-label">最長連続</span>
+          <span class="calendar-stat-value">${longestStreak}<span class="sub">日</span></span>
+        </div>
+      </div>
+      <div class="calendar-stat">
+        <span class="calendar-stat-icon">☉</span>
+        <div class="calendar-stat-content">
+          <span class="calendar-stat-label">今月の達成</span>
+          <span class="calendar-stat-value">${monthCount}<span class="sub">/ ${lastDay}日</span></span>
+        </div>
+      </div>
+      <div class="calendar-stat">
+        <span class="calendar-stat-icon">✦</span>
+        <div class="calendar-stat-content">
+          <span class="calendar-stat-label">記録日数（合計）</span>
+          <span class="calendar-stat-value">${Object.keys(log).filter(k => log[k].main).length}<span class="sub">日</span></span>
+        </div>
+      </div>
+      <div class="calendar-stat karma">
+        <span class="calendar-stat-icon">🔱</span>
+        <div class="calendar-stat-content">
+          <span class="calendar-stat-label">火曜カルマ解消（ムルガン神）</span>
+          <span class="calendar-stat-value">${tueWeeks}<span class="sub">/ 108週</span></span>
+        </div>
+      </div>
+      <div class="calendar-stat karma">
+        <span class="calendar-stat-icon">🕉</span>
+        <div class="calendar-stat-content">
+          <span class="calendar-stat-label">木曜カルマ解消（アガスティア聖者）</span>
+          <span class="calendar-stat-value">${thuWeeks}<span class="sub">/ 108週</span></span>
+        </div>
+      </div>
+      <div class="calendar-legend" style="grid-column:span 2">
+        <div class="calendar-legend-item"><span class="calendar-legend-swatch"></span>マントラ実践</div>
+        <div class="calendar-legend-item">🔱 火曜カルマ達成</div>
+        <div class="calendar-legend-item">🕉 木曜カルマ達成</div>
+      </div>
+    `;
+  }
+}
+
+function bindCalendar() {
+  // Initial render
+  renderCalendar();
+
+  // Month navigation
+  document.getElementById('calPrevBtn')?.addEventListener('click', () => {
+    if (!calendarViewYM) return;
+    calendarViewYM.month0--;
+    if (calendarViewYM.month0 < 0) {
+      calendarViewYM.month0 = 11;
+      calendarViewYM.year--;
+    }
+    renderCalendar();
+  });
+  document.getElementById('calNextBtn')?.addEventListener('click', () => {
+    if (!calendarViewYM) return;
+    calendarViewYM.month0++;
+    if (calendarViewYM.month0 > 11) {
+      calendarViewYM.month0 = 0;
+      calendarViewYM.year++;
+    }
+    renderCalendar();
+  });
+
+  // Delegated click for toggle buttons and past-day cells
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-cal-toggle]');
+    if (btn) {
+      const [key, field] = btn.getAttribute('data-cal-toggle').split('|');
+      if (key && field) toggleCalEntry(key, field);
+      return;
+    }
+    const cell = e.target.closest('[data-cal-cell]');
+    if (cell) {
+      // Tap a past day to toggle its main mark
+      const key = cell.getAttribute('data-cal-cell');
+      if (key) toggleCalEntry(key, 'main');
+    }
+  });
 }
 
 // ========== KARMA-DISSOLVING MANTRA CARD (Tue/Thu) ==========
@@ -3721,6 +4287,7 @@ function showInstallHintIfNeeded() {
 renderReference();
 bindMeaningToggles();
 bindMantraAudio();
+bindCalendar();
 bindSettings();
 bindCounter();
 bindMilestoneSelectors();
