@@ -1,12 +1,17 @@
 // 七曜マントラ — Service Worker
-// Cache-first strategy for offline support.
+// Cache-first strategy for offline support (mp3, images, HTML).
+// Videos (.mp4) bypass the cache to allow iOS Safari Range/seek requests.
 // Bump CACHE_VERSION whenever you push new assets to invalidate old caches.
 
-const CACHE_VERSION = 'v5-2026-06-02b';
+const CACHE_VERSION = 'v7-2026-07-21';
 const CACHE_NAME = `mantra-${CACHE_VERSION}`;
 
 // Files to pre-cache when the SW installs.
-// Relative paths so it works under https://<user>.github.io/<repo>/
+// NOTE: .mp4 files are intentionally EXCLUDED from pre-cache. iOS Safari
+// requests videos via HTTP Range headers to seek within them, and a
+// generic Response object stored in the Cache API cannot serve partial-content
+// (byte-range) responses. Trying to cache videos breaks seek/rewind on iOS.
+// Videos are streamed directly from the network instead (see fetch handler).
 const PRECACHE = [
   './',
   './index.html',
@@ -25,14 +30,18 @@ const PRECACHE = [
   // Karma-dissolving mantras (Tuesday: Murugan, Thursday: Agastya)
   './mantra-murugan.mp3',
   './mantra-agastya.mp3',
+  // Video poster thumbnails (small, cache-friendly)
+  './bhara-video-1-poster.jpg',
+  './bhara-video-2-poster.jpg',
+  './bhara-video-3-poster.jpg',
 ];
 
 self.addEventListener('install', (event) => {
-  // Activate this SW as soon as it's installed (don't wait for old tabs to close)
+  // Activate this SW as soon as it's installed
   self.skipWaiting();
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      // Use { cache: 'reload' } to bypass HTTP cache during pre-cache.
+      // { cache: 'reload' } bypasses HTTP cache during pre-cache.
       // Best-effort: if an asset isn't there, don't fail install.
       return Promise.all(
         PRECACHE.map((url) =>
@@ -60,8 +69,13 @@ self.addEventListener('fetch', (event) => {
   const req = event.request;
   if (req.method !== 'GET') return;
   const url = new URL(req.url);
-  // Skip cross-origin requests (e.g. Google Drive thumbnail fallback images).
+  // Skip cross-origin requests (YouTube iframe, Drive fallback thumbnails, etc.)
   if (url.origin !== self.location.origin) return;
+  // Skip .mp4 videos entirely so iOS Safari can use its native Range/seek
+  // handling; caching a partial response would break media playback.
+  if (url.pathname.endsWith('.mp4')) return;
+  // Also skip explicit range requests as a safety net for any range-based asset.
+  if (req.headers.get('range')) return;
 
   event.respondWith(
     caches.match(req).then((cached) => {

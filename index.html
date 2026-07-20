@@ -1320,6 +1320,104 @@
     margin: 0;
     font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
   }
+  /* Bhara Kumbha video gallery */
+  .bhara-videos {
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px dashed var(--border-soft);
+  }
+  .bhara-videos-label {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--gold-dim);
+    margin-bottom: 8px;
+    text-align: center;
+    font-family: "Hiragino Mincho ProN", serif;
+  }
+  .bhara-videos-scroll {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 4px 2px 8px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+  .bhara-videos-scroll::-webkit-scrollbar {
+    height: 4px;
+  }
+  .bhara-videos-scroll::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 2px;
+  }
+  .bhara-video {
+    flex: 0 0 auto;
+    width: 60%;
+    max-width: 220px;
+    aspect-ratio: 9 / 16;
+    border-radius: 10px;
+    background: #000;
+    scroll-snap-align: start;
+    display: block;
+  }
+  .bhara-videos-hint {
+    text-align: center;
+    font-size: 10px;
+    color: var(--text-faint);
+    letter-spacing: 0.08em;
+    margin-top: 4px;
+    opacity: 0.7;
+  }
+
+  /* YouTube chant embed */
+  .saints-youtube {
+    margin: 4px 16px 20px;
+    padding: 14px 16px 16px;
+    background: var(--bg);
+    border: 1px solid rgba(244,208,63,0.25);
+    border-radius: 12px;
+  }
+  .saints-yt-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+    font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+    font-size: 13px;
+    color: var(--mantra);
+    letter-spacing: 0.05em;
+    font-weight: 600;
+  }
+  .saints-yt-icon {
+    font-size: 15px;
+    line-height: 1;
+  }
+  .saints-yt-frame {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #000;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .saints-yt-frame iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+  .saints-yt-note {
+    margin-top: 8px;
+    font-size: 10.5px;
+    color: var(--text-faint);
+    letter-spacing: 0.04em;
+    line-height: 1.55;
+    text-align: center;
+    font-family: "Hiragino Mincho ProN", serif;
+  }
+
   .saints-mantra {
     margin: 4px 16px 20px;
     padding: 18px 20px;
@@ -2217,8 +2315,38 @@
           <strong>アガスティア聖者の生まれかわり</strong>とされる現代の大聖者。「満ちた器（クンバ）を背負う師」を意味する尊称を持ち、アガスティア聖者と同じく「クンバ（壺）」の象徴を継承する霊的系譜の継承者。<br>
           インドの歴史ある修行僧団体「<strong>アカラ（Akhara）</strong>」から、最高位の聖者や指導者にのみ贈られる栄誉称号「<strong>マハー・マンダレシュワ（Maha Mandaleshwar）</strong>」を授与された大聖者。山中の静寂の中で深い瞑想と祈りを捧げ、現代に古の智慧を伝える存在。
         </p>
+
+        <div class="bhara-videos" aria-label="バーラクンバグルムニの映像">
+          <div class="bhara-videos-label">🎥 映像</div>
+          <div class="bhara-videos-scroll">
+            <video class="bhara-video" src="bhara-video-1.mp4" poster="bhara-video-1-poster.jpg" controls playsinline preload="none"></video>
+            <video class="bhara-video" src="bhara-video-2.mp4" poster="bhara-video-2-poster.jpg" controls playsinline preload="none"></video>
+            <video class="bhara-video" src="bhara-video-3.mp4" poster="bhara-video-3-poster.jpg" controls playsinline preload="none"></video>
+          </div>
+          <div class="bhara-videos-hint">← 横にスワイプ →</div>
+        </div>
       </figcaption>
     </figure>
+  </div>
+
+  <!-- 1-hour chanting audio (YouTube embed, loop-enabled) -->
+  <div class="saints-youtube">
+    <div class="saints-yt-header">
+      <span class="saints-yt-icon">🎧</span>
+      <span class="saints-yt-title">バーラクンバグルムニ 詠唱 (約1時間・ループ再生)</span>
+    </div>
+    <div class="saints-yt-frame">
+      <iframe
+        src="https://www.youtube.com/embed/FmueB1Mjz4g?loop=1&playlist=FmueB1Mjz4g&rel=0&modestbranding=1"
+        title="バーラクンバグルムニ 詠唱"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+        loading="lazy"></iframe>
+    </div>
+    <div class="saints-yt-note">
+      ※ 再生には通信が必要です。iOS ではアプリ内のミュージックを止めてからタップしてください。
+    </div>
   </div>
   <div class="saints-mantra">
     <div class="saints-mantra-text">गुरुर्ब्रह्मा गुरुर्विष्णुः गुरुर्देवो महेश्वरः</div>
@@ -3093,6 +3221,13 @@ function dateKey(d) {
   return `${y}-${m}-${day}`;
 }
 
+// Parse "YYYY-MM-DD" as a LOCAL midnight (not UTC). Using new Date(str) would
+// interpret the string as UTC, which shifts the date in non-UTC timezones.
+function parseDateKey(k) {
+  const [y, m, d] = k.split('-').map(Number);
+  return new Date(y, m - 1, d);
+}
+
 // ISO week key — used to count distinct weeks for the karma 108週 stat
 function isoWeekKey(d) {
   const t = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
@@ -3150,8 +3285,8 @@ function getLongestStreak(log) {
   if (!keys.length) return 0;
   let longest = 1, current = 1;
   for (let i = 1; i < keys.length; i++) {
-    const prev = new Date(keys[i - 1]);
-    const cur = new Date(keys[i]);
+    const prev = parseDateKey(keys[i - 1]);
+    const cur = parseDateKey(keys[i]);
     const diff = Math.round((cur - prev) / 86400000);
     if (diff === 1) {
       current++;
@@ -3167,7 +3302,7 @@ function getMonthCount(log, year, month0) {
   let count = 0;
   for (const k of Object.keys(log)) {
     if (!log[k].main) continue;
-    const d = new Date(k);
+    const d = parseDateKey(k);
     if (d.getFullYear() === year && d.getMonth() === month0) count++;
   }
   return count;
@@ -3179,7 +3314,7 @@ function getKarmaWeekCount(log, dow) {
   const weeks = new Set();
   for (const k of Object.keys(log)) {
     if (!log[k].karma) continue;
-    const d = new Date(k);
+    const d = parseDateKey(k);
     if (d.getDay() !== dow) continue;
     weeks.add(isoWeekKey(d));
   }
@@ -4140,6 +4275,10 @@ function tick() {
     renderHeader(now);
     renderTimeline(getCurrentState(now, cachedSchedule), cachedSchedule, now);
     renderKarmaCard(now);
+    // Reset the view to today's month and refresh so "今日" highlight and
+    // the today-action buttons (main/karma) reflect the new date.
+    calendarViewYM = { year: now.getFullYear(), month0: now.getMonth() };
+    renderCalendar();
     // Reset transition tracker on date change to avoid stale slot-type carry-over
     prevSlotType = null;
   }
